@@ -4,8 +4,8 @@ const Post = require('../model/postModel');
 const router = express.Router();
 
 // send post and save it
-router.post('/send', async (req, res) => {
-    const {title, createdAt, tags, html } = req.body;
+router.post('/write', async (req, res) => {
+    const { title, createdAt, tags, html } = req.body;
 
     const newPost = new Post({
         title,
@@ -17,7 +17,7 @@ router.post('/send', async (req, res) => {
     try {
         const savedPost = await newPost.save();
         res.json(savedPost);
-    } catch(err) {
+    } catch (err) {
         console.error(err)
     }
 })
@@ -28,17 +28,17 @@ router.get('/', async (req, res) => {
 })
 
 // get one post by id
-router.get('/:id', async (req,res) => {
+router.get('/:id', async (req, res) => {
     const post = await Post.findById(req.params.id);
     res.json(post);
 })
 
 // delete one post 
 router.delete('/:id', async (req, res) => {
-    await Post.deleteOne({_id: req.params.id})
-    
+    await Post.deleteOne({ _id: req.params.id })
 
-    
+
+
 })
 
 module.exports = router;
