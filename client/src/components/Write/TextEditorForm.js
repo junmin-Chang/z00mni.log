@@ -59,7 +59,7 @@ const getContent = (e) => {
   const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
   const writePost = () => {
     if (content.password === process.env.REACT_APP_ADMIN_PASSWORD) {
-      axios.post('https://zoomni-log.herokuapp.com/send', {
+      axios.post('https://zoomni-log.herokuapp.com/write', {
         title: content.title,
         tags: content.tags.split(','),
         html: editorToHtml,
