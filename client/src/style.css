@@ -1,0 +1,180 @@
+/* 
+reset 
+*/
+
+/* variables */
+:root {
+    --nav-background: #ffffff;
+    --nav-link-color: #949494;
+    --nav-link-color-hover: #000000;
+    --nav-height: 50px;
+    --post-list-item-border: #e0e0e0;
+    --post-list-item-hover: #e0e0e0;
+    --post-list-item-date: #949494;
+    --post-list-item-tag: #2ec4ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-size: 18px;
+    line-height: 1.7rem;
+    margin: 1rem 0;
+}
+/* 
+container
+*/
+
+button {
+    border: none;
+    background: none;
+}
+a {
+    color: unset;
+    text-decoration: none;
+}
+.container {
+    max-width: 800px;
+    margin: var(--nav-height) auto 0 auto;
+    padding: 1rem; 
+
+}
+/*  typography */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 2rem;
+    margin-bottom: 0.7rem;
+    line-height: initial;
+}
+.navbar h1 {
+    color: black;
+}
+
+/* navbar */
+.navbar {
+    background: var(--nav-background);
+    height: var(--nav-height);
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.navbar .nav-container {
+    height: 100%;
+    display: flex;
+    padding: 0 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.navbar h1 {
+    font-size: 1.7rem;
+}
+.navbar .blog-title {
+    top: 0;
+    left: 0;
+    height: var(--nav-height);
+}
+
+.navbar .links a {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--nav-link-color);
+}
+
+
+.navbar .links a:hover {
+    color: var(--nav-link-color-hover);
+}
+
+.post-list-item {
+    width: 100%;
+    display: block;
+    padding-top: 1rem;
+    border-bottom: 1px solid var(--post-list-item-border);
+    text-align: left;
+}
+.post-list-item:hover {
+    background: var(--post-list-item-hover);
+}
+
+.post-list-item .title {
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+.post-list-item .date {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    color: var(--post-list-item-date);
+    font-weight: 300;
+}
+.post-list-item .tags {
+    margin-bottom: 0.5rem;
+}
+
+.post-list-item .tag {
+    display: inline-block;
+    margin-right: 0.5rem;
+    background: var(--post-list-item-tag);
+    padding: 0 0.5rem;
+    color: white;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+.btn {
+    border-radius: 4px;
+    padding: 0.3rem;
+}
+
+.btn-delete {
+    background: red;
+    color: white;
+    
+}
+
+.btn-admin-delete {
+    background: red;
+    color: white;
+    margin-left: 1rem;
+ 
+}
+
+.btn-delete:hover {
+    background: black;
+}
+
+.btn-post {
+    margin-top: 0.5rem;
+    background: lightgreen;
+    width: 100%;
+    height: 3rem;
+}
+
+.btn-post:hover {
+    background: rgb(35, 175, 35);
+}
+
+.post-menu {
+    margin-bottom: 2rem;
+    border: 3px solid var(--nav-link-color);
+    padding: 1rem;
+}
+
+input {
+    height: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+
+.input-title {
+    width: 100%;
+}
+
+.dark-mode {
+    margin-top: 3.5rem;
+}
