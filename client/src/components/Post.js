@@ -25,13 +25,13 @@ function Post({ match, history }) {
 
 
     const getPost = async () => {
-        const res = await axios.get(`/posts/${match.params.id}`);
+        const res = await axios.get(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`);
         setPost(res.data)
     }
 
     const deletePost = async () => {
         if (adminPassword === process.env.REACT_APP_ADMIN_PASSWORD) {
-            await axios.delete(`/posts/${match.params.id}`)
+            await axios.delete(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`)
             .then(history.push('/posts'));    
         } else {
             alert('비밀번호가 일치하지 않습니다.');

@@ -17,7 +17,7 @@ function PostList() {
     }
 
     const getPosts = async () => {
-        const res = await axios.get('/posts')
+        const res = await axios.get('https://zoomni-log.herokuapp.com/posts')
         setPosts(res.data);
     }
 
