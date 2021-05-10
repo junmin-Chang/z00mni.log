@@ -1,9 +1,7 @@
 const express = require('express');
-const { Mongoose } = require('mongoose');
 const Post = require('../model/postModel');
 const router = express.Router();
 
-// send post and save it
 
 // get ALL post
 router.get('/', async (req, res) => {
