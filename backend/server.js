@@ -1,8 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const Post = require('../model/postModel');
-
 require('dotenv').config();
 
 
@@ -33,20 +31,3 @@ mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopo
     console.log('MongoDB connection established');
 })
 
-app.post('/write', async (req,res) => {
-    const { title, createdAt, tags, html } = req.body;
-
-    const newPost = new Post({
-        title,
-        createdAt,
-        tags,
-        html
-    })
-
-    try {
-        const savedPost = await newPost.save();
-        res.json(savedPost);
-    } catch (err) {
-        console.error(err)
-    }
-})

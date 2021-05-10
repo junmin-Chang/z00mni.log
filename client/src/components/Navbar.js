@@ -28,7 +28,7 @@ function Navbar({ onThemeToggled, theme }) {
                     </div>
 
                     <div className="links write-post">
-                        <NavLink to="/write">
+                        <NavLink to="/posts/write">
                             글 작성
                         </NavLink>
                     </div>
