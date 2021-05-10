@@ -19,7 +19,7 @@ app.listen(PORT, () => {
 
 
 app.use('/posts', require('./routes/postRoutes'));
-
+app.use('/', require('./routes/writeRoutes'))
 
 
 

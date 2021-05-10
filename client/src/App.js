@@ -38,7 +38,7 @@ const App = () => {
                 <Route path='/profile' component={Profile}/>
                 <Route path='/posts/:id' component={Post}/>
                 <Route path='/posts' component={PostList}/>
-                <Route path='/posts/write' component={Write}/>
+                <Route path='/write' component={Write}/>
             </Switch>
         </BrowserRouter>
         </ThemeProvider>
