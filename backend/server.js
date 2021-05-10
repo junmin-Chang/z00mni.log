@@ -11,12 +11,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 80;
 console.log('Server is Starting...');
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('../blog_frontend/build'));
-    app.get('*', (req,res) => {
-        res.sendFile(path.resolve(__dirname, '../blog_frontend', 'build', 'index.html'));
-    })
-}
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on PORT ${PORT}`);
