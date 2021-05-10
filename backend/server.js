@@ -29,6 +29,7 @@ app.get('/', (req,res) => {
 })
 
 
+
 console.log('Connecting to Mongo db');
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
     if (err) return console.log(err.message);
