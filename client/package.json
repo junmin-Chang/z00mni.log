@@ -5,6 +5,7 @@
   "dependencies": {
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
@@ -20,7 +21,6 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    
     "start": "react-scripts start",
     "build": "CI= react-scripts build",
     "test": "react-scripts test",
