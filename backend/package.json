@@ -7,7 +7,6 @@
   "description": "",
   "main": "node server.js",
   "scripts": {
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix blog_frontend && npm run build --prefix blog_frontend",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
