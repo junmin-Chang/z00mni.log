@@ -78,6 +78,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     left: 0;
     height: var(--nav-height);
+    
 }
 
 .navbar .links a {
@@ -177,4 +178,8 @@ input {
 
 .dark-mode {
     margin-top: 3.5rem;
+}
+
+ul {
+    margin-left: 1rem;
 }

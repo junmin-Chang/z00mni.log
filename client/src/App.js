@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Switch , Route, HashRouter } from 'react-router-dom';
+import { BrowserRouter, Switch , Route } from 'react-router-dom';
 // pages
 import Home from './components/Home';
 import Post from './components/Post';
@@ -10,7 +10,6 @@ import './style.css'
 
 // components
 import Navbar from './components/Navbar';
-import Profile from './components/Profile';
 import Write from './components/Write/Write';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme,darkTheme } from './theme/theme';
@@ -35,7 +34,6 @@ const App = () => {
             <Navbar onThemeToggled={toggleTheme} theme={theme}/>
             <Switch>
                 <Route exact path='/' component={Home}/>
-                <Route path='/profile' component={Profile}/>
                 <Route path='/posts/:id' component={Post}/>
                 <Route path='/posts' component={PostList}/>
                 <Route path='/write' component={Write}/>

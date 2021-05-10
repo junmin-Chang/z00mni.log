@@ -11,7 +11,7 @@ function Navbar({ onThemeToggled, theme }) {
                 <div className="nav-container">
                     <div className="brand">
                         <NavLink to='/'>
-                            <h1 className="blog-title">Zoomni.Dev💻</h1>
+                            <h1 className="blog-title">Zoomni.Dev</h1>
                         </NavLink>
                     </div>
 
@@ -21,11 +21,7 @@ function Navbar({ onThemeToggled, theme }) {
                         </NavLink>
                     </div>
 
-                    <div className="links">
-                        <NavLink to='/profile'>
-                            About
-                        </NavLink>
-                    </div>
+                  
 
                     <div className="links write-post">
                         <NavLink to="/write">
