@@ -23,6 +23,16 @@ app.listen(PORT, () => {
 app.use('/posts', require('./routes/postRoutes'));
 
 
+
+
+
+console.log('Connecting to Mongo db');
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
+    if (err) return console.log(err.message);
+
+    console.log('MongoDB connection established');
+})
+
 app.post('/write', async (req,res) => {
     const { title, createdAt, tags, html } = req.body;
 
@@ -40,12 +50,3 @@ app.post('/write', async (req,res) => {
         console.error(err)
     }
 })
-
-
-console.log('Connecting to Mongo db');
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
-    if (err) return console.log(err.message);
-
-    console.log('MongoDB connection established');
-})
-
