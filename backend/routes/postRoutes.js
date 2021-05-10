@@ -4,7 +4,7 @@ const Post = require('../model/postModel');
 const router = express.Router();
 
 // send post and save it
-router.post('/', async (req, res) => {
+router.post('/send', async (req, res) => {
     const {title, createdAt, tags, html } = req.body;
 
     const newPost = new Post({
