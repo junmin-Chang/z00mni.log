@@ -32,6 +32,7 @@ router.patch('/:id', async (req,res) => {
        if (err) {
         console.error(err)
        }
+       res.json(result)
        console.log(req.body.title)
    })
 })
