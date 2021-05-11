@@ -22,7 +22,7 @@ router.delete('/:id', async (req, res) => {
 })
 
 // update one post
-router.patch('/:id', async (req,res) => {
+router.patch('/:id',async (req,res) => {
     const {title, tags, html} = req.body;
    Post.findByIdAndUpdate(req.params.id,  {
        title: title,
@@ -33,7 +33,7 @@ router.patch('/:id', async (req,res) => {
         console.error(err)
        }
        res.json(result)
-       console.log(req.body)
+       console.log(req.body.title)
    })
 })
 
