@@ -1,4 +1,3 @@
-import { Mongoose } from 'mongoose';
 
 const express = require('express');
 const Post = require('../model/postModel');
@@ -20,9 +19,6 @@ router.get('/:id', async (req, res) => {
 // delete one post 
 router.delete('/:id', async (req, res) => {
     await Post.deleteOne({ _id: req.params.id })
-
-
-
 })
 
 // update one post
