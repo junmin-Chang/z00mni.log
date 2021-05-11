@@ -28,9 +28,9 @@ router.put('/:id', async (req,res) => {
         if (err) return res.status(500).json({ error: 'database failure!' });
         if (!post) return res.status(404).json({ error: 'post not exist!' });
 
-        if (req.body.title) post.title = req.body.title;
-        if (req.body.tags) post.tags = req.body.tags;
-        if (req.body.html) post.html = req.body.html;
+        if (req.body.title) console.log(req.body.title);
+        if (req.body.tags) console.log(req.body.tags);
+        if (req.body.html) console.log(req.body.html);
 
         post.save((err) => {
             if (err) res.status(500).json({ error: 'failed to update!' });
