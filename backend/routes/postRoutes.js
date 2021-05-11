@@ -25,13 +25,9 @@ router.delete('/:id', async (req, res) => {
 router.patch('/:id', async (req,res) => {
     
     try {
-        const post = new Post({
-            _id: req.params.id,
-            title: req.body.title,
-            tags: req.body.tags,
-            html: req.body.html
-        });
-        const updatedPost = Post.findByIdAndUpdate(req.params.id, post, { new: true }, function (err) {
+        const post = req.body;
+        const { id: _id } = req.params;
+        const updatedPost = Post.findByIdAndUpdate(req.params.id, {...post, _id}, { new: true }, function (err) {
             if (err) {
                 throw err;
             }
