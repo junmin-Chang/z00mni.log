@@ -23,19 +23,17 @@ router.delete('/:id', async (req, res) => {
 
 // update one post
 router.patch('/:id', async (req,res) => {
-    
+
     try {
-        const post = req.body;
-        const id = req.params;
-        const updatedPost = Post.findByIdAndUpdate(id, post, { new: true }, function (err) {
-            if (err) {
-                throw err;
-            }
-            res.json(updatedPost)
-        })
-       
-    } catch(e) {
-        console.log(e)
+        const post = await Post.findByIdAndUpdate(req.params.id, req.body , {
+            new: true,
+            runValidators: true
+        });
+        if (!post) res.status(404).send();
+        res.send(post);
+    } catch(err) {
+        res.send(400).send();
+
     }
 })
 
