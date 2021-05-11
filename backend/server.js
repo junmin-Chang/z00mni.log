@@ -5,7 +5,13 @@ require('dotenv').config();
 
 
 const app = express();
-app.use(cors({origin:'https://z00mni-log.netlify.app'}));
+app.use(cors({
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'origin': '*',
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+  }));
 app.use(express.json());
 
 const PORT = process.env.PORT || 80;
