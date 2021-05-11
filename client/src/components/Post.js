@@ -12,9 +12,9 @@ function Post({ match, history }) {
     // const [newTags, setNewTags] = useState(post.tags);
     // const [newHtml, setNewHtml] = useState(post.html);
     const [postData, setPostData] = useState({
-        title: '',
-        tags: '',
-        html: ''
+        title: post.title,
+        tags: post.tags,
+        html: post.html
     })
     const [modalOpen, setModalOpen] = useState(false);
     const [adminPassword, setAdminPassword] = useState('')
@@ -48,7 +48,7 @@ function Post({ match, history }) {
     
     const updatePost = async () => {
         if (adminPassword === process.env.REACT_APP_ADMIN_PASSWORD) {
-            await axios.patch(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`)
+            await axios.put(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`)
             .then(history.push('/posts'));
         } else {
             alert('비밀번호가 일치하지 않습니다.');
@@ -78,7 +78,7 @@ function Post({ match, history }) {
                     <input className="edit-html" name="html" type="text" value={postData.html} onChange={(e) => setPostData({...postData, html: e.target.value})} defaultValue={post.html}/>
                     <input type="text" name='password' value={adminPassword} onChange={onChangePassword} placeholder="관리자 비밀번호 입력"/>
                     <button className="btn btn-admin-delete" onClick={deletePost} >삭제</button>
-                    <button type="submit" className="btn btn-admin-delete" onClick={updatePost} >수정</button>
+                    <button className="btn btn-admin-delete" onClick={updatePost} >수정</button>
                 </div>
             </Modal>   
         </div>
