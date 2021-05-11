@@ -27,7 +27,7 @@ router.patch('/:id', async (req,res) => {
        title: req.body.title,
        tags: req.body.tags,
        html: req.body.html
-   }, {new:true},(err, result) => {
+   }, {upsert:true,new:true},(err, result) => {
        if (err) {
         console.error(err)
        }
