@@ -23,15 +23,15 @@ router.delete('/:id', async (req, res) => {
 
 // update one post
 router.patch('/:id', async (req,res) => {
-   Post.findByIdAndUpdate(req.params.id, {$set: {
+   Post.findByIdAndUpdate(req.params.id,  {
        title: req.body.title,
        tags: req.body.tags,
        html: req.body.html
-   }}, {new:true, useFindAndModify: false},(err, result) => {
+   }, {new:true, useFindAndModify: false},(err, result) => {
        if (err) {
         console.error(err)
        }
-       res.json(result)
+       console.log(req.body.title)
    })
 })
 
