@@ -8,26 +8,21 @@ import { IntroduceContent } from './Write/TextEditorForm';
 function Post({ match, history }) {
     
     const [post, setPost] = useState({});
-    const [newTitle, setNewTitle] = useState(post.title);
-    const [newTags, setNewTags] = useState(post.tags);
-    const [newHtml, setNewHtml] = useState(post.html);
+    // const [newTitle, setNewTitle] = useState(post.title);
+    // const [newTags, setNewTags] = useState(post.tags);
+    // const [newHtml, setNewHtml] = useState(post.html);
+    const [postData, setPostData] = useState({
+        title: '',
+        tags: '',
+        html: ''
+    })
     const [modalOpen, setModalOpen] = useState(false);
     const [adminPassword, setAdminPassword] = useState('')
 
     const onChangePassword = (e) => {
         setAdminPassword(e.target.value)
     }
-    const onChangeTitle = (e) => {
-        setNewTitle(e.target.value);
-    }
-    const onChangeTags = (e) => {
-        setNewTags(e.target.value);
-    }
-    const onChangeHtml = (e) => {
-        setNewHtml(e.target.value);
-    }
 
-    
 
     const openModal = () => {
         setModalOpen(true);
@@ -78,12 +73,12 @@ function Post({ match, history }) {
         <div>
              <Modal open={modalOpen} close={closeModal} header="관리자 모드">
                 <div>
-                    <input className="edit-title" name="title" type="text" value={newTitle} onChange={onChangeTitle} defaultValue={post.title}/>
-                    <input className="edit-tags" name="tags" type="text" value={newTags} onChange={onChangeTags} defaultValue={post.tags}/>
-                    <input className="edit-html" name="html" type="text" value={newHtml} onChange={onChangeHtml} defaultValue={post.html}/>
+                    <input className="edit-title" name="title" type="text" value={postData.title} onChange={(e) => setPostData({...postData, title: e.target.value})} defaultValue={post.title}/>
+                    <input className="edit-tags" name="tags" type="text" value={postData.tags} onChange={(e) => setPostData({...postData, tags: e.target.value})} defaultValue={post.tags}/>
+                    <input className="edit-html" name="html" type="text" value={postData.html} onChange={(e) => setPostData({...postData, html: e.target.value})} defaultValue={post.html}/>
                     <input type="text" name='password' value={adminPassword} onChange={onChangePassword} placeholder="관리자 비밀번호 입력"/>
                     <button className="btn btn-admin-delete" onClick={deletePost} >삭제</button>
-                    <button className="btn btn-admin-delete" onClick={updatePost} >수정</button>
+                    <button type="submit" className="btn btn-admin-delete" onClick={updatePost} >수정</button>
                 </div>
             </Modal>   
         </div>
