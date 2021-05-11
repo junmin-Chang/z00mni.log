@@ -1,3 +1,5 @@
+import { Mongoose } from 'mongoose';
+
 const express = require('express');
 const Post = require('../model/postModel');
 const router = express.Router();
@@ -21,6 +23,23 @@ router.delete('/:id', async (req, res) => {
 
 
 
+})
+
+// update one post
+router.patch('/:id', async (req,res) => {
+    
+    try {
+        const post = new Post({
+            _id: req.params.id,
+            title: req.body.title,
+            tags: req.body.tags,
+            html: req.body.html
+        });
+        const updatedPost = Post.findByIdAndUpdate(post._id, post, { new: true })
+        res.json(updatedPost);
+    } catch(e) {
+        res.json(400).send();
+    }
 })
 
 module.exports = router;
