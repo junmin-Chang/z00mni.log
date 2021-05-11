@@ -23,11 +23,11 @@ router.delete('/:id', async (req, res) => {
 
 // update one post
 router.patch('/:id', async (req,res) => {
-   Post.findByIdAndUpdate(req.params.id, {
+   Post.findByIdAndUpdate(req.params.id, {$set: {
        title: req.body.title,
        tags: req.body.tags,
        html: req.body.html
-   }, {upsert:true,new:true},(err, result) => {
+   }}, {new:true, useFindAndModify: false},(err, result) => {
        if (err) {
         console.error(err)
        }
