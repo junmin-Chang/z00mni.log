@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import PostListItem from './PostListItem';
 import Pagination from './Pagination/Pagination'
+import ReactLoading from 'react-loading';
+
 function PostList() {
     const [posts, setPosts] = useState([]);
 
@@ -30,13 +32,15 @@ function PostList() {
     
     return (
         <div className="container">
-
-            <div className="post-list">
-               
+            {!posts.length ? <ReactLoading className="loading" type="cubes"/> : (
+                <div className="post-list">
+                
                 <PostListItem posts={currentPosts(posts)}/>
                 <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={setCurrentPage}/>
             </div>
-        </div>
+        
+            )}
+            </div>
     )
     
 }

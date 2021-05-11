@@ -183,3 +183,9 @@ input {
 ul {
     margin-left: 1rem;
 }
+
+.loading {
+    position: fixed;
+    top: 50%;
+    left: 43%;
+}
