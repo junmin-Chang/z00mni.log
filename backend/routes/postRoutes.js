@@ -27,7 +27,7 @@ router.patch('/:id', async (req,res) => {
        title: '오 거의 다 되감',
        tags: '히히',
        html: '<h1>다 되간다니까요??</h1>'
-   }, (err, result) => {
+   }, {new: true} ,(err, result) => {
        if (err) {
         console.error(err)
        }
