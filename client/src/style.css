@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .links a {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--nav-link-color);
 }
@@ -177,7 +177,8 @@ input {
 }
 
 .dark-mode {
-    margin-top: 3.5rem;
+    height: 100%;
+    vertical-align: middle;    
 }
 
 ul {
@@ -188,6 +189,4 @@ ul {
     position: fixed;
     top: 50%;
     left: 43%;
-    
-    
 }

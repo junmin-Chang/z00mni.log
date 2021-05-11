@@ -30,7 +30,7 @@ function Navbar({ onThemeToggled, theme }) {
                     </div>
                     <div>
                         <DarkModeToggle onChange={onThemeToggled}
-                        size={80}
+                        size={50}
                         checked={theme}
                         className="dark-mode"/>
                     </div>
