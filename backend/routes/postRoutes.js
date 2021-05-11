@@ -24,10 +24,10 @@ router.delete('/:id', async (req, res) => {
 // update one post
 router.patch('/:id', async (req,res) => {
    Post.findByIdAndUpdate(req.params.id, {
-       title: '오 거의 다 되감',
-       tags: '히히',
-       html: '<h1>다 되간다니까요??</h1>'
-   }, {new: true} ,(err, result) => {
+       title: req.body.title,
+       tags: req.body.tags,
+       html: req.body.html
+   }, {new:true},(err, result) => {
        if (err) {
         console.error(err)
        }
