@@ -17,14 +17,16 @@ app.listen(PORT, () => {
     console.log(`Server is running on PORT ${PORT}`);
 })
 
-
-app.use('/posts', require('./routes/postRoutes'));
-app.use('/', require('./routes/writeRoutes'))
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "https://z00mni-log.netlify.app");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.header('Access-Control-Allow-Credentials', true);
     next();
 });
+app.use('/posts', require('./routes/postRoutes'));
+app.use('/', require('./routes/writeRoutes'))
+
 
 
 
