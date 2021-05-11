@@ -20,6 +20,11 @@ app.listen(PORT, () => {
 
 app.use('/posts', require('./routes/postRoutes'));
 app.use('/', require('./routes/writeRoutes'))
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 
 
