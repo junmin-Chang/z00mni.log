@@ -30,7 +30,7 @@ router.patch('/:id', async (req,res) => {
             runValidators: true
         });
         if (!post) res.status(404).send();
-        res.json(post);
+        console.log(post)
     } catch(err) {
         res.send(400).send();
 
