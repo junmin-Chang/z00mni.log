@@ -23,7 +23,7 @@ router.delete('/:id', async (req, res) => {
 
 // update one post
 router.put('/:id', async (req,res) => {
-    const post = new Post();
+   
     Post.findById(req.params.id, (err, post) => {
         if (err) return res.status(500).json({ error: 'database failure!' });
         if (!post) return res.status(404).json({ error: 'post not exist!' });
@@ -34,7 +34,7 @@ router.put('/:id', async (req,res) => {
 
         post.save((err) => {
             if (err) res.status(500).json({ error: 'failed to update!' });
-            res.json({ message: 'post updated!' });
+            res.json(post);
         })
     })
 })
