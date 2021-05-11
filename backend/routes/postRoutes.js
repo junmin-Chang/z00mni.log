@@ -22,20 +22,25 @@ router.delete('/:id', async (req, res) => {
 })
 
 // update one post
-// router.patch('/:id', async (req,res) => {
+router.patch('/:id', async (req,res) => {
     
-//     try {
-//         const post = new Post({
-//             _id: req.params.id,
-//             title: req.body.title,
-//             tags: req.body.tags,
-//             html: req.body.html
-//         });
-//         const updatedPost = Post.findByIdAndUpdate(post._id, post, { new: true })
-//         res.json(updatedPost);
-//     } catch(e) {
-//         res.json(400).send();
-//     }
-// })
+    try {
+        const post = new Post({
+            _id: req.params.id,
+            title: req.body.title,
+            tags: req.body.tags,
+            html: req.body.html
+        });
+        const updatedPost = Post.findByIdAndUpdate(req.params.id, post, { new: true }, function (err) {
+            if (err) {
+                throw err;
+            }
+            res.json(updatedPost)
+        })
+       
+    } catch(e) {
+        res.json(400).send();
+    }
+})
 
 module.exports = router;
