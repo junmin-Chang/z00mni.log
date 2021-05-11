@@ -22,21 +22,17 @@ router.delete('/:id', async (req, res) => {
 })
 
 // update one post
-router.put('/:id', async (req,res) => {
-   
-    Post.findById(req.params.id, (err, post) => {
-        if (err) return res.status(500).json({ error: 'database failure!' });
-        if (!post) return res.status(404).json({ error: 'post not exist!' });
-
-        if (req.body.title) console.log(req.body.title);
-        if (req.body.tags) console.log(req.body.tags);
-        if (req.body.html) console.log(req.body.html);
-
-        post.save((err) => {
-            if (err) res.status(500).json({ error: 'failed to update!' });
-            res.json(post);
-        })
-    })
+router.patch('/:id', async (req,res) => {
+   Post.findByIdAndUpdate(req.params.id, {
+       title: req.body.title,
+       tags: req.body.tags,
+       html: req.body.html
+   }, (err, result) => {
+       if (err) {
+        console.error(err)
+       }
+       res.json(result)
+   })
 })
 
 module.exports = router;
