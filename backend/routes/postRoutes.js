@@ -33,7 +33,7 @@ router.patch('/:id', async (req,res) => {
         console.error(err)
        }
        res.json(result)
-       console.log(req.body.title)
+       console.log(req.body)
    })
 })
 
