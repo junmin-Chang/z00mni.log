@@ -4,7 +4,7 @@ import PostListItem from './PostListItem';
 import Pagination from './Pagination/Pagination'
 import ReactLoading from 'react-loading';
 
-function PostList() {
+function PostList({ theme }) {
     const [posts, setPosts] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -32,7 +32,7 @@ function PostList() {
     
     return (
         <div className="container">
-            {!posts.length ? <ReactLoading className="loading" type="cubes"/> : (
+            {!posts.length ? <ReactLoading className="loading" type="cubes" color={theme ? 'white': 'black'}/> : (
                 <div className="post-list">
                 
                 <PostListItem posts={currentPosts(posts)}/>

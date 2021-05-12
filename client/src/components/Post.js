@@ -50,7 +50,7 @@ function Post({ match, history }) {
         if (adminPassword === process.env.REACT_APP_ADMIN_PASSWORD) {
             axios.patch(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`, {
                 title: postData.title,
-                tags: postData.tags,
+                tags: postData.tags.split(','),
                 html: postData.html
             })
             .then(history.push('/posts'));
@@ -69,7 +69,7 @@ function Post({ match, history }) {
 
     useEffect(() => {
         getPost();
-    },[post])
+    },[])
 
 
     return (

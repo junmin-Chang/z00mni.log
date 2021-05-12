@@ -35,7 +35,7 @@ const App = () => {
             <Switch>
                 <Route exact path='/' component={Home}/>
                 <Route path='/posts/:id' component={Post}/>
-                <Route path='/posts' component={PostList}/>
+                <Route path='/posts' render={() => <PostList theme={theme}/>}/>
                 <Route path='/write' component={Write}/>
             </Switch>
         </BrowserRouter>
