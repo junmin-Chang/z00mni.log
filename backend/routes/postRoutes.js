@@ -24,7 +24,7 @@ router.delete('/:id', async (req, res) => {
 // update one post
 router.patch('/:id',async (req,res) => {
     const {editedTitle, editedTags, editedHtml} = req.body;
-   Post.findByIdAndUpdate(req.params.id,  {
+   await Post.findByIdAndUpdate(req.params.id,  {
        title: editedTitle,
        tags: editedTags,
        html: editedHtml
