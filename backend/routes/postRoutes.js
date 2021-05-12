@@ -22,18 +22,18 @@ router.delete('/:id', async (req, res) => {
 })
 
 // update one post
-router.patch('/:id',async (req,res) => {
+router.patch('/:id', (req,res) => {
     const {editedTitle, editedTags, editedHtml} = req.body;
-   await Post.findByIdAndUpdate(req.params.id,  {
+    Post.findByIdAndUpdate(req.params.id,  {
        title: editedTitle,
        tags: editedTags,
        html: editedHtml
-   }, {new:true},(err, result) => {
+   }, {new:true, useFindAndModify: false},(err, result) => {
        if (err) {
         console.error(err)
        }
        res.json(result)
-       console.log(req.body.title)
+       console.log(req.body.editedTitle)
    })
 })
 
