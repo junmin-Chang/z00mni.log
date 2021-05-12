@@ -48,7 +48,11 @@ function Post({ match, history }) {
     
     const updatePost =  () => {
         if (adminPassword === process.env.REACT_APP_ADMIN_PASSWORD) {
-            axios.patch(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`)
+            axios.patch(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`, {
+                title: postData.title,
+                tags: postData.tags,
+                html: postData.html
+            })
             .then(history.push('/posts'));
         } else {
             alert('비밀번호가 일치하지 않습니다.');
