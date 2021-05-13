@@ -16,10 +16,15 @@ export const GlobalStyles = createGlobalStyle`
   .navbar {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
+    transition: all 0.25s linear;
   }
   .navbar .links a {
     color: ${({ theme }) => theme.text};
+  }
 
+  .post-list-item {
+    border-bottom:  1px solid;
+    border-color: ${({ theme }) => theme.text};
   }
   `
 

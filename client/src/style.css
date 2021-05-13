@@ -27,6 +27,13 @@ body {
 /* 
 container
 */
+code {
+    white-space: pre-wrap;
+}
+
+pre {
+    white-space:pre-wrap;
+}
 
 button {
     border: none;
@@ -94,7 +101,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     display: block;
     padding-top: 1rem;
-    border-bottom: 1px solid var(--post-list-item-border);
     text-align: left;
 }
 .post-list-item:hover {
