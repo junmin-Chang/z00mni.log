@@ -14,17 +14,24 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 0.25s linear;
   }
   .navbar {
-    background: ${({ theme }) => theme.body};
-    color: ${({ theme }) => theme.text};
+    background: ${({ theme }) => theme.navBody};
+    color: ${({ theme }) => theme.navText};
     transition: all 0.25s linear;
   }
   .navbar .links a {
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.navText};
   }
+
 
   .post-list-item {
     border-bottom:  1px solid;
     border-color: ${({ theme }) => theme.text};
+  }
+
+  .links-active {
+    border-bottom: 3px solid;
+    border-color: ${({ theme }) => theme.navText};
+    border-radius: 5px;
   }
   `
 

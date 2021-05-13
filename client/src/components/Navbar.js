@@ -16,7 +16,7 @@ function Navbar({ onThemeToggled, theme }) {
                     </div>
 
                     <div className="links">
-                        <NavLink to='/posts'>
+                        <NavLink to='/posts' activeClassName="links-active">
                             Posts
                         </NavLink>
                     </div>
@@ -24,7 +24,7 @@ function Navbar({ onThemeToggled, theme }) {
                   
 
                     <div className="links write-post">
-                        <NavLink to="/write">
+                        <NavLink to="/write" activeClassName="links-active">
                             글 작성
                         </NavLink>
                     </div>
