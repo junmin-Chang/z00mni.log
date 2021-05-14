@@ -57,16 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* navbar */
-.navbar {
-    background: var(--nav-background);
-    height: var(--nav-height);
-    width: 100%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    position: fixed;
-    top: 0;
-    left: 0;
-}
+
 
 .navbar .nav-container {
     height: 100%;
