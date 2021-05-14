@@ -20,7 +20,10 @@ function PostList({ theme }) {
 
     const getPosts = async () => {
         const res = await axios.get('https://zoomni-log.herokuapp.com/posts')
-        setPosts(res.data);
+        const sorted = res.data.sort(function(a,b) {
+            return new Date(b.createdAt) - new Date(a.createdAt)
+        })
+        setPosts(sorted);
     }
 
    

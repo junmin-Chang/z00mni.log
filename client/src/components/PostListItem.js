@@ -8,7 +8,7 @@ function PostListItem({ posts }) {
 
         return `${date.getFullYear()}년 ${monthName[date.getMonth()]} ${date.getDate()}일`;
     }
-   
+    
     const renderTags = (tags) => {
         return tags.map((tag) => {
             return <span className="tag" key={tag}>{tag}</span>
