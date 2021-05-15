@@ -27,6 +27,11 @@ export const GlobalStyles = createGlobalStyle`
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
  
   }
+
+  hr {
+    margin-top: 1rem;
+    border-color: ${({ theme }) => theme.text};
+  }
   .navbar .links a {
     color: ${({ theme }) => theme.navText};
   }

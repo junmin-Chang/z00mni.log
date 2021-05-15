@@ -91,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: left;
 }
 .post-list-item:hover {
-    background: var(--post-list-item-hover);
+    color: #2ec4ff;
 }
 
 .post-list-item .title {
