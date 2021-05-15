@@ -9,12 +9,12 @@ import { withRouter } from 'react-router-dom';
 
 export const IntroduceContent = styled.div`
     position: relative;
-    border-radius: 0.75rem;
     overflow: hidden;
     padding: 1rem;
     width: 100%;
     margin: 0 auto;
     margin-bottom: 4rem;
+    border-top: 2px dashed #777272
 `
 const MyBlock = styled.div`
     .wrapper-class{
