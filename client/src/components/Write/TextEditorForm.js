@@ -31,7 +31,6 @@ const MyBlock = styled.div`
 `;
 
 const TestEditorForm = ({ history }) => {
-
   const [content, setContent] = useState({
     title: '',
     tags: '',
@@ -48,7 +47,6 @@ const getContent = (e) => {
   // useState로 상태관리하기 초기값은 EditorState.createEmpty()
   // EditorState의 비어있는 ContentState 기본 구성으로 새 개체를 반환 => 이렇게 안하면 상태 값을 나중에 변경할 수 없음.
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-
   const onEditorStateChange = (editorState) => {
     // editorState에 값 설정
     setEditorState(editorState);
@@ -71,6 +69,7 @@ const getContent = (e) => {
     }
    
   }
+  
 
   return (
     <>
@@ -101,7 +100,10 @@ const getContent = (e) => {
         editorState={editorState}
         onEditorStateChange={onEditorStateChange}
       />
+    
     </MyBlock>
+    <IntroduceContent dangerouslySetInnerHTML={{__html: editorToHtml}}/>
+    
     <input type="text" name="password" placeholder="관리자 비밀번호" onChange={getContent}/>
     <button className="btn btn-post"
             onClick={writePost}>완료</button>

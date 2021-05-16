@@ -20,7 +20,7 @@ function PostListItem({ posts }) {
     return (
         
         posts.map((post) => (
-            <Link to={`/posts/${post._id}`} className="post-list-item">
+            <Link to={`/posts/${post._id}`} className="post-list-item" key={post._id}>
                 <h3 className="title">{post.title}</h3>
                 <span className="date">{renderDate(post.createdAt)}</span>
                 <div className="tags">{renderTags(post.tags)}</div>
