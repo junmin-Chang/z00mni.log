@@ -13,10 +13,10 @@ function Navbar({ onThemeToggled, theme, history }) {
     const user = useSelector(state => state.user);
 
     const onClickLogout = () => {
-        axios.get('/logout')
+        axios.get('https://zoomni-log.herokuapp.com/logout')
             .then(res => {
                 if (res.data.success) {
-                    history.push('/signin');
+                    history.push('/login');
                 } else {
                     alert('로그아웃 실패');
                 }
@@ -40,11 +40,11 @@ function Navbar({ onThemeToggled, theme, history }) {
 
                   <div className="links">
                       {sign? (
-                          <NavLink to='/signin'>
+                          <NavLink to='/login'>
                               <button onClick={onClick}>로그인</button>
                           </NavLink>
                       ): (
-                          <NavLink to='/signup'>
+                          <NavLink to='/register'>
                               <button onClick={onClick}>회원가입</button>
                           </NavLink>
                       )}
