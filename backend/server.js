@@ -58,7 +58,7 @@ app.post('/login', (req,res) => {
         }
         user.comparePassword(req.body.password, (err, isMatch) => {
             if (!isMatch) 
-                return res.json({ loginSuccess: false , message: '비밀번호가 서로 다름.'})
+                return res.json({ loginSuccess: false , message: '비밀번호가 다름.'})
             user.generateToken((err, user) => {
                 if (err) return res.status(400).send(err);
                 res.cookie("x_auth", user.token)

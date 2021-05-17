@@ -26,9 +26,9 @@ export async function registerUser(dataToSubmit) {
 export function auth() {
     const req = axios.get('https://zoomni-log.herokuapp.com/auth')
         .then(res => res.data);
-
     return {
         type: AUTH_USER,
-        payload: req
+        payload: req,
+        isAuth: true
     }
 }

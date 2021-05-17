@@ -6,22 +6,21 @@ import axios from 'axios';
 
 
 function Navbar({ onThemeToggled, theme, history }) {
-    const [sign, setSign] = useState(true);
-    const onClick = () => {
-        setSign((prev) => !prev);
-    }    
-    const user = useSelector(state => state.user);
 
-    const onClickLogout = () => {
-        axios.get('https://zoomni-log.herokuapp.com/logout')
-            .then(res => {
-                if (res.data.success) {
-                    history.push('/login');
-                } else {
-                    alert('로그아웃 실패');
-                }
-            })
-    }
+    
+    const user = useSelector(state => state.user);
+  
+
+    // const onClickLogout = () => {
+    //     axios.get('https://zoomni-log.herokuapp.com/logout')
+    //         .then(res => {
+    //             if (res.data.success) {
+    //                 history.push('/login');
+    //             } else {
+    //                 alert('로그아웃 실패');
+    //             }
+    //         })
+    // }
     if (user.userData && !user.userData.isAuth) {
         return (
             <nav className="navbar">
@@ -39,15 +38,11 @@ function Navbar({ onThemeToggled, theme, history }) {
                     </div>
 
                   <div className="links">
-                      {sign? (
+                     
                           <NavLink to='/login'>
-                              <button onClick={onClick}>로그인</button>
+                              로그인
                           </NavLink>
-                      ): (
-                          <NavLink to='/register'>
-                              <button onClick={onClick}>회원가입</button>
-                          </NavLink>
-                      )}
+                  
 
                   </div>
 
@@ -94,11 +89,11 @@ function Navbar({ onThemeToggled, theme, history }) {
                             className="dark-mode"/>
                         </div>
 
-                        <div className="links">
+                        {/* <div className="links">
                             <button onClick={onClickLogout}>
                                 로그아웃
                             </button>
-                        </div>
+                        </div> */}
                         
     
                     </div>

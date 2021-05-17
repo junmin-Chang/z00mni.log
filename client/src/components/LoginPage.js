@@ -23,7 +23,9 @@ function LoginPage({ history }) {
         dispatch(loginUser(body))
             .then(res => {
                 if (res.payload.loginSuccess) {
+                    alert('로그인 성공');
                     history.push('/');
+
                 } else {
                     alert('로그인 실패');
                 }
