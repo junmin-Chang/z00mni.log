@@ -1,4 +1,4 @@
-const { User } = require('./model/userModel');
+const { User } = require('../model/userModel');
 
 
 // 인증 처리
