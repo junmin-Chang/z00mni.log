@@ -28,7 +28,7 @@ app.use('/', require('./routes/writeRoutes'))
 app.use('/', require('./routes/userRoutes'));
 
 //register
-app.post('/register', (req,res) => {
+app.post('api/users/register', (req,res) => {
     const user = new User(req.body);
     user.save((err, userInfo) => {
         if (err) return res.json({ success: false, err});
@@ -37,7 +37,7 @@ app.post('/register', (req,res) => {
 })
 
 //login
-app.post('/login', (req,res) => {
+app.post('api/users/login', (req,res) => {
     User.findOne({ email: req.body.email }, (err, user) => {
         if (!user) {
             return res.json({
