@@ -25,7 +25,6 @@ app.listen(PORT, () => {
 
 app.use('/posts', require('./routes/postRoutes'));
 app.use('/', require('./routes/writeRoutes'))
-app.use('/', require('./routes/userRoutes'));
 
 //register
 app.post('/register', (req,res) => {
