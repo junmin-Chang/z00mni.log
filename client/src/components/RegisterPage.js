@@ -46,7 +46,7 @@ function RegisterPage({ history }) {
     }
     return (
 
-        <div className="register">
+        <div className="container">
             <form onSubmit={onSubmit}>
                 <div>
                     <input type="text" name="name" placeholder="이름" value={name} onChange={onNameHandler}/>
@@ -59,6 +59,9 @@ function RegisterPage({ history }) {
                 </div>
                 <div>
                     <input type="password" name="confirmPassword" placeholder="비밀번호 확인" value={confirmPassword} onChange={onConfirmPasswordHandler}/>
+                </div>
+                <div>
+                    <button className="btn btn-delete" type="submit">회원가입</button>
                 </div>
             </form>
         </div>

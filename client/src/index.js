@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { Provider } from 'redux';
-import { createStore } from 'react-redux';
-import { rootReducer } from './rootReducer';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import promiseMiddleware from 'redux-promise'
+import ReduxThunk from 'redux-thunk'
+import rootReducer from './rootReducer';
 require('dotenv').config();
 
-const devTools  =window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
 
-const store = createStore(rootReducer, devTools);
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={createStoreWithMiddleware(rootReducer,
+        window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+      )}>
         <App/>
     </Provider>,
     document.getElementById('root')

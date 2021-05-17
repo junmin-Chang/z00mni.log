@@ -3,8 +3,8 @@ import {
     LOGIN_USER, REGISTER_USER, AUTH_USER
 } from './types';
 
-export function loginUser(dataToSubmit) {
-    const req = axios.post('/login', dataToSubmit)
+export async function loginUser(dataToSubmit) {
+    const req = await axios.post('/login', dataToSubmit)
         .then(res => res.data);
 
         return {
@@ -13,8 +13,8 @@ export function loginUser(dataToSubmit) {
         }
 }
 
-export function registerUser(dataToSubmit) {
-    const req = axios.post('/register', dataToSubmit)
+export async function registerUser(dataToSubmit) {
+    const req = await axios.post('/register', dataToSubmit)
         .then(res => res.data);
 
     return {
@@ -23,8 +23,8 @@ export function registerUser(dataToSubmit) {
     }
 }
 
-export function auth() {
-    const req = axios.get('/auth')
+export async function auth() {
+    const req = await axios.get('/auth')
         .then(res => res.data);
 
     return {

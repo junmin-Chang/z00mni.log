@@ -1,6 +1,7 @@
 const express = require('express');
 const {User} = require('../model/userModel')
 const router = express.Router();
+const { auth } = require('../auth')
 //register
 router.post('/register', (req,res) => {
     const user = new User(req.body);
@@ -34,5 +35,21 @@ router.post('/login', (req, res) => {
         })
     })
 })
+
+//인증
+    router.get('/auth', auth, (req,res) => {
+        res.status(200).json({
+            _id: req.user._id,
+            isAdmin: req.user.role === 0 ? false: true,
+            isAuth: true,
+            email: req.user.email,
+            name: req.user.name,
+            role: req.user.role
+
+
+        })
+    })
+
+    
 
 module.exports = router;

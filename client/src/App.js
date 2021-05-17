@@ -4,6 +4,8 @@ import { BrowserRouter, Switch , Route } from 'react-router-dom';
 import Home from './components/Home';
 import Post from './components/Post';
 import PostList from './components/PostList';
+import LoginPage from './components/LoginPage';
+import RegisterPage from './components/RegisterPage';
 
 // styles
 import './style.css'
@@ -15,6 +17,7 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme,darkTheme } from './theme/theme';
 import { GlobalStyles } from './theme/global'
 
+import Auth from './auth'
 
 
 const App = () => {
@@ -33,10 +36,12 @@ const App = () => {
         <BrowserRouter basename={window.location.pathname || ''}>
             <Navbar onThemeToggled={toggleTheme} theme={theme}/>
             <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route path='/posts/:id' component={Post}/>
+                <Route exact path='/' component={Auth(Home, null)}/>
+                <Route path='/posts/:id' component={Auth(Post, null)}/>
                 <Route path='/posts' render={() => <PostList theme={theme}/>}/>
-                <Route path='/write' component={Write}/>
+                <Route path='/write' component={Auth(Write, true)}/>
+                <Route path="/signin" component={Auth(LoginPage, false)}/>
+                <Route path="/signup" component={Auth(RegisterPage, false)}/>
             </Switch>
         </BrowserRouter>
         </ThemeProvider>

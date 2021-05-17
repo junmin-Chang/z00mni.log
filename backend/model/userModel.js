@@ -51,6 +51,17 @@ userSchema.methods.generateToken = function(callback) {
         callback(null, user);
     })
 }
-const User = mongoose.model('User', userSchema)
 
+// 인증시 토큰과 디비의 토큰을 복호화하여 비교
+userSchema.statics.findByToken = function(token, callback) {
+    let user = this;
+    jwt.verify(token, 'secretToken', function(err, decoded) {
+        user.findOne({"_id" : decoded, "token": token}, function(err,user) {
+            if (err) return callback(err);
+            callback(null, user);
+        })
+    })
+}
+const User = mongoose.model('User', userSchema)
+ 
 module.exports = { User }

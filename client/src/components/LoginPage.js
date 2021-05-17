@@ -32,7 +32,7 @@ function LoginPage({ history }) {
     }
     return (
 
-        <div className="login">
+        <div className="container">
             <form onSubmit={onSubmit}>
                 <div>
                     <input type="email" placeholder="이메일" value={email} onChange={onEmailHandler}/>
@@ -41,7 +41,7 @@ function LoginPage({ history }) {
                     <input type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler}/>
                 </div>
                 <div>
-                    <button type="submit">로그인</button>
+                    <button className="btn btn-delete" type="submit">로그인</button>
                 </div>
             </form>
         </div>
