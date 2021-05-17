@@ -28,6 +28,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 
     console.log('MongoDB connection established');
 })
+app.use(cookieParser())
 app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
