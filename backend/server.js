@@ -10,11 +10,8 @@ require('dotenv').config();
 
 const app = express();
 
-
-
 const PORT = process.env.PORT || 80;
 console.log('Server is Starting...');
-
 
 
 app.listen(PORT, () => {
@@ -32,7 +29,6 @@ mongoose.connect(process.env.MONGODB_URI, {
     console.log('MongoDB connection established');
 })
 app.use(cors());
-app.use(cookieParser);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

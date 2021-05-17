@@ -36,7 +36,7 @@ const App = () => {
         <BrowserRouter basename={window.location.pathname || ''}>
             <Navbar onThemeToggled={toggleTheme} theme={theme}/>
             <Switch>
-                <Route exact path='/' component={Auth(Home, null)}/>
+                <Route exact path='/' component={Home}/>
                 <Route path='/posts/:id'/>
                 <Route path='/posts' render={() => <PostList theme={theme}/>}/>
                 <Route path='/write' component={Auth(Write, true)}/>
