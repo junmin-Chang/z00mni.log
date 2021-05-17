@@ -35,6 +35,7 @@ function Home() {
                 <li>Backend: NodeJS-express, Mongoose</li>
                 <li>Database: MongoDB</li>
             </ul>
+          
         </div>
 
     )

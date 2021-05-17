@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema({
 // register 전 디비에 저장 전에 비밀번호 암호화
 
 userSchema.pre('save', function(next) {
-    let user = this;
+    var user = this;
     if (user.isModified('password')) {
         bcrypt.genSalt(saltRounds,  function(err, salt) {
             if (err) return next(err);
@@ -43,7 +43,7 @@ userSchema.methods.comparePassword = function(plainPassword, callback) {
 
 // login시 토큰 생성
 userSchema.methods.generateToken = function(callback) {
-    let user = this;
+    var user = this;
     let token = jwt.sign(user._id.toHexString(), 'secretToken');
     user.token = token;
     user.save(function(err, user) {
@@ -54,8 +54,9 @@ userSchema.methods.generateToken = function(callback) {
 
 // 인증시 토큰과 디비의 토큰을 복호화하여 비교
 userSchema.statics.findByToken = function(token, callback) {
-    let user = this;
+    var user = this;
     jwt.verify(token, 'secretToken', function(err, decoded) {
+        if (err) return callback(err);
         user.findOne({"_id" : decoded, "token": token}, function(err,user) {
             if (err) return callback(err);
             callback(null, user);

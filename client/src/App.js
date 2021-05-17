@@ -41,7 +41,6 @@ const App = () => {
                 <Route path='/posts' component={Auth(PostList, null)}/>
                 <Route path='/write' component={Auth(Write, true)}/>
                 <Route path="/login" component={Auth(LoginPage, false)}/>
-                <Route path="/register" component={Auth(RegisterPage, false)}/>
             </Switch>
         </BrowserRouter>
         </ThemeProvider>

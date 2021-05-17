@@ -42,9 +42,8 @@ function Navbar({ onThemeToggled, theme, history }) {
                           <NavLink to='/login'>
                               로그인
                           </NavLink>
-                  
-
                   </div>
+                 
 
                    
                     <div>
