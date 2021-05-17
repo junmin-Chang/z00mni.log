@@ -4,7 +4,7 @@ import {
 } from './types';
 
 export async function loginUser(dataToSubmit) {
-    const req = await axios.post('/login', dataToSubmit)
+    const req = await axios.post('api/users/login', dataToSubmit)
         .then(res => res.data);
 
         return {
@@ -14,7 +14,7 @@ export async function loginUser(dataToSubmit) {
 }
 
 export async function registerUser(dataToSubmit) {
-    const req = await axios.post('/register', dataToSubmit)
+    const req = await axios.post('api/users/register', dataToSubmit)
         .then(res => res.data);
 
     return {
@@ -24,7 +24,7 @@ export async function registerUser(dataToSubmit) {
 }
 
 export async function auth() {
-    const req = await axios.get('/auth')
+    const req = await axios.get('api/users/auth')
         .then(res => res.data);
 
     return {
