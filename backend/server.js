@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { User } = require('./model/userModel');
-const { auth } = require('./auth');
+const { auth } = require('./middleware/auth');
 require('dotenv').config();
 
 
@@ -28,8 +28,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 
     console.log('MongoDB connection established');
 })
-app.use(cookieParser())
 app.use(cors());
+app.use(cookieParser())
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
