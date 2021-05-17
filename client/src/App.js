@@ -37,11 +37,11 @@ const App = () => {
             <Navbar onThemeToggled={toggleTheme} theme={theme}/>
             <Switch>
                 <Route exact path='/' component={Auth(Home, null)}/>
-                <Route path='/posts/:id' component={Auth(Post, null)}/>
+                <Route path='/posts/:id'/>
                 <Route path='/posts' render={() => <PostList theme={theme}/>}/>
                 <Route path='/write' component={Auth(Write, true)}/>
-                <Route path="/api/users/login" component={Auth(LoginPage, false)}/>
-                <Route path="/api/users/register" component={Auth(RegisterPage, false)}/>
+                <Route path="/login" component={Auth(LoginPage, false)}/>
+                <Route path="/register" component={Auth(RegisterPage, false)}/>
             </Switch>
         </BrowserRouter>
         </ThemeProvider>
