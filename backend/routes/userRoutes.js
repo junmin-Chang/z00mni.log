@@ -5,6 +5,8 @@ const router = express.Router();
 
 //register
 router.post('/register', (req,res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
     const user = new User(req.body);
     user.save((err, userInfo) => {
         if (err) return res.json({ success: false, err});
@@ -14,6 +16,8 @@ router.post('/register', (req,res) => {
 
 //login
 router.post('/login', (req,res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
     User.findOne({ email: req.body.email }, (err, user) => {
         if (!user) {
             return res.json({
@@ -35,6 +39,8 @@ router.post('/login', (req,res) => {
 })
 
 router.get('/auth', auth, (req,res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
     res.status(200).json({
         _id: req.user._id,
         isAdmin: req.user.role === 0 ? false: true,
