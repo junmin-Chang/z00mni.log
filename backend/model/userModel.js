@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema({
         unique: 1
     },
     password: { type: String, minlength: 8},
-    role: { type: String, default: 0},
+    role: { type: Number, default: 0},
     token: { type: String },
     tokenExp: { type: Number }
 })

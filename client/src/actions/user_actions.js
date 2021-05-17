@@ -29,6 +29,5 @@ export function auth() {
     return {
         type: AUTH_USER,
         payload: req,
-        isAuth: true
     }
 }
