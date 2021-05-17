@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import DarkModeToggle from "react-dark-mode-toggle";
 import { useSelector } from 'react-redux';
-import axios from 'axios';
 
 
 function Navbar({ onThemeToggled, theme, history }) {
