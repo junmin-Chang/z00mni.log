@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 
 app.use('/posts', require('./routes/postRoutes'));
 app.use('/', require('./routes/writeRoutes'))
-app.use('/', require('./routes/userRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
 
 
