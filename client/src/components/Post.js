@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Modal from './Modal/Modal';
 import './Modal/Modal.css'
 import { IntroduceContent } from './Write/TextEditorForm';
+import { withRouter } from 'react-router-dom';
 
 
 function Post({ match, history }) {
@@ -92,4 +93,4 @@ function Post({ match, history }) {
     
 }
 
-export default Post;
+export default withRouter(Post);

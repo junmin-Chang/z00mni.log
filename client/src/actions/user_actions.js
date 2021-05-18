@@ -4,7 +4,7 @@ import {
 } from './types';
 
 export async function loginUser(dataToSubmit) {
-    const req = await axios.post('https://zoomni-log.herokuapp.com/api/users/login', dataToSubmit)
+    const req = await axios.post('https://zoomni-log.herokuapp.com/login', dataToSubmit)
         .then(res => res.data);
 
         return {
@@ -13,8 +13,8 @@ export async function loginUser(dataToSubmit) {
         }
 }
 
-export async function registerUser(dataToSubmit) {
-    const req = await axios.post('https://zoomni-log.herokuapp.com/api/usersregister', dataToSubmit)
+export function registerUser(dataToSubmit) {
+    const req =  axios.post('https://zoomni-log.herokuapp.com/register', dataToSubmit)
         .then(res => res.data);
 
     return {
@@ -24,7 +24,7 @@ export async function registerUser(dataToSubmit) {
 }
 
 export function auth() {
-    const req = axios.get('https://zoomni-log.herokuapp.com/api/usersauth')
+    const req = axios.get('https://zoomni-log.herokuapp.com/auth')
         .then(res => res.data);
     return {
         type: AUTH_USER,

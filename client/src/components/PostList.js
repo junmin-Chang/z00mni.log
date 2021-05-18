@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import PostListItem from './PostListItem';
 import Pagination from './Pagination/Pagination'
 import ReactLoading from 'react-loading';
+import { withRouter } from 'react-router-dom';
 
 function PostList({ theme }) {
     const [posts, setPosts] = useState([]);
@@ -47,4 +48,4 @@ function PostList({ theme }) {
     )
     
 }
-export default PostList;
+export default withRouter(PostList);
