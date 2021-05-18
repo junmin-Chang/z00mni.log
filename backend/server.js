@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGODB_URI, {
     console.log('MongoDB connection established');
 })
 app.use(cors());
-app.use(cookieParser())
+app.use(express.cookieParser())
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
