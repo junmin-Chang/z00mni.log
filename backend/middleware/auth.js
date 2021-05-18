@@ -2,7 +2,7 @@ const { User } = require('../model/userModel');
 
 
 // 인증 처리
-const auth = (req, res, next) => {
+let auth = (req, res, next) => {
     // 클라에서 토큰 받기
     let token = req.cookies.x_auth;
     
