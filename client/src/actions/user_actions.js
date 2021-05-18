@@ -28,6 +28,6 @@ export function auth() {
         .then(res => res.data);
     return {
         type: AUTH_USER,
-        payload: req,
+        payload: req
     }
 }
