@@ -3,8 +3,8 @@ import {
     LOGIN_USER, REGISTER_USER, AUTH_USER
 } from './types';
 
-export async function loginUser(dataToSubmit) {
-    const req = await axios.post('https://zoomni-log.herokuapp.com/login', dataToSubmit)
+export function loginUser(dataToSubmit) {
+    const req = axios.post('https://zoomni-log.herokuapp.com/login', dataToSubmit)
         .then(res => res.data);
 
         return {
