@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('../model/postModel');
 const router = express.Router();
+const auth = require('../middleware/auth');
 //register
 router.post('/register', (req,res) => {
 
