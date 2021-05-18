@@ -15,7 +15,7 @@ export default function Auth (SpecificComponent, option, adminRoute = null) {
                 .then(res => {
                 if (!res.payload.isAuth) {
                     if (option) {
-                        props.history.push('/api/users/login');
+                        props.history.push('/login');
                     }
                 } else {
                     if (adminRoute && !res.payload.isAdmin) {
