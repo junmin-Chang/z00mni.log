@@ -5,7 +5,6 @@ import Home from './components/Home';
 import Post from './components/Post';
 import PostList from './components/PostList';
 import LoginPage from './components/LoginPage';
-import RegisterPage from './components/RegisterPage';
 
 // styles
 import './style.css'
@@ -17,6 +16,7 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme,darkTheme } from './theme/theme';
 import { GlobalStyles } from './theme/global'
 
+// auth
 import Auth from './auth'
 
 
