@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink , withRouter } from 'react-router-dom';
 import DarkModeToggle from "react-dark-mode-toggle";
 import { useSelector } from 'react-redux';
 
@@ -101,4 +101,4 @@ function Navbar({ onThemeToggled, theme, history }) {
    
     
 }
-export default Navbar;
+export default withRouter(Navbar);
