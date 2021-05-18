@@ -71,6 +71,9 @@ app.post('/login', (req,res) => {
 })
 
 app.get('/auth', auth, (req,res) => {
+    if (res.status(500)) {
+        res.json({ message: "sibal?" })
+    }
     res.status(200).json({
         _id: req.user._id,
         isAdmin: req.user.role === 0 ? false : true,
