@@ -40,7 +40,7 @@ app.use('/', require('./routes/writeRoutes'))
 
 // auth
 app.get('/auth', auth, (req,res) => {
-    
+    console.log(res);
     res.status(200).json({
         _id: req.user._id,
         isAdmin: req.user.role === 0 ? true : false,
