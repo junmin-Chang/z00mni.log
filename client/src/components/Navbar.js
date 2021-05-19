@@ -42,7 +42,6 @@ function Navbar({ onThemeToggled, theme, history }) {
                               로그인
                           </NavLink>
                   </div>
-                 
 
                    
                     <div>
