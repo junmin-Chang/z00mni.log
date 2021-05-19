@@ -76,6 +76,7 @@ app.post('/login', (req,res) => {
                 return res.json({ loginSuccess: false , message: '비밀번호가 다름.'})
             user.generateToken((err, user) => {
                 if (err) return res.status(400).send(err);
+                console.log("로그인 시 토큰:", user.token)
                 res.cookie("x_auth", user.token)
                     .status(200)
                     .json({ loginSuccess: true, useId: user._id})

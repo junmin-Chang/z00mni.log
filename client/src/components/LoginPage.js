@@ -18,7 +18,7 @@ function LoginPage({ history }) {
         e.preventDefault();
         let body = {
             email: email,
-            password: password
+            password: password,
         }
         dispatch(loginUser(body))
             .then(res => {
