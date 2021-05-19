@@ -46,7 +46,7 @@ userSchema.methods.generateToken = function(callback) {
     var user = this;
     var token = jwt.sign(user._id.toHexString(), '1234');
     user.token = token;
-    user.save(function(err, user) {
+    user.save((err, user) => {
         if (err) return callback(err);
         callback(null, user);
     })
@@ -56,9 +56,9 @@ userSchema.methods.generateToken = function(callback) {
 userSchema.statics.findByToken = function(token, callback) {
     var user = this;
     console.log('model token', token)
-    jwt.verify(token, '1234', function(err, decoded) {
+    jwt.verify(token, '1234', (err, decoded) => {
         console.log('docoded',decoded)
-        user.findOne({"token": token}, function(err, user) {
+        user.findOne({"token": token}, (err, user) => {
             
             callback(null, user);
         })
