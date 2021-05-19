@@ -79,7 +79,8 @@ app.post('/login', (req,res) => {
             user.generateToken((err, user) => {
                 if (err) return res.status(400).send(err);
                 console.log("로그인 시 토큰:", user.token)
-                res.cookie("x_auth", user.token, { httpOnly: true, path: '/', domain: 'https://zoomni-log.herokuapp.com', secure: true})
+                res.cookie("x_auth", user.token, { httpOnly: true, path: '/', domain: 'https://zoomni-log.herokuapp.com', secure: true,
+            sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax'})
                     .status(200)
                     .json({ loginSuccess: true, useId: user._id})
                     console.log(req.session)
