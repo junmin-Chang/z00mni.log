@@ -1,10 +1,15 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import me from '../image/me.JPG'
 function Home() {
 
     return (
         <div className="container">
             <h1>장준민의 개발 블로그에 오신 것을 환영합니다.</h1>
+            <div className="pic">
+                <img src={me} alt="junmin" className="junmin"/>
+                
+            </div>
             
             <h2>Tech Stack</h2>
             <img alt="NodeJS" src="https://img.shields.io/badge/node.js-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
