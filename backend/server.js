@@ -9,8 +9,7 @@ require('dotenv').config();
 
 
 const app = express();
-app.use(cors({ credentials: true, origin: true }));
-app.use(cookieParser())
+
 const PORT = process.env.PORT || 80;
 console.log('Server is Starting...');
 
@@ -29,7 +28,8 @@ mongoose.connect(process.env.MONGODB_URI, {
 
     console.log('MongoDB connection established');
 })
-
+app.use(cors({ credentials: true, origin: true}));
+app.use(cookieParser())
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,7 +39,17 @@ app.use('/posts', require('./routes/postRoutes'));
 app.use('/', require('./routes/writeRoutes'))
 
 // auth
-
+app.get('/auth', auth, (req,res) => {
+    console.log(res);
+    res.status(200).json({
+        _id: req.user._id,
+        isAdmin: req.user.role === 0 ? true : false,
+        isAuth: true,
+        email: req.user.email,
+        name: req.user.name,
+        role: req.user.role
+    })
+})
 
 
 //register
@@ -69,22 +79,10 @@ app.post('/login', (req,res) => {
                 console.log("로그인 시 토큰:", user.token)
                 res.cookie("x_auth", user.token, { httpOnly: true, maxAge: 1000*60*60*24*7 })
                     .status(200)
-                    .json({ loginSuccess: true, userId: user._id})
+                    .json({ loginSuccess: true, useId: user._id})
                     console.log(req.session)
             })
         })
-    })
-})
-
-app.get('/auth', auth, (req,res) => {
-    console.log(res);
-    res.status(200).json({
-        _id: req.user._id,
-        isAdmin: req.user.role === 0 ? true : false,
-        isAuth: true,
-        email: req.user.email,
-        name: req.user.name,
-        role: req.user.role
     })
 })
 
