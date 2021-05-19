@@ -42,23 +42,28 @@ userSchema.methods.comparePassword = function(plainPassword, callback) {
 }
 
 // login시 토큰 생성
-userSchema.methods.generateToken = function() {
-    let user = this;
-    let token = jwt.sign(user._id.toHexString(), '1234');
+userSchema.methods.generateToken = function(callback) {
+    const user = this;
+    
+    const token = jwt.sign(user._id.toHexString(), '1234', { expiresIn: '7d'});
     user.token = token;
-    return this.save()
-        .then((user) => user)
-        .catch((err) => err);
+    user.save((err, user) => {
+        console.log('user:', user)
+        if (err) return callback(err);
+        callback(null, user);
+    })
 }
 
 // 인증시 토큰과 디비의 토큰을 복호화하여 비교
 userSchema.statics.findByToken = function(token, callback) {
-    let user = this;
-    return jwt.verify(token, '1234', function(err, decoded) {
-        return user
-            .findOne({ _id: decoded, token: token})
-            .then((user) => user)
-            .catch((err) => err);
+    var user = this;
+    console.log('model token', token)
+    jwt.verify(token, '1234', (err, decoded) => {
+        console.log('docoded',decoded)
+        user.findOne({"_id": user._id, "token": token}, (err, user) => {
+            
+            callback(null, user);
+        })
     })
 }
 const User = mongoose.model('User', userSchema)
