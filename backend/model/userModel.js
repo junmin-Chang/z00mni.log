@@ -44,7 +44,7 @@ userSchema.methods.comparePassword = function(plainPassword, callback) {
 // login시 토큰 생성
 userSchema.methods.generateToken = function(callback) {
     var user = this;
-    var token = jwt.sign(user._id.toHexString(), '1');
+    var token = jwt.sign(user._id.toHexString(), 1234);
     user.token = token;
     user.save(function(err, user) {
         if (err) return callback(err);
@@ -55,7 +55,7 @@ userSchema.methods.generateToken = function(callback) {
 // 인증시 토큰과 디비의 토큰을 복호화하여 비교
 userSchema.statics.findByToken = function(token, callback) {
     var user = this;
-    jwt.verify(token, '1', function(err, decoded) {
+    jwt.verify(token, 1234, function(err, decoded) {
         user.findOne({"_id": decoded,"token": token}, function(err, user) {
             callback(null, user);
         })
