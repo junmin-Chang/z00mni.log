@@ -28,7 +28,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 
     console.log('MongoDB connection established');
 })
-app.use(cors({ origin: 'https://zoomni-log.herokuapp.com/', credentials: true }));
+app.use(cors({ credentials: true }));
 app.use(cookieParser())
 
 
