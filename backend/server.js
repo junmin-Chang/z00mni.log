@@ -77,7 +77,7 @@ app.post('/login', (req,res) => {
             user.generateToken((err, user) => {
                 if (err) return res.status(400).send(err);
                 console.log("로그인 시 토큰:", user.token)
-                res.cookie("x_auth", user.token, { httpOnly: true, maxAge: 1000*60*60*24*7 })
+                res.cookie("x_auth", user.token)
                     .status(200)
                     .json({ loginSuccess: true, useId: user._id})
                     console.log(req.session)
