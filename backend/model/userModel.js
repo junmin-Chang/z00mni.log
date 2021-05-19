@@ -47,6 +47,7 @@ userSchema.methods.generateToken = function(callback) {
     const token = jwt.sign(user._id.toHexString(), '1234');
     user.token = token;
     user.save((err, user) => {
+        console.log('user:', user)
         if (err) return callback(err);
         callback(null, user);
     })
