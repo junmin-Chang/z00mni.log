@@ -39,17 +39,7 @@ app.use('/posts', require('./routes/postRoutes'));
 app.use('/', require('./routes/writeRoutes'))
 
 // auth
-app.get('/auth', auth, (req,res) => {
-    console.log(res);
-    res.status(200).json({
-        _id: req.user._id,
-        isAdmin: req.user.role === 0 ? true : false,
-        isAuth: true,
-        email: req.user.email,
-        name: req.user.name,
-        role: req.user.role
-    })
-})
+
 
 
 //register
@@ -79,10 +69,22 @@ app.post('/login', (req,res) => {
                 console.log("로그인 시 토큰:", user.token)
                 res.cookie("x_auth", user.token, { httpOnly: true, maxAge: 1000*60*60*24*7 })
                     .status(200)
-                    .json({ loginSuccess: true, useId: user._id})
+                    .json({ loginSuccess: true, userId: user._id})
                     console.log(req.session)
             })
         })
+    })
+})
+
+app.get('/auth', auth, (req,res) => {
+    console.log(res);
+    res.status(200).json({
+        _id: req.user._id,
+        isAdmin: req.user.role === 0 ? true : false,
+        isAuth: true,
+        email: req.user.email,
+        name: req.user.name,
+        role: req.user.role
     })
 })
 
