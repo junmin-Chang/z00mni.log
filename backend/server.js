@@ -30,7 +30,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 
     console.log('MongoDB connection established');
 })
-app.use(cors({ credentials: true, origin: true}));
+app.use(cors({ credentials: true, origin: 'https://z00mni-log.netlify.app/'}));
 app.use(cookieParser())
 
 
