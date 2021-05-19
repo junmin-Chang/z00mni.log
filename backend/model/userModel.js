@@ -56,11 +56,11 @@ userSchema.methods.generateToken = function(callback) {
 
 // 인증시 토큰과 디비의 토큰을 복호화하여 비교
 userSchema.statics.findByToken = function(token, callback) {
-    var user = this;
+    const user = this;
     console.log('model token', token)
     jwt.verify(token, '1234', (err, decoded) => {
         console.log('docoded',decoded)
-        user.findOne({"token": token}, (err, user) => {
+        user.findOne({"_id": user._id,"token": token}, (err, user) => {
             
             callback(null, user);
         })
