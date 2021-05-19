@@ -2,19 +2,20 @@ const { User } = require('../model/userModel');
 
 
 // 인증 처리
-let auth = (req,res,next) => {
+let auth = (req, res, next) => {
+    // 클라에서 토큰 받기
     let token = req.cookies.x_auth;
-
-    User.findByToken(token)
-        .then((user) => {
-            if (!user) return res.json({ isAuth: false, error: true })
-            req.token = token;
-            req.user = user;
-            next()
-        })
-        .catch((err) => {
-            throw err;
-        })
+    console.log('req.cookies:' , req.cookies.x_auth)
+        
+    // token 복호화 , 유저 찾기
+    User.findByToken(token, (err, user) => {
+        console.log('decoded token', token);
+        if (err) throw err;
+        if (!user) return res.json({ isAuth: false, error: true});
+        req.token = token;
+        req.user = user;
+        next();
+    })
 }
 
 module.exports = { auth };
