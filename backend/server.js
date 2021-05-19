@@ -80,6 +80,7 @@ app.post('/login', (req,res) => {
                 res.cookie("x_auth", user.token, { httpOnly: true })
                     .status(200)
                     .json({ loginSuccess: true, useId: user._id})
+                    console.log(req.cookies.x_auth);
             })
         })
     })
