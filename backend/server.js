@@ -80,7 +80,7 @@ app.post('/login', (req,res) => {
                 res.cookie("x_auth", user.token, { httpOnly: true, maxAge: 1000*60*60*24*7 })
                     .status(200)
                     .json({ loginSuccess: true, useId: user._id})
-                    console.log(req.cookies.x_auth);
+                    console.log(req.cookies);
             })
         })
     })
