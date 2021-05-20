@@ -2,7 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const { User } = require('./model/userModel');
+const { auth } = require('./middleware/auth');
 require('dotenv').config();
 
 
@@ -28,7 +30,8 @@ mongoose.connect(process.env.MONGODB_URI, {
 
     console.log('MongoDB connection established');
 })
-app.use(cors());
+app.use(cors({ credentials: true, origin: true}));
+app.use(cookieParser())
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,23 +41,16 @@ app.use('/posts', require('./routes/postRoutes'));
 app.use('/', require('./routes/writeRoutes'))
 
 // auth
-app.get('/auth', (req,res) => {
-    // let cookie = req.cookies['x_auth'];
-    // console.log("auth cookie", cookie);
-    if (window.sessionStorage.getItem("token")) {
-      const userToken = JSON.parse(window.sessionStorage.getItem("token")).token;
-      if (userToken === req.user.token) {
-        res.status(200).json({
-            _id: req.user._id,
-            isAdmin: req.user.role === 0 ? true : false,
-            isAuth: true,
-            email: req.user.email,
-            name: req.user.name,
-            role: req.user.role
-        })
-      }
-    }
-    
+app.get('/auth', auth, (req,res) => {
+    console.log(res);
+    res.status(200).json({
+        _id: req.user._id,
+        isAdmin: req.user.role === 0 ? true : false,
+        isAuth: true,
+        email: req.user.email,
+        name: req.user.name,
+        role: req.user.role
+    })
 })
 
 
@@ -82,15 +78,12 @@ app.post('/login', (req,res) => {
                 return res.json({ loginSuccess: false , message: '비밀번호가 다름.'})
             user.generateToken((err, user) => {
                 if (err) return res.status(400).send(err);
-                // console.log("로그인 시 토큰:", user.token)
-            //     res.cookie("x_auth", user.token, { httpOnly: true, path: '/', domain: 'https://z00mni-log.netlify.app/', secure: true,
-            // sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax', maxAge: 86400 * 1000 })
-                    window.sessionStorage.setItem("token", JSON.stringify({
-                        token: user.token
-                    }))
+                console.log("로그인 시 토큰:", user.token)
+                res.cookie("x_auth", user.token, { httpOnly: true, path: '/', domain: 'https://z00mni-log.netlify.app/', secure: true,
+            sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax'})
                     .status(200)
                     .json({ loginSuccess: true, useId: user._id})
-                    // console.log(req.session)
+                    console.log(req.session)
             })
         })
     })

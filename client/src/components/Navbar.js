@@ -86,11 +86,11 @@ function Navbar({ onThemeToggled, theme, history }) {
                             className="dark-mode"/>
                         </div>
 
-                        <div className="links">
-                            <NavLink to="/login">
-                                로그인
-                            </NavLink>
-                        </div>
+                        {/* <div className="links">
+                            <button onClick={onClickLogout}>
+                                로그아웃
+                            </button>
+                        </div> */}
                         
     
                     </div>
