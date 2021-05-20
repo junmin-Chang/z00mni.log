@@ -41,8 +41,8 @@ app.use('/', require('./routes/writeRoutes'))
 app.get('/auth', (req,res) => {
     // let cookie = req.cookies['x_auth'];
     // console.log("auth cookie", cookie);
-    if (localStorage.getItem("token")) {
-      const userToken = JSON.parse(localStorage.getItem("token")).token;
+    if (window.sessionStorage.getItem("token")) {
+      const userToken = JSON.parse(window.sessionStorage.getItem("token")).token;
       if (userToken === req.user.token) {
         res.status(200).json({
             _id: req.user._id,
@@ -85,7 +85,7 @@ app.post('/login', (req,res) => {
                 // console.log("로그인 시 토큰:", user.token)
             //     res.cookie("x_auth", user.token, { httpOnly: true, path: '/', domain: 'https://z00mni-log.netlify.app/', secure: true,
             // sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax', maxAge: 86400 * 1000 })
-                    localStorage.setItem("token", JSON.stringify({
+                    window.sessionStorage.setItem("token", JSON.stringify({
                         token: user.token
                     }))
                     .status(200)
