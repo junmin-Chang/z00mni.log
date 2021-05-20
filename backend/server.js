@@ -42,7 +42,7 @@ app.use('/', require('./routes/writeRoutes'))
 
 // auth
 app.get('/auth', auth, (req,res) => {
-    console.log(req.cookies.x_auth)
+    console.log("auth cookie", req.cookies.x_auth)
     res.status(200).json({
         _id: req.user._id,
         isAdmin: req.user.role === 0 ? true : false,

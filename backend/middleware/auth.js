@@ -5,7 +5,6 @@ const { User } = require('../model/userModel');
 let auth = (req, res, next) => {
     // 클라에서 토큰 받기
     let token = req.cookies.x_auth;
-    console.log('req.cookies:' , req.cookies.x_auth)
         
     // token 복호화 , 유저 찾기
     User.findByToken(token, (err, user) => {
