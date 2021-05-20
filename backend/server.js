@@ -45,7 +45,7 @@ app.get('/auth', (req,res) => {
     // let cookie = req.cookies['x_auth'];
     // console.log("auth cookie", cookie);
     if (localStorage.getItem("token")) {
-      const userToken = JSON.parse(localStorage.getItem("token"));
+      const userToken = JSON.parse(localStorage.getItem("token")).token;
       if (userToken === req.user.token) {
         res.status(200).json({
             _id: req.user._id,
