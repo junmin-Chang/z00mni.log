@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/authActions';
-import classnames from 'classnames';
-import "./style/Login.css"
+
 
 class LoginPage extends Component {
     constructor() {
@@ -43,7 +42,7 @@ class LoginPage extends Component {
     render() {
       
         return (
-            <div className="container-login">
+            <div className="container">
                 <form noValidate onSubmit={this.onSubmit}>
                     <input placeholder="이메일" className="input-login" type="email" value={this.state.email} name="email" onChange={this.onChange}/>
 
