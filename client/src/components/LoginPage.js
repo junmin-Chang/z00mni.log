@@ -1,54 +1,77 @@
-import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { loginUser } from '../actions/user_actions'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../actions/authActions';
+import classnames from 'classnames';
 
-function LoginPage({ history }) {
-    const dispatch = useDispatch()
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+class LoginPage extends Component {
+    constructor() {
+        super();
+        this.state = {
+            email: "",
+            password: "",
+            errors: {}
+        };
+    }
 
-    const onEmailHandler = (e) => {
-        setEmail(e.currentTarget.value);
-    }
-    const onPasswordHandler = (e) => {
-        setPassword(e.currentTarget.value);
-    }
-    const onSubmit = (e) => {
-        e.preventDefault();
-        let body = {
-            email: email,
-            password: password,
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth.isAuthenticated) {
+            this.props.history.push("/");
         }
-        dispatch(loginUser(body))
-            .then(res => {
-                if (res.payload.loginSuccess) {
-                    alert('로그인 성공');
-                    history.push('/');
-
-                } else {
-                    alert('로그인 실패');
-                }
-            })
-            
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
     }
-    return (
 
-        <div className="container">
-            <form onSubmit={onSubmit}>
-                <div>
-                    <input type="email" placeholder="이메일" value={email} onChange={onEmailHandler}/>
-                </div>
-                <div>
-                    <input type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler}/>
-                </div>
-                <div>
-                    <button className="btn btn-delete" type="submit">로그인</button>
-                </div>
-            </form>
-        </div>
+    onChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+    };
+    onSubmit = (e) => {
+        e.preventDefault();
+        const userData = {
+            email: this.state.email,
+            password: this.state.password
+        };
 
-    )
-    
+        this.props.loginUser(userData);
+
+    };
+
+    render() {
+        const {errors} = this.state;
+        return (
+            <div className="container">
+                <form noValidate onSubmit={this.onSubmit}>
+                    <input type="email" value={this.state.email} name="email" error={errors.email} onChange={this.onChange} className={classnames("", {
+                        invalid: errors.email || errors.emailnotfound
+                    })}/>
+
+                    <input type="password" value={this.state.password} name="password" error={errors.password} onChange={this.onChange} className={classnames("", {
+                        invalid: errors.password || errors.passwordincorrect
+                    })}/>
+                    <button type="submit">로그인</button>
+                </form>
+            </div>
+        )
+    }
 }
-export default withRouter(LoginPage);
+
+LoginPage.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(
+    mapStateToProps,
+    { loginUser }
+)(LoginPage);
+
