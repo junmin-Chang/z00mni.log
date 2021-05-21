@@ -18,7 +18,6 @@ import { GlobalStyles } from './theme/global'
 
 // auth
 
-
 const App = () => {
     // false? light : dark
     const [theme, setTheme] = useState(false);
@@ -29,11 +28,13 @@ const App = () => {
             setTheme(false);
         }
     }
+    const isLoggedIn = window.localStorage.getItem("jwtToken") ? true: false;
+   
     return (
         <ThemeProvider theme={theme === false? lightTheme : darkTheme}>
         <GlobalStyles/>
         <BrowserRouter basename={window.location.pathname || ''}>
-            <Navbar onThemeToggled={toggleTheme} theme={theme}/>
+            <Navbar onThemeToggled={toggleTheme} theme={theme} isLoggedIn={isLoggedIn}/>
             <Switch>
                 <Route exact path='/' component={Home}/>
                 <Route path='/posts/:id' component={Post}/>
