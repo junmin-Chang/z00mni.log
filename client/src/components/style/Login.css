@@ -1,0 +1,32 @@
+.container-form {
+    margin-top: 15rem;
+}
+
+.input-login,
+.button-login {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+}
+
+.input-login:hover,
+.button-login:hover {
+  opacity: 1;
+}
+
+.button-login[type=submit] {
+    background-color: #2DC4FF;
+    color: white;
+    cursor: pointer;
+  }
+  
+.button-login[type=submit]:hover {
+    background-color: #2087af;
+  }
