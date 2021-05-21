@@ -28,12 +28,13 @@ function Navbar({ onThemeToggled, theme, isLoggedIn }) {
 
 </div>
 
-<div className="links">
-        <button onClick={() => {
+<div onClick={() => {
             localStorage.removeItem("jwtToken");
+        }} className="links" style={{
+            cursor: "pointer"
         }}>
+       
             로그아웃
-        </button>
 </div>
 
 
