@@ -43,7 +43,7 @@ class LoginPage extends Component {
     render() {
       
         return (
-            <div className="container">
+            <div className="container-login">
                 <form noValidate onSubmit={this.onSubmit}>
                     <input placeholder="이메일" className="input-login" type="email" value={this.state.email} name="email" onChange={this.onChange}/>
 
