@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import { NavLink , withRouter } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import DarkModeToggle from "react-dark-mode-toggle";
 
 function Navbar({ onThemeToggled, theme, isLoggedIn }) {

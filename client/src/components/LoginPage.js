@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/authActions';
 import classnames from 'classnames';
+import "./style/Login.css"
 
 class LoginPage extends Component {
     constructor() {
@@ -41,18 +41,14 @@ class LoginPage extends Component {
     };
 
     render() {
-        const {errors} = this.state;
+      
         return (
             <div className="container">
                 <form noValidate onSubmit={this.onSubmit}>
-                    <input type="email" value={this.state.email} name="email" error={errors.email} onChange={this.onChange} className={classnames("", {
-                        invalid: errors.email || errors.emailnotfound
-                    })}/>
+                    <input placeholder="이메일" className="input-login" type="email" value={this.state.email} name="email" onChange={this.onChange}/>
 
-                    <input type="password" value={this.state.password} name="password" error={errors.password} onChange={this.onChange} className={classnames("", {
-                        invalid: errors.password || errors.passwordincorrect
-                    })}/>
-                    <button type="submit">로그인</button>
+                    <input placeholder="비밀번호" className="input-login" type="password" value={this.state.password} name="password" onChange={this.onChange}/>
+                    <button className="button-login" type="submit">로그인</button>
                 </form>
             </div>
         )
