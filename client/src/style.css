@@ -104,9 +104,19 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--post-list-item-date);
     font-weight: 300;
 }
+.post-list .tag-wrapper .tags {
+    display: inline-block;
+    margin-right: 0.5rem;
+    background: var(--post-list-item-tag);
+    padding: 0 0.5rem;
+    color: white;
+    border-radius: 4px;
+    font-size: 1rem;
+}
 .post-list-item .tags {
     margin-bottom: 0.5rem;
 }
+
 
 .post-list-item .tag {
     display: inline-block;

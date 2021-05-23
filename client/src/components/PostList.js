@@ -19,6 +19,7 @@ function PostList({ theme }) {
         return currentPosts;
     }
 
+    // 날짜별(default)
     const getPosts = async () => {
         const res = await axios.get('https://zoomni-log.herokuapp.com/posts')
         const sorted = res.data.sort(function(a,b) {
@@ -26,19 +27,37 @@ function PostList({ theme }) {
         })
         setPosts(sorted);
     }
-
-   
+    // 태그별 정렬
+   const getPostsByTag = async (tag) => {
+        const res = await axios.get('https://zoomni-log.herokuapp.com/posts')
+        const sorted = res.data.filter((post) => post.tags[0] === tag);
+        setPosts(sorted);
+   }
    
     useEffect(() => {
         getPosts();
-    }, [posts])
+    }, [])
 
     
     return (
         <div className="container">
             {!posts.length ? <ReactLoading className="loading" type="cubes" color={theme ? 'white': 'black'}/> : (
-                <div className="post-list">
-                
+               
+            <div className="post-list">    
+                <div className="tag-wrapper">
+                    <span className="tags" onClick={() => {
+                        getPosts()
+                    }} style={{
+                        cursor: "pointer"
+                    }}>전체</span>
+                    {posts.map((post) => (
+                        <span className="tags" key={post._id} onClick={() => {
+                            getPostsByTag(post.tags[0])
+                        }} style={{
+                            cursor: "pointer"
+                        }}>{post.tags[0]}</span>
+                    ))}
+                </div>
                 <PostListItem posts={currentPosts(posts)}/>
                 <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={setCurrentPage}/>
             </div>

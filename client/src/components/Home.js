@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import me from '../image/me.JPG'
 function Home() {
 
     return (
