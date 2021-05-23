@@ -37,7 +37,7 @@ function Navbar({ onThemeToggled, theme, auth }) {
                        </div>
 
                        <div className="links" onClick={() => {
-                           logoutUser()
+                           localStorage.removeItem("jwtToken");
                            window.location.reload(true)
                        }} style={{
                            cursor: "pointer"
