@@ -1,8 +1,6 @@
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
-import Toast from 'light-toast'
-import { useContext } from 'react';
 
 import {
     GET_ERRORS,
@@ -30,7 +28,7 @@ export const loginUser = userData => dispatch => {
             dispatch(setCurrentUser(decoded));
         })
         .catch(() => {
-            Toast.fail("접근 제한", 2000);
+            alert("접근 제한.")
         })
 }
 
