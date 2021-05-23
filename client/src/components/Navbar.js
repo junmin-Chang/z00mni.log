@@ -1,93 +1,109 @@
-import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, withRouter } from 'react-router-dom';
 import DarkModeToggle from "react-dark-mode-toggle";
-
-function Navbar({ onThemeToggled, theme, isLoggedIn }) {
-    
+import { connect } from 'react-redux'
+import { logoutUser } from '../actions/authActions' 
+import { compose } from 'redux';
+function Navbar({ onThemeToggled, theme, auth }) {
+        const [isAuth, setIsAuth] = useState(auth.isAuthenticated)
+        useEffect(() => {
+            if (localStorage.getItem("jwtToken")) {
+                setIsAuth(true)
+            } else {
+                setIsAuth(false)
+            }
+        },[auth])
         return (
             <nav className="navbar">
-                {isLoggedIn ? (
-  <div className="nav-container">
-  <div className="brand">
-      <NavLink to='/'>
-          <h1 className="blog-title">Zoomni.Dev</h1>
-      </NavLink>
-  </div>
+                    {isAuth ? (
+                         <div className="nav-container">
+                         <div className="brand">
+                             <NavLink to='/'>
+                                 <h1 className="blog-title">Zoomni.Dev</h1>
+                             </NavLink>
+                         </div>
+     
+                         <div className="links">
+                             <NavLink to='/posts' activeClassName="links-active">
+                                 Posts
+                             </NavLink>
+                         </div>
+     
+                       <div className="links">
+                          
+                               <NavLink to='/write'>
+                                   글 쓰기
+                               </NavLink>
+                       </div>
 
-  <div className="links">
-      <NavLink to='/posts' activeClassName="links-active">
-          Posts
-      </NavLink>
-  </div>
-
-<div className="links">
-   
-        <NavLink to='/write'>
-                    글쓰기
-        </NavLink>
-
-</div>
-
-<div onClick={() => {
-            localStorage.removeItem("jwtToken");
-        }} className="links" style={{
-            cursor: "pointer"
-        }}>
-       
-            로그아웃
-</div>
-
-
-
- 
-  <div>
-      <DarkModeToggle onChange={onThemeToggled}
-      size={50}
-      checked={theme}
-      className="dark-mode"/>
-  </div>
-  
-
-</div>
-                ): (
-                    <div className="nav-container">
-                    <div className="brand">
-                        <NavLink to='/'>
-                            <h1 className="blog-title">Zoomni.Dev</h1>
-                        </NavLink>
-                    </div>
-
-                    <div className="links">
-                        <NavLink to='/posts' activeClassName="links-active">
-                            Posts
-                        </NavLink>
-                    </div>
-
-                  <div className="links">
+                       <div className="links" onClick={() => {
+                           logoutUser()
+                           window.location.reload(true)
+                       }} style={{
+                           cursor: "pointer"
+                       }}>
+                            로그아웃
+                       </div>
+                        
+                         <div>
+                             <DarkModeToggle onChange={onThemeToggled}
+                             size={50}
+                             checked={theme}
+                             className="dark-mode"/>
+                         </div>
+                         
+     
+                     </div>
                      
-                          <NavLink to='/login'>
-                              로그인
-                          </NavLink>
-                  </div>
-
-       
-
                    
-                    <div>
-                        <DarkModeToggle onChange={onThemeToggled}
-                        size={50}
-                        checked={theme}
-                        className="dark-mode"/>
+                    ): (
+                        <div className="nav-container">
+                        <div className="brand">
+                            <NavLink to='/'>
+                                <h1 className="blog-title">Zoomni.Dev</h1>
+                            </NavLink>
+                        </div>
+    
+                        <div className="links">
+                            <NavLink to='/posts' activeClassName="links-active">
+                                Posts
+                            </NavLink>
+                        </div>
+    
+                      <div className="links">
+                         
+                              <NavLink to='/login'>
+                                  로그인
+                              </NavLink>
+                      </div>
+    
+           
+    
+                       
+                        <div>
+                            <DarkModeToggle onChange={onThemeToggled}
+                            size={50}
+                            checked={theme}
+                            className="dark-mode"/>
+                        </div>
+                        
+    
                     </div>
                     
-
-                </div>
-                )}
-              
+                  
+                    )}
+                   
             </nav>
         )
     
    
     
 }
-export default Navbar;
+const mapStateToProps = state => ({
+    auth: state.auth,
+});
+
+export default compose(
+    withRouter,
+    connect(mapStateToProps, {logoutUser})
+  )(Navbar);
