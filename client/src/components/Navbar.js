@@ -4,6 +4,7 @@ import DarkModeToggle from "react-dark-mode-toggle";
 import { connect } from 'react-redux'
 import { logoutUser } from '../actions/authActions' 
 import { compose } from 'redux';
+
 function Navbar({ onThemeToggled, theme, auth }) {
         const [isAuth, setIsAuth] = useState(auth.isAuthenticated)
         useEffect(() => {

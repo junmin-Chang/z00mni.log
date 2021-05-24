@@ -21,7 +21,12 @@ function Post({ match, history, auth }) {
     const closeModal = () => {
         setModalOpen(false);
     }
+    const renderDate = (dateString) => {
+        const date = new Date(dateString);
+        const monthName = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
 
+        return `${date.getFullYear()}년 ${monthName[date.getMonth()]} ${date.getDate()}일`;
+    }
 
     const getPost = async () => {
         const res = await axios.get(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`);
@@ -82,6 +87,7 @@ function Post({ match, history, auth }) {
             )}
             <div>
                 <h1>{post.title}</h1>
+                <h3>{renderDate(post.createdAt)}</h3>
             </div>
             {renderPost()}
             </div>
