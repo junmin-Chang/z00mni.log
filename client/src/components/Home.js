@@ -4,9 +4,7 @@ function Home() {
 
     return (
         <div className="container">
-            <h1>장준민의 개발 블로그에 오신 것을 환영합니다.</h1>
-     
-            
+            <h1>장준민의 개발 일지</h1>
             <h2>Tech Stack</h2>
             <img alt="NodeJS" src="https://img.shields.io/badge/node.js-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
             <img alt="Express.js" src="https://img.shields.io/badge/express.js-%23404d59.svg?&style=for-the-badge"/>
@@ -20,12 +18,14 @@ function Home() {
             <div style={{
                 marginTop: '1rem'
             }}>
+                <p>Github</p>
                 <a href="https://github.com/junmin-Chang" target="blank">
                     <img alt="GitHub" src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
                 </a>
             </div>
             
             <hr/>
+            <h3>Full stack을 향하여</h3>
             <ul style={{
                 marginTop: '2rem'
             }}>

@@ -45,7 +45,8 @@ function PostList({ theme }) {
                
             <div className="post-list">    
                 <div className="tag-wrapper">
-                    <span className="tags" onClick={() => {
+                    <h3>카테고리</h3>
+                    <span className="tag-all" onClick={() => {
                         getPosts()
                     }} style={{
                         cursor: "pointer"
@@ -55,7 +56,7 @@ function PostList({ theme }) {
                             getPostsByTag(post.tags[0])
                         }} style={{
                             cursor: "pointer"
-                        }}>{post.tags[0]}</span>
+                        }}>{`#`+post.tags[0]}</span>
                     ))}
                 </div>
                 <PostListItem posts={currentPosts(posts)}/>
