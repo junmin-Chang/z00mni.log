@@ -47,6 +47,14 @@ export const GlobalStyles = createGlobalStyle`
     border-color: ${({ theme }) => theme.navText};
     border-radius: 5px;
   }
+
+  pre {
+        background-color: ${({ theme }) => theme.codeBlock};
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+
+
   `
 
   

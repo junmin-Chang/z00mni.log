@@ -5,7 +5,7 @@ export const lightTheme = {
     navBody: '#ffffff',
     navText: '#000000',
     gradient: 'linear-gradient(#39598A, #79D7ED)',
-    
+    codeBlock: '#F9F9F9'
   }
   
   export const darkTheme = {
@@ -15,6 +15,6 @@ export const lightTheme = {
     navBody: '#000000',
     navText: '#ffffff',
     gradient: 'linear-gradient(#091236, #1E215D)',
-
+    codeBlock: '#1D1F21'
   }
 
