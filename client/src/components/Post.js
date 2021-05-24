@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react';
 import Modal from './Modal/Modal';
 import './Modal/Modal.css'
 import { IntroduceContent } from './Write/TextEditorForm';
-import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux'
 
-
-function Post({ match, history }) {
+function Post({ match, history, auth }) {
     
     const [post, setPost] = useState({});
     const [postData, setPostData] = useState({
@@ -15,12 +14,6 @@ function Post({ match, history }) {
         html: post.html
     })
     const [modalOpen, setModalOpen] = useState(false);
-    const [adminPassword, setAdminPassword] = useState('')
-
-    const onChangePassword = (e) => {
-        setAdminPassword(e.target.value)
-    }
-
 
     const openModal = () => {
         setModalOpen(true);
@@ -36,25 +29,21 @@ function Post({ match, history }) {
     }
 
     const deletePost = async () => {
-        if (adminPassword === process.env.REACT_APP_ADMIN_PASSWORD) {
+  
             await axios.delete(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`)
             .then(history.push('/posts'));    
-        } else {
-            alert('비밀번호가 일치하지 않습니다.');
-        }
+        
     }
     
     const updatePost =  () => {
-        if (adminPassword === process.env.REACT_APP_ADMIN_PASSWORD) {
+    
             axios.patch(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`, {
                 title: postData.title,
                 tags: postData.tags.split(','),
                 html: postData.html
             })
             .then(history.push('/posts'));
-        } else {
-            alert('비밀번호가 일치하지 않습니다.');
-        }
+
     }
 
     const renderPost = () => {
@@ -79,18 +68,33 @@ function Post({ match, history }) {
                     <input className="edit-tags" name="tags" type="text" value={postData.tags} onChange={(e) => setPostData({...postData, tags: e.target.value})} defaultValue={post.tags}/>
                     <textarea className="edit-html" name="html" type="text" value={postData.html} onChange={(e) => setPostData({...postData, html: e.target.value})} defaultValue={post.html}
                     />
-                    <input type="text" name='password' value={adminPassword} onChange={onChangePassword} placeholder="관리자 비밀번호 입력"/>
                     <button className="btn btn-admin-delete" onClick={deletePost} >삭제</button>
                     <button className="btn btn-admin-delete" onClick={updatePost} >수정</button>
                 </div>
             </Modal>   
         </div>
         <div className="container">
-            <button className="btn btn-delete" onClick={openModal}>관리자 메뉴</button>         
-            {renderPost()}</div>
+            {auth.isAuthenticated ? (
+                <button className="btn btn-delete" onClick={openModal}>관리자 메뉴</button>         
+            
+            ) : (
+                null
+            )}
+            <div>
+                <h1>{post.title}</h1>
+            </div>
+            {renderPost()}
+            </div>
         </>
     )
     
 }
 
-export default withRouter(Post);
+const mapStateToProps = state => ({
+    auth: state.auth,
+});
+
+export default connect(
+    mapStateToProps,
+)(Post);
+

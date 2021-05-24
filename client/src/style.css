@@ -103,6 +103,7 @@ h6 {
   color: var(--post-list-item-date);
   font-weight: 300;
 }
+
 .post-list .tag-wrapper .tags {
   display: inline-block;
   margin-right: 0.5rem;
@@ -222,9 +223,6 @@ ul {
   float: left;
 }
 
-.tag-wrapper {
-  margin-bottom: 1.5rem;
-}
 .tag-all {
   display: inline-block;
   margin-right: 0.5rem;

@@ -18,8 +18,10 @@ function Navbar({ onThemeToggled, theme, auth }) {
                     {isAuth ? (
                          <div className="nav-container">
                          <div className="brand">
+                             
                              <NavLink to='/'>
-                                 <h1 className="blog-title">Zoomni.Dev</h1>
+                                
+                                <h1 className="blog-title">Zoomni.Dev</h1>
                              </NavLink>
                          </div>
      

@@ -54,6 +54,13 @@ export const GlobalStyles = createGlobalStyle`
         padding-right: 0.5rem;
       }
 
+  .tag-wrapper {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px dashed;
+    border-color: ${({ theme }) => theme.text};
+    padding-bottom: 1.5rem;
+}
+
 
   `
 
