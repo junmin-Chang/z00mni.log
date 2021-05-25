@@ -16,11 +16,14 @@ import Write from './components/Write/Write';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme,darkTheme } from './theme/theme';
 import { GlobalStyles } from './theme/global'
-// auth
-import { loginUser } from './actions/authActions'
+// toast
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
 
-const App = () => {
-    
+
+const App = ({ auth }) => {
+
     // false? light : dark
     const [theme, setTheme] = useState(false);
     const toggleTheme = () => {
@@ -30,6 +33,32 @@ const App = () => {
             setTheme(false);
         }
     }
+    useEffect(() => {
+        console.log(auth.isAuthenticated)
+    
+        if (auth.isAuthenticated) {
+            toast('🦄 로그인 성공!', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                })
+        } else {
+            toast('로그인 안됨(게스트 모드)', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+      
+                })
+        }
+    }, [auth])
  
     
     return (
@@ -38,6 +67,7 @@ const App = () => {
             <GlobalStyles/>
             <BrowserRouter basename={window.location.pathname || ''}>
                 <Navbar onThemeToggled={toggleTheme} theme={theme}/>
+                <ToastContainer/>
                 <Switch>
                     <Route exact path='/' component={Home}/>
                     <Route path='/posts/:id' component={Post}/>
@@ -57,10 +87,8 @@ const App = () => {
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    errors: state.errors
 });
 
 export default connect(
     mapStateToProps,
-    { loginUser }
 )(App);

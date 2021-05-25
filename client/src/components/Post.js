@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Modal from './Modal/Modal';
 import './Modal/Modal.css'
 import { IntroduceContent } from './Write/TextEditorForm';
@@ -35,8 +35,8 @@ function Post({ match, history, auth }) {
 
     const deletePost = async () => {
   
-            await axios.delete(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`)
-            .then(history.push('/posts'));    
+        await axios.delete(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`)
+        .then(history.push('/posts'));    
         
     }
     
@@ -65,7 +65,7 @@ function Post({ match, history, auth }) {
 
 
     return (
-        <>
+    <Fragment>
         <div>
              <Modal open={modalOpen} close={closeModal} header="관리자 모드">
                 <div>
@@ -78,6 +78,8 @@ function Post({ match, history, auth }) {
                 </div>
             </Modal>   
         </div>
+
+
         <div className="container">
             {auth.isAuthenticated ? (
                 <button className="btn btn-delete" onClick={openModal}>관리자 메뉴</button>         
@@ -89,9 +91,10 @@ function Post({ match, history, auth }) {
                 <h1>{post.title}</h1>
                 <h3>{renderDate(post.createdAt)}</h3>
             </div>
+            
             {renderPost()}
-            </div>
-        </>
+        </div>
+    </Fragment>
     )
     
 }

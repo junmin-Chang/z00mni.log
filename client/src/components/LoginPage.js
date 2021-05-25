@@ -16,12 +16,13 @@ class LoginPage extends Component {
 
     componentDidMount() {
         if (this.props.auth.isAuthenticated) {
+            
             this.props.history.push('/');
         }
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
-          this.props.history.push("/"); 
+            this.props.history.push('/');
         }
     if (nextProps.errors) {
           this.setState({
@@ -49,6 +50,7 @@ class LoginPage extends Component {
       
         return (
             <div className="container">
+                
                 <div className="container-form">
                     <form noValidate onSubmit={this.onSubmit}>
                         <input placeholder="이메일" className="input-login" type="email" value={this.state.email} name="email" onChange={this.onChange}/>

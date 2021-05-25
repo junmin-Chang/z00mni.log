@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import {Editor} from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styled from 'styled-components';
@@ -72,7 +72,7 @@ const getContent = (e) => {
   
 
   return (
-    <>
+    <Fragment>
 
 <input className="input input-title" type="text" name="title" placeholder="제목" onChange={getContent}/>
 <input className="input input-tags" type="text" name="tags" placeholder="태그" onChange={getContent}/>
@@ -108,7 +108,7 @@ const getContent = (e) => {
     <button className="btn btn-post"
             onClick={writePost}>완료</button>
  
-    </>
+    </Fragment>
 
   );
 };
