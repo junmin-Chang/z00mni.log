@@ -45,7 +45,7 @@ function PostList({ theme }) {
                
             <div className="post-list">    
                 <div className="tag-wrapper">
-                    <h3>카테고리</h3>
+                    <h3>#카테고리</h3>
                     <span className="tag-all" onClick={() => {
                         getPosts()
                     }} style={{
