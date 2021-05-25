@@ -37,7 +37,7 @@ const App = ({ auth }) => {
         console.log(auth.isAuthenticated)
     
         if (auth.isAuthenticated) {
-            toast('🦄 로그인 성공!', {
+            toast.success('로그인 성공! 🥰', {
                 position: "top-center",
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -47,7 +47,7 @@ const App = ({ auth }) => {
                 progress: undefined,
                 })
         } else {
-            toast('로그인 안됨(게스트 모드)', {
+            toast.warn('로그인 안됨(게스트 모드😶‍🌫️ )', {
                 position: "top-center",
                 autoClose: 2000,
                 hideProgressBar: false,
