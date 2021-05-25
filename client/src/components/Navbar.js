@@ -34,7 +34,7 @@ function Navbar({ onThemeToggled, theme, auth }) {
      
                        <div className="links">
                           
-                               <NavLink to='/write'>
+                               <NavLink to='/write' activeClassName="links-active">
                                    글 쓰기
                                </NavLink>
                        </div>
@@ -44,6 +44,7 @@ function Navbar({ onThemeToggled, theme, auth }) {
                            window.location.reload(true)
                        }} style={{
                            cursor: "pointer"
+                           
                        }}>
                             로그아웃
                        </div>
@@ -75,7 +76,7 @@ function Navbar({ onThemeToggled, theme, auth }) {
     
                       <div className="links">
                          
-                              <NavLink to='/login'>
+                              <NavLink to='/login' activeClassName="links-active">
                                   로그인
                               </NavLink>
                       </div>

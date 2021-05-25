@@ -34,7 +34,6 @@ const TestEditorForm = ({ history }) => {
   const [content, setContent] = useState({
     title: '',
     tags: '',
-    password: ''
 })
 
 const getContent = (e) => {
@@ -54,7 +53,7 @@ const getContent = (e) => {
   
   const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
   const writePost = () => {
-    if (content.password === process.env.REACT_APP_ADMIN_PASSWORD) {
+  
       axios.post('https://zoomni-log.herokuapp.com/write', {
         title: content.title,
         tags: content.tags.split(','),
@@ -64,9 +63,6 @@ const getContent = (e) => {
         alert('포스트가 업로드 되었습니다');
         history.push('/posts');
       })
-    } else {
-      alert('비밀번호가 일치하지 않습니다.');
-    }
    
   }
   
@@ -104,7 +100,6 @@ const getContent = (e) => {
     </MyBlock>
     <IntroduceContent dangerouslySetInnerHTML={{__html: editorToHtml}}/>
     
-    <input type="text" name="password" placeholder="관리자 비밀번호" onChange={getContent}/>
     <button className="btn btn-post"
             onClick={writePost}>완료</button>
  

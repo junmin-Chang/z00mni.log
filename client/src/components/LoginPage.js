@@ -49,12 +49,12 @@ class LoginPage extends Component {
     render() {
       
         return (
-            <div className="container">
-                
+            <div className="container container-login">
+                <h1 className="login title-login">Zoomni.Dev</h1>
+                <h3 className="login">로그인 하기</h3>
                 <div className="container-form">
                     <form noValidate onSubmit={this.onSubmit}>
                         <input placeholder="이메일" className="input-login" type="email" value={this.state.email} name="email" onChange={this.onChange}/>
-
                         <input placeholder="비밀번호" className="input-login" type="password" value={this.state.password} name="password" onChange={this.onChange}/>
                         <button className="button-login" type="submit">로그인</button>
                     </form>

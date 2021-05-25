@@ -149,13 +149,13 @@ h6 {
 
 .btn-post {
   margin-top: 0.5rem;
-  background: lightgreen;
+  background: #2ec4ff;
   width: 100%;
   height: 3rem;
 }
 
 .btn-post:hover {
-  background: rgb(35, 175, 35);
+  background: #2499c7;
 }
 
 .post-menu {

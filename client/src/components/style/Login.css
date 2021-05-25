@@ -1,5 +1,13 @@
+.login {
+  text-align: center;
+}
+
 .container-form {
-    margin-top: 15rem;
+  margin-top: 5rem;
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 3rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 }
 
 .input-login,
@@ -16,17 +24,21 @@
   text-decoration: none; /* remove underline from anchors */
 }
 
+.input-login {
+  border: 2px solid rgb(121, 115, 115);
+}
+
 .input-login:hover,
 .button-login:hover {
   opacity: 1;
 }
 
-.button-login[type=submit] {
-    background-color: #2DC4FF;
-    color: white;
-    cursor: pointer;
-  }
-  
-.button-login[type=submit]:hover {
-    background-color: #2087af;
-  }
+.button-login[type="submit"] {
+  background-color: #2dc4ff;
+  color: white;
+  cursor: pointer;
+}
+
+.button-login[type="submit"]:hover {
+  background-color: #2087af;
+}
