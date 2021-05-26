@@ -4,6 +4,7 @@ import PostListItem from './PostListItem';
 import Pagination from './Pagination/Pagination'
 import ReactLoading from 'react-loading';
 import { withRouter } from 'react-router-dom';
+import Categories from './Categories';
 
 function PostList({ theme }) {
     const [posts, setPosts] = useState([]);
@@ -44,21 +45,7 @@ function PostList({ theme }) {
             {!posts.length ? <ReactLoading className="loading" type="cubes" color={theme ? 'white': 'black'}/> : (
                
             <div className="post-list">    
-                <div className="tag-wrapper">
-                    <h3>#카테고리</h3>
-                    <span className="tag-all" onClick={() => {
-                        getPosts()
-                    }} style={{
-                        cursor: "pointer"
-                    }}>전체</span>
-                    {posts.map((post) => (
-                        <span className="tags" key={post._id} onClick={() => {
-                            getPostsByTag(post.tags[0])
-                        }} style={{
-                            cursor: "pointer"
-                        }}>{`#`+post.tags[0]}</span>
-                    ))}
-                </div>
+                <Categories getPosts={getPosts} getPostsByTag={getPostsByTag}/>
                 <PostListItem posts={currentPosts(posts)}/>
                 <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={setCurrentPage}/>
             </div>
