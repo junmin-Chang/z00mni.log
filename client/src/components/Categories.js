@@ -12,7 +12,6 @@ function Categories() {
         <span className="tags" onClick={() => dispatch(getPostsByTag("리액트"))}>#React</span>
         <span className="tags" onClick={() => dispatch(getPostsByTag("Redux"))}>#Redux</span>
         <span className="tags" onClick={() => dispatch(getPostsByTag("NodeJS"))}>#NodeJS</span>
-        <span className="tags" onClick={() => dispatch(getPostsByTag("회고"))}>#회고</span>
         <span className="tags" onClick={() => dispatch(getPostsByTag("삽질"))}>#삽질</span>
     </div>
 
