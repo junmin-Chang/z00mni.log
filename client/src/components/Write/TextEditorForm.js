@@ -4,8 +4,9 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styled from 'styled-components';
 import { EditorState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
-import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { writePost } from '../../actions/postActions'
 
 export const IntroduceContent = styled.div`
     position: relative;
@@ -31,6 +32,7 @@ const MyBlock = styled.div`
 `;
 
 const TestEditorForm = ({ history }) => {
+  const dispatch = useDispatch()
   const [content, setContent] = useState({
     title: '',
     tags: '',
@@ -52,7 +54,7 @@ const getContent = (e) => {
   };
   
   const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-  const writePost = () => {
+  /* const writePost = () => {
   
       axios.post('https://zoomni-log.herokuapp.com/write', {
         title: content.title,
@@ -65,7 +67,7 @@ const getContent = (e) => {
       })
    
   }
-  
+   */
 
   return (
     <Fragment>
@@ -101,7 +103,14 @@ const getContent = (e) => {
     <IntroduceContent dangerouslySetInnerHTML={{__html: editorToHtml}}/>
     
     <button className="btn btn-post"
-            onClick={writePost}>완료</button>
+            onClick={() => {
+              dispatch(writePost({ 
+                title: content.title,
+                tags: content.tags.split(','),
+                html: editorToHtml,
+                createdAt: new Date()
+              }))
+            }}>완료</button>
  
     </Fragment>
 

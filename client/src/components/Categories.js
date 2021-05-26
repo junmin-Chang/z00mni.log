@@ -1,18 +1,19 @@
 import React from 'react';
-import { useEffect } from 'react';
-function Categories({ tags ,getPosts, getPostsByTag }) {
-    useEffect(() => {
-        console.log(tags)
-    })
+import { useSelector, useDispatch } from 'react-redux'
+import { getPostsByTag, getPosts } from '../actions/postActions'
+
+function Categories() {
+    const posts = useSelector(state => state.posts)
+    const dispatch = useDispatch()
     return (
         <div className="tag-wrapper">
         <h3>#카테고리</h3>
-        <span className="tag-all" onClick={getPosts}>전체</span>
-        <span className="tags" onClick={() => getPostsByTag("React")}>#React</span>
-        <span className="tags" onClick={() => getPostsByTag("Redux")}>#Redux</span>
-        <span className="tags" onClick={() => getPostsByTag("NodeJS")}>#NodeJS</span>
-        <span className="tags" onClick={() => getPostsByTag("회고")}>#회고</span>
-        <span className="tags" onClick={() => getPostsByTag("삽질")}>#삽질</span>
+        <span className="tag-all" onClick={() => dispatch(getPosts())}>전체</span>
+        <span className="tags" onClick={() => dispatch(getPostsByTag("리액트"))}>#React</span>
+        <span className="tags" onClick={() => dispatch(getPostsByTag("Redux"))}>#Redux</span>
+        <span className="tags" onClick={() => dispatch(getPostsByTag("NodeJS"))}>#NodeJS</span>
+        <span className="tags" onClick={() => dispatch(getPostsByTag("회고"))}>#회고</span>
+        <span className="tags" onClick={() => dispatch(getPostsByTag("삽질"))}>#삽질</span>
     </div>
 
     )

@@ -1,13 +1,14 @@
-import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react';
 import Modal from './Modal/Modal';
 import './Modal/Modal.css'
 import { IntroduceContent } from './Write/TextEditorForm';
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
+import { deletePost, getPost, editPost } from '../actions/postActions'
 
 function Post({ match, history, auth }) {
-    
-    const [post, setPost] = useState({});
+    const dispatch = useDispatch();
+    // const [post, setPost] = useState({});
+    const post = useSelector(state => state.posts)
     const [postData, setPostData] = useState({
         title: post.title,
         tags: post.tags,
@@ -28,29 +29,6 @@ function Post({ match, history, auth }) {
         return `${date.getFullYear()}년 ${monthName[date.getMonth()]} ${date.getDate()}일`;
     }
 
-    const getPost = async () => {
-        const res = await axios.get(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`);
-        setPost(res.data)
-    }
-
-    const deletePost = async () => {
-  
-        await axios.delete(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`)
-        .then(history.push('/posts'));    
-        
-    }
-    
-    const updatePost =  () => {
-    
-            axios.patch(`https://zoomni-log.herokuapp.com/posts/${match.params.id}`, {
-                title: postData.title,
-                tags: postData.tags.split(','),
-                html: postData.html
-            })
-            .then(history.push('/posts'));
-
-    }
-
     const renderPost = () => {
         return (
             <IntroduceContent style={{
@@ -60,7 +38,7 @@ function Post({ match, history, auth }) {
     }
 
     useEffect(() => {
-        getPost();
+        dispatch(getPost(match.params.id))
     },[])
 
 
@@ -73,8 +51,14 @@ function Post({ match, history, auth }) {
                     <input className="edit-tags" name="tags" type="text" value={postData.tags} onChange={(e) => setPostData({...postData, tags: e.target.value})} defaultValue={post.tags}/>
                     <textarea className="edit-html" name="html" type="text" value={postData.html} onChange={(e) => setPostData({...postData, html: e.target.value})} defaultValue={post.html}
                     />
-                    <button className="btn btn-admin-delete" onClick={deletePost} >삭제</button>
-                    <button className="btn btn-admin-delete" onClick={updatePost} >수정</button>
+                    <button className="btn btn-admin-delete" onClick={() => {
+                         dispatch(deletePost(match.params.id))
+                         history.push('/posts')
+                    }} >삭제</button>
+                    <button className="btn btn-admin-delete" onClick={() => {
+                        dispatch(editPost(match.params.id, postData))
+                        history.push('/posts')
+                    }} >수정</button>
                 </div>
             </Modal>   
         </div>
