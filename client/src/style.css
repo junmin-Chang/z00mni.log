@@ -113,6 +113,7 @@ h6 {
   border-radius: 4px;
   font-size: 1rem;
   margin-top: 0.5rem;
+  cursor: pointer;
 }
 .post-list-item .tags {
   margin-bottom: 0.5rem;
