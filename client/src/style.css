@@ -225,6 +225,7 @@ ul {
 }
 
 .tag-all {
+  cursor: pointer;
   display: inline-block;
   margin-right: 0.5rem;
   background-color: royalblue;
