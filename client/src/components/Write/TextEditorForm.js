@@ -54,20 +54,7 @@ const getContent = (e) => {
   };
   
   const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-  /* const writePost = () => {
-  
-      axios.post('https://zoomni-log.herokuapp.com/write', {
-        title: content.title,
-        tags: content.tags.split(','),
-        html: editorToHtml,
-        createdAt: new Date()
-      }).then(() => {
-        alert('포스트가 업로드 되었습니다');
-        history.push('/posts');
-      })
-   
-  }
-   */
+
 
   return (
     <Fragment>
