@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Switch , Route } from 'react-router-dom';
-import { connect } from 'react-redux'
 // pages
 import Home from './components/Home';
 import Post from './components/Post';
@@ -20,10 +19,11 @@ import { GlobalStyles } from './theme/global'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 
-const App = ({ auth }) => {
-
+const App = () => {
+    const { isAuthenticated } = useSelector(state => state.auth)
     // false? light : dark
     const [theme, setTheme] = useState(false);
     const toggleTheme = () => {
@@ -34,9 +34,9 @@ const App = ({ auth }) => {
         }
     }
     useEffect(() => {
-        console.log(auth.isAuthenticated)
+        console.log(isAuthenticated)
     
-        if (auth.isAuthenticated) {
+        if (isAuthenticated) {
             toast.success('로그인 성공! 🥰', {
                 position: "top-center",
                 autoClose: 2000,
@@ -58,7 +58,7 @@ const App = ({ auth }) => {
       
                 })
         }
-    }, [auth])
+    }, [isAuthenticated])
  
     
     return (
@@ -85,10 +85,4 @@ const App = ({ auth }) => {
 
 
 
-const mapStateToProps = state => ({
-    auth: state.auth,
-});
-
-export default connect(
-    mapStateToProps,
-)(App);
+export default App;

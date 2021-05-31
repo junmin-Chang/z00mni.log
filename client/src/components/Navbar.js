@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import DarkModeToggle from "react-dark-mode-toggle";
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../actions/authActions' 
-import { compose } from 'redux';
 
 function Navbar({ onThemeToggled, theme, auth }) {
-        const [isAuth, setIsAuth] = useState(auth.isAuthenticated)
+        const dispatch = useDispatch();
+        let { isAuthenticated } = useSelector(state => state.auth);
+        const [isAuth, setIsAuth] = useState(isAuthenticated)
         useEffect(() => {
             if (localStorage.getItem("jwtToken")) {
                 setIsAuth(true)
@@ -40,7 +41,7 @@ function Navbar({ onThemeToggled, theme, auth }) {
                        </div>
 
                        <div className="links" onClick={() => {
-                           localStorage.removeItem("jwtToken");
+                           dispatch(logoutUser())
                            window.location.reload(true)
                        }} style={{
                            cursor: "pointer"
@@ -103,11 +104,5 @@ function Navbar({ onThemeToggled, theme, auth }) {
    
     
 }
-const mapStateToProps = state => ({
-    auth: state.auth,
-});
 
-export default compose(
-    withRouter,
-    connect(mapStateToProps, {logoutUser})
-  )(Navbar);
+export default withRouter(Navbar)

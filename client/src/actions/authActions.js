@@ -7,6 +7,7 @@ import {
     USER_LOADING
 } from './types';
 
+//register action
 export const registerUser = (userData, history) => dispatch => {
     axios
         .post('https://zoomni-log.herokuapp.com/api/users/register', userData)
@@ -15,7 +16,7 @@ export const registerUser = (userData, history) => dispatch => {
             return;
         })
 }
-
+// login action
 export const loginUser = userData => dispatch => {
     axios
         .post("https://zoomni-log.herokuapp.com/api/users/login", userData)
@@ -31,6 +32,7 @@ export const loginUser = userData => dispatch => {
         })
 }
 
+// user 등록 action
 export const setCurrentUser = decoded => {
     return {
         type: SET_CURRENT_USER,
