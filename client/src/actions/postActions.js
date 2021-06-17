@@ -4,7 +4,7 @@ from './types'
 
 export const getPosts = () => async (dispatch) => {
     try {
-        const res = await axios.get("https://zoomni-log.herokuapp.com/posts");
+        const res = await axios.get(`${process.env.API_POST}/posts`);
         const sorted = res.data.sort(function(a,b) {
             return new Date(b.createdAt) - new Date(a.createdAt)
         })
@@ -19,7 +19,7 @@ export const getPosts = () => async (dispatch) => {
 
 export const getPostsByTag = (tag) => async (dispatch) => {
     try {
-        const res = await axios.get("https://zoomni-log.herokuapp.com/posts");
+        const res = await axios.get(`${process.env.API_POST}/posts`);
         const sortedByTag = res.data.filter((post) => post.tags[0] === tag);
         const sorted = sortedByTag.sort(function(a,b) {
             return new Date(b.createdAt) - new Date(a.createdAt)
@@ -35,7 +35,7 @@ export const getPostsByTag = (tag) => async (dispatch) => {
 
 export const getPost = (id) => async (dispatch) => {
     try {
-        const res = await axios.get(`https://zoomni-log.herokuapp.com/posts/${id}`)
+        const res = await axios.get(`${process.env.API_POST}/posts/${id}`)
         dispatch({
             type: GET_POST,
             payload: res.data
@@ -47,7 +47,7 @@ export const getPost = (id) => async (dispatch) => {
 export const writePost = (data) => (dispatch) => {
     try {
         const { title, tags, html, createdAt } = data
-        const res = axios.post('https://zoomni-log.herokuapp.com/write', { title, tags, html, createdAt})
+        const res = axios.post(`${process.env.API_POST}/write`, { title, tags, html, createdAt})
         dispatch({
             type: WRITE_POST,
             payload: res.data

@@ -10,7 +10,7 @@ import {
 //register action
 export const registerUser = (userData, history) => dispatch => {
     axios
-        .post('https://zoomni-log.herokuapp.com/api/users/register', userData)
+        .post(`${process.env.API_AUTH_URL}/register`, userData)
         .then(res => history.push("/login"))
         .catch(err => {
             return;
@@ -19,7 +19,7 @@ export const registerUser = (userData, history) => dispatch => {
 // login action
 export const loginUser = userData => dispatch => {
     axios
-        .post("https://zoomni-log.herokuapp.com/api/users/login", userData)
+        .post(`${process.env.API_AUTH_URL}/login`, userData)
         .then(res => {
             const { token } = res.data;
             localStorage.setItem("jwtToken", token);
