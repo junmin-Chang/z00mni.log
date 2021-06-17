@@ -6,6 +6,7 @@ import {
     SET_CURRENT_USER,
     USER_LOADING
 } from './types';
+require('dotenv').config()
 
 //register action
 export const registerUser = (userData, history) => dispatch => {

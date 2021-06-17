@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { GET_POSTS, GET_POST, WRITE_POST, EDIT_POST, DELETE_POST }
 from './types'
-
+require('dotenv').config()
 export const getPosts = () => async (dispatch) => {
     try {
         const res = await axios.get(`${process.env.API_POST}/posts`);
