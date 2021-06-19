@@ -4,10 +4,10 @@ import './Modal/Modal.css'
 import { IntroduceContent } from './Write/TextEditorForm';
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { deletePost, getPost, editPost } from '../actions/postActions'
+import ReactLoading from 'react-loading'
 
-function Post({ match, history, auth }) {
+function Post({ match, history, auth, theme }) {
     const dispatch = useDispatch();
-    // const [post, setPost] = useState({});
     const post = useSelector(state => state.posts)
     const [postData, setPostData] = useState({
         title: post.title,
@@ -22,18 +22,24 @@ function Post({ match, history, auth }) {
     const closeModal = () => {
         setModalOpen(false);
     }
-    const renderDate = (dateString) => {
+    const renderDate =  (dateString) => {
         const date = new Date(dateString);
         const monthName = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
-
         return `${date.getFullYear()}년 ${monthName[date.getMonth()]} ${date.getDate()}일`;
+        
     }
 
     const renderPost = () => {
         return (
+        <>
+            <div>
+                    <h1>{post.title}</h1>
+                    <h3>{renderDate(post.createdAt)}</h3>
+                </div>
             <IntroduceContent style={{
                 marginTop:'2rem'
             }} dangerouslySetInnerHTML={{__html: post.html}}/>
+        </>
         )
     }
 
@@ -72,11 +78,12 @@ function Post({ match, history, auth }) {
                 null
             )}
             <div>
-                <h1>{post.title}</h1>
-                <h3>{renderDate(post.createdAt)}</h3>
+
+                {!post.title ? (
+                    <ReactLoading className="loading" type="cubes" color={theme ? 'white': 'black'}/>
+                ) : renderPost()}
             </div>
             
-            {renderPost()}
         </div>
     </Fragment>
     )

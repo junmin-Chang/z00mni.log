@@ -3,15 +3,19 @@ import { GET_POSTS, GET_POST, WRITE_POST, EDIT_POST, DELETE_POST }
 from './types'
 
 export const getPosts = () => async (dispatch) => {
+   
     try {
         const res = await axios.get("https://zoomni-log.herokuapp.com/posts");
         const sorted = res.data.sort(function(a,b) {
             return new Date(b.createdAt) - new Date(a.createdAt)
         })
-        dispatch({
-            type: GET_POSTS,
-            payload: sorted
-        })
+        if (sorted) {
+            dispatch({
+                type: GET_POSTS,
+                payload: sorted
+            })
+        }
+        
     } catch (err) {
         console.log(err);
     }

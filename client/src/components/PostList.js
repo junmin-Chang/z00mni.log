@@ -7,7 +7,8 @@ import Categories from './Categories';
 import { useSelector ,  useDispatch } from 'react-redux'
 import { getPosts } from '../actions/postActions'
 function PostList({ theme }) {
-    // const [posts, setPosts] = useState([]);
+
+    
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
     const lastIndex = currentPage * postsPerPage;
@@ -23,7 +24,7 @@ function PostList({ theme }) {
 
     useEffect(() => {
         dispatch(getPosts());
-    }, [])
+    }, [dispatch])
 
     
     return (
