@@ -3,8 +3,10 @@ import Modal from './Modal/Modal';
 import './Modal/Modal.css'
 import { IntroduceContent } from './Write/TextEditorForm';
 import { connect, useDispatch, useSelector } from 'react-redux'
+import { compose } from 'redux'
 import { deletePost, getPost, editPost } from '../actions/postActions'
 import ReactLoading from 'react-loading'
+import { withRouter } from 'react-router-dom'
 
 function Post({ match, history, auth, theme }) {
     const dispatch = useDispatch();
@@ -94,7 +96,7 @@ const mapStateToProps = state => ({
     auth: state.auth,
 });
 
-export default connect(
-    mapStateToProps,
-)(Post);
-
+export default compose(
+    withRouter,
+    connect(mapStateToProps)
+  )(Post);

@@ -34,7 +34,6 @@ const App = () => {
         }
     }
     useEffect(() => {
-        console.log(isAuthenticated)
     
         if (isAuthenticated) {
             toast.success('로그인 성공! 🥰', {
@@ -63,15 +62,15 @@ const App = () => {
     
     return (
 
-        <ThemeProvider theme={theme === false? lightTheme : darkTheme}>
+        <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
             <GlobalStyles/>
             <BrowserRouter basename={window.location.pathname || ''}>
                 <Navbar onThemeToggled={toggleTheme} theme={theme}/>
                 <ToastContainer/>
                 <Switch>
                     <Route exact path='/' component={Home}/>
-                    <Route path='/posts/:id' component={Post}/>
-                    <Route path='/posts' component={PostList}/>
+                    <Route path='/posts/:id' render={() => <Post theme={theme}/>}/>
+                    <Route path='/posts' render={() => <PostList theme={theme}/>}/>
                     <Route path='/write' component={Write}/>
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/register" component={RegisterPage}/>
