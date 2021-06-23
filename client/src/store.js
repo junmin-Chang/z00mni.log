@@ -17,7 +17,6 @@ const middleware = [thunk];
 export default function configureStore() {
     const store = createStore(persistedReducer, initialState, compose(
         applyMiddleware(...middleware),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     ))
     const persistor = persistStore(store);
     return { store, persistor }
