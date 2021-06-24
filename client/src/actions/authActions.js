@@ -6,11 +6,11 @@ import {
     SET_CURRENT_USER,
     USER_LOADING
 } from './types';
-
+require('dotenv').config()
 //register action
 export const registerUser = (userData, history) => dispatch => {
     axios
-        .post('https://zoomni-log.herokuapp.com/api/users/register', userData)
+        .post(`${process.env.REACT_APP_API}/api/users/register`, userData)
         .then(res => history.push("/login"))
         .catch(err => {
             return;
@@ -18,7 +18,7 @@ export const registerUser = (userData, history) => dispatch => {
 }
 // login action
 export const loginUser = userData => dispatch => {
-    axios.post("https://zoomni-log.herokuapp.com/api/users/login", userData)
+    axios.post(`${process.env.REACT_APP_API}/api/users/login`, userData)
         .then(res => {
             const { token } = res.data;
             localStorage.setItem("jwtToken", token);
