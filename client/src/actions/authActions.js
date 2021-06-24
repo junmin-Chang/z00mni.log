@@ -18,8 +18,7 @@ export const registerUser = (userData, history) => dispatch => {
 }
 // login action
 export const loginUser = userData => dispatch => {
-    axios
-        .post("https://zoomni-log.herokuapp.com/api/users/login", userData)
+    axios.post("https://zoomni-log.herokuapp.com/api/users/login", userData)
         .then(res => {
             const { token } = res.data;
             localStorage.setItem("jwtToken", token);
