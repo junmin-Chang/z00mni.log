@@ -1,9 +1,8 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { getPostsByTag, getPosts } from '../actions/postActions'
 
 function Categories() {
-    const posts = useSelector(state => state.posts)
     const dispatch = useDispatch()
     return (
         <div className="tag-wrapper">

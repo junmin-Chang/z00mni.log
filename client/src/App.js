@@ -65,7 +65,7 @@ const App = () => {
 
         <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
             <GlobalStyles/>
-            <BrowserRouter basename={window.location.pathname || ''}>
+            <BrowserRouter>
                 <Navbar onThemeToggled={toggleTheme} theme={theme}/>
                 <ToastContainer/>
                 <Switch>

@@ -38,6 +38,9 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 
+// authentication routes
 app.use("/api/users", users);
+// post routes
 app.use('/posts', require('./routes/postRoutes'));
+// write routes
 app.use('/', require('./routes/writeRoutes'))

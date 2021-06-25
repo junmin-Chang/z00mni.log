@@ -8,7 +8,6 @@ import { useSelector ,  useDispatch } from 'react-redux'
 import { getPosts } from '../actions/postActions'
 function PostList({ theme }) {
 
-    
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
     const lastIndex = currentPage * postsPerPage;

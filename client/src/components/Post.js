@@ -55,18 +55,38 @@ function Post({ match, history, auth, theme }) {
         <div>
              <Modal open={modalOpen} close={closeModal} header="관리자 모드">
                 <div>
-                    <input className="edit-title" name="title" type="text" value={postData.title} onChange={(e) => setPostData({...postData, title: e.target.value})} defaultValue={post.title}/>
-                    <input className="edit-tags" name="tags" type="text" value={postData.tags} onChange={(e) => setPostData({...postData, tags: e.target.value})} defaultValue={post.tags}/>
+                    <input 
+                    className="edit-title" 
+                    name="title" 
+                    type="text" 
+                    value={postData.title} 
+                    onChange={(e) => setPostData({...postData, title: e.target.value})} 
+                    defaultValue={post.title}
+                    />
+
+                    <input 
+                    className="edit-tags" 
+                    name="tags" 
+                    type="text" 
+                    value={postData.tags} 
+                    onChange={(e) => setPostData({...postData, tags: e.target.value})}
+                     defaultValue={post.tags}
+                     />
+
                     <textarea className="edit-html" name="html" type="text" value={postData.html} onChange={(e) => setPostData({...postData, html: e.target.value})} defaultValue={post.html}
                     />
-                    <button className="btn btn-admin-delete" onClick={() => {
+                    <button 
+                    className="btn btn-admin-delete" 
+                    onClick={() => {
                          dispatch(deletePost(match.params.id))
                          history.push('/posts')
-                    }} >삭제</button>
-                    <button className="btn btn-admin-delete" onClick={() => {
+                    }}>삭제</button>
+                    <button 
+                    className="btn btn-admin-delete" 
+                    onClick={() => {
                         dispatch(editPost(match.params.id, postData))
                         history.push('/posts')
-                    }} >수정</button>
+                    }}>수정</button>
                 </div>
             </Modal>   
         </div>
@@ -74,8 +94,7 @@ function Post({ match, history, auth, theme }) {
 
         <div className="container">
             {auth.isAuthenticated ? (
-                <button className="btn btn-delete" onClick={openModal}>관리자 메뉴</button>         
-            
+                <button className="btn btn-delete" onClick={openModal}>관리자 메뉴</button>
             ) : (
                 null
             )}
