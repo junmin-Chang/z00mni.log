@@ -14,7 +14,7 @@ function Navbar({ onThemeToggled, theme, auth }) {
             } else {
                 setIsAuth(false)
             }
-        },[auth])
+        },[isAuthenticated])
         return (
             <nav className="navbar">
                     {isAuth ? (

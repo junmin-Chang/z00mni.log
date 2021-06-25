@@ -33,7 +33,6 @@ function Login({ history }) {
     }
     useEffect(() => {
         if (auth.isAuthenticated) {
-            window.location.reload(true);
             history.push('/');
         }
     })
