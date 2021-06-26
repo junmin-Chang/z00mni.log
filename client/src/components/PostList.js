@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import Categories from './Categories';
 import { useSelector ,  useDispatch } from 'react-redux'
 import { getPosts } from '../actions/postActions'
+import './style/PostList.css'
 function PostList({ theme }) {
 
     const [currentPage, setCurrentPage] = useState(1);

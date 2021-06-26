@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import './style/PostListItem.css'
 function PostListItem({ posts }) {
     const renderDate = (dateString) => {
         const date = new Date(dateString);

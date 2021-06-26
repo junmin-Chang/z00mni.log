@@ -3,16 +3,6 @@ reset
 */
 
 /* variables */
-:root {
-  --nav-background: #ffffff;
-  --nav-link-color: #949494;
-  --nav-link-color-hover: #000000;
-  --nav-height: 50px;
-  --post-list-item-border: #e0e0e0;
-  --post-list-item-hover: #e0e0e0;
-  --post-list-item-date: #949494;
-  --post-list-item-tag: #2ec4ff;
-}
 
 * {
   margin: 0;
@@ -60,74 +50,6 @@ h6 {
   line-height: initial;
 }
 
-.navbar .nav-container {
-  height: 100%;
-  display: flex;
-  padding: 0 1rem;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.navbar h1 {
-  font-size: 1.7rem;
-}
-.navbar .blog-title {
-  top: 0;
-  left: 0;
-  height: var(--nav-height);
-}
-
-.navbar .links a {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--nav-link-color);
-}
-
-.post-list-item {
-  width: 100%;
-  display: block;
-  padding-top: 1rem;
-  text-align: left;
-}
-.post-list-item:hover {
-  color: #2ec4ff;
-}
-
-.post-list-item .title {
-  margin: 0;
-  margin-bottom: 0.5rem;
-}
-.post-list-item .date {
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  color: var(--post-list-item-date);
-  font-weight: 300;
-}
-
-.post-list .tag-wrapper .tags {
-  display: inline-block;
-  margin-right: 0.5rem;
-  background: var(--post-list-item-tag);
-  padding: 0 0.5rem;
-  color: white;
-  border-radius: 4px;
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  cursor: pointer;
-}
-.post-list-item .tags {
-  margin-bottom: 0.5rem;
-}
-
-.post-list-item .tag {
-  display: inline-block;
-  margin-right: 0.5rem;
-  background: var(--post-list-item-tag);
-  padding: 0 0.5rem;
-  color: white;
-  border-radius: 4px;
-  font-size: 1rem;
-}
 .btn {
   border-radius: 4px;
   padding: 0.3rem;
@@ -205,32 +127,4 @@ ul {
   position: fixed;
   top: 50%;
   left: 43%;
-}
-
-.pic {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  height: 300px;
-  border-radius: 100%;
-  overflow: hidden;
-  padding: 30px;
-}
-
-.junmin {
-  width: 100%;
-  height: auto;
-  float: left;
-}
-
-.tag-all {
-  cursor: pointer;
-  display: inline-block;
-  margin-right: 0.5rem;
-  background-color: royalblue;
-  padding: 0 0.5rem;
-  color: white;
-  border-radius: 4px;
-  font-size: 1rem;
 }

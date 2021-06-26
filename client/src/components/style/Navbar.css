@@ -1,0 +1,22 @@
+.navbar .nav-container {
+  height: 100%;
+  display: flex;
+  padding: 0 1rem;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.navbar h1 {
+  font-size: 1.7rem;
+}
+.navbar .blog-title {
+  top: 0;
+  left: 0;
+  height: var(--nav-height);
+}
+
+.navbar .links a {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--nav-link-color);
+}

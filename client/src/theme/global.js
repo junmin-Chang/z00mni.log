@@ -1,6 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+:root {
+  --nav-background: #ffffff;
+  --nav-link-color: #949494;
+  --nav-link-color-hover: #000000;
+  --nav-height: 50px;
+  --post-list-item-border: #e0e0e0;
+  --post-list-item-hover: #e0e0e0;
+  --post-list-item-date: #949494;
+  --post-list-item-tag: #2ec4ff;
+}
   *,
   *::after,
   *::before {

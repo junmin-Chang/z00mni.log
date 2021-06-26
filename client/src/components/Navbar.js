@@ -3,8 +3,9 @@ import { NavLink, withRouter } from 'react-router-dom';
 import DarkModeToggle from "react-dark-mode-toggle";
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../actions/authActions' 
+import './style/Navbar.css'
 
-function Navbar({ onThemeToggled, theme, auth }) {
+function Navbar({ onThemeToggled, theme }) {
         const dispatch = useDispatch();
         let { isAuthenticated } = useSelector(state => state.auth);
         const [isAuth, setIsAuth] = useState(isAuthenticated)
@@ -42,10 +43,8 @@ function Navbar({ onThemeToggled, theme, auth }) {
 
                        <div className="links" onClick={() => {
                            dispatch(logoutUser())
-                           window.location.reload(true)
                        }} style={{
                            cursor: "pointer"
-                           
                        }}>
                             로그아웃
                        </div>

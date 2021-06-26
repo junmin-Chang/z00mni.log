@@ -1,0 +1,11 @@
+.post-list .tag-wrapper .tags {
+  display: inline-block;
+  margin-right: 0.5rem;
+  background: var(--post-list-item-tag);
+  padding: 0 0.5rem;
+  color: white;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
