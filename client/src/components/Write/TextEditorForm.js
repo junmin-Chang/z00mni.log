@@ -97,6 +97,8 @@ const getContent = (e) => {
                 html: editorToHtml,
                 createdAt: new Date()
               }))
+              alert('등록 완료!');
+              history.push('/posts')
             }}>완료</button>
  
     </Fragment>
