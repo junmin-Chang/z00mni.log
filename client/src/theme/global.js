@@ -42,9 +42,6 @@ export const GlobalStyles = createGlobalStyle`
     margin-top: 1rem;
     border-color: ${({ theme }) => theme.text};
   }
-  .navbar .links a {
-    color: ${({ theme }) => theme.navText};
-  }
 
 
   .post-list-item {
@@ -52,11 +49,6 @@ export const GlobalStyles = createGlobalStyle`
     border-color: ${({ theme }) => theme.text};
   }
 
-  .links-active {
-    border-bottom: 3px solid;
-    border-color: ${({ theme }) => theme.navText};
-    border-radius: 5px;
-  }
 
   pre {
         background-color: ${({ theme }) => theme.codeBlock};
@@ -70,8 +62,6 @@ export const GlobalStyles = createGlobalStyle`
     border-color: ${({ theme }) => theme.text};
     padding-bottom: 1.5rem;
 }
-
-
   `
 
   

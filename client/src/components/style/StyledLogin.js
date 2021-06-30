@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Wrapper from './Wrapper'
+import {Wrapper} from './Wrapper'
 
 const Input = styled.input`
     width: 100%;

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
-import DarkModeToggle from "react-dark-mode-toggle";
+import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../actions/authActions' 
-import './style/Navbar.css'
+import { LoggedInStyledNav, LoggedOutStyledNav } from './style/StyledNav';
 
 function Navbar({ onThemeToggled, theme }) {
         const dispatch = useDispatch();
@@ -19,84 +18,20 @@ function Navbar({ onThemeToggled, theme }) {
         return (
             <nav className="navbar">
                     {isAuth ? (
-                         <div className="nav-container">
-                         <div className="brand">
-                             
-                             <NavLink to='/'>
-                                
-                                <h1 className="blog-title">Zoomni.Dev</h1>
-                             </NavLink>
-                         </div>
-     
-                         <div className="links">
-                             <NavLink to='/posts' activeClassName="links-active">
-                                 Posts
-                             </NavLink>
-                         </div>
-     
-                       <div className="links">
-                          
-                               <NavLink to='/write' activeClassName="links-active">
-                                   글 쓰기
-                               </NavLink>
-                       </div>
 
-                       <div className="links" onClick={() => {
-                           dispatch(logoutUser())
-                       }} style={{
-                           cursor: "pointer"
-                       }}>
-                            로그아웃
-                       </div>
-                        
-                         <div>
-                             <DarkModeToggle onChange={onThemeToggled}
-                             size={50}
-                             checked={theme}
-                             className="dark-mode"/>
-                         </div>
-                         
-     
-                     </div>
-                     
-                   
+                    <LoggedInStyledNav
+                        onLogout={() => {
+                            dispatch(logoutUser())
+                        }}
+                        onToggle={onThemeToggled}
+                        theme={theme}
+                    />      
                     ): (
-                        <div className="nav-container">
-                        <div className="brand">
-                            <NavLink to='/'>
-                                <h1 className="blog-title">Zoomni.Dev</h1>
-                            </NavLink>
-                        </div>
-    
-                        <div className="links">
-                            <NavLink to='/posts' activeClassName="links-active">
-                                Posts
-                            </NavLink>
-                        </div>
-    
-                      <div className="links">
-                         
-                              <NavLink to='/login' activeClassName="links-active">
-                                  로그인
-                              </NavLink>
-                      </div>
-    
-           
-    
-                       
-                        <div>
-                            <DarkModeToggle onChange={onThemeToggled}
-                            size={50}
-                            checked={theme}
-                            className="dark-mode"/>
-                        </div>
-                        
-    
-                    </div>
-                    
-                  
-                    )}
-                   
+                    <LoggedOutStyledNav
+                        onToggle={onThemeToggled}
+                        theme={theme}
+                    />
+                    )}   
             </nav>
         )
     
