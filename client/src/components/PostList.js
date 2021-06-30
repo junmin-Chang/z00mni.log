@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import Categories from './Categories';
 import { useSelector ,  useDispatch } from 'react-redux'
 import { getPosts } from '../actions/postActions'
-import './style/PostList.css'
+import { Wrapper } from './style/Wrapper';
 function PostList({ theme }) {
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -28,17 +28,16 @@ function PostList({ theme }) {
 
     
     return (
-        <div className="container">
-            {!posts.length ? <ReactLoading className="loading" type="cubes" color={theme ? 'white': 'black'}/> : (
-               
+        <Wrapper>
+            {!posts.length ? <ReactLoading className="loading" type="cubes" color={theme ? 'white': 'black'}/> : 
+            (  
             <div className="post-list">   
                 <Categories/>
                 <PostListItem posts={currentPosts(posts)}/>
                 <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={setCurrentPage}/>
             </div>
-        
             )}
-            </div>
+            </Wrapper>
     )
     
 }

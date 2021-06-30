@@ -43,13 +43,6 @@ export const GlobalStyles = createGlobalStyle`
     border-color: ${({ theme }) => theme.text};
   }
 
-
-  .post-list-item {
-    border-bottom:  1px solid;
-    border-color: ${({ theme }) => theme.text};
-  }
-
-
   pre {
         background-color: ${({ theme }) => theme.codeBlock};
         padding-left: 0.5rem;
