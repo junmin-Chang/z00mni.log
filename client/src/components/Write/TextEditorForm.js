@@ -30,7 +30,14 @@ const MyBlock = styled.div`
     border-radius: 2px !important;
   }
 `;
-
+const SpaceBlock = styled.div`
+  width: 100%;
+  height: 2px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1px;
+  background: #dee2e6;
+`;
 const TestEditorForm = ({ history }) => {
   const dispatch = useDispatch()
   const [content, setContent] = useState({
@@ -75,7 +82,7 @@ const getContent = (e) => {
           list: { inDropdown: true },
           textAlign: { inDropdown: true },
           link: { inDropdown: true },
-          history: { inDropdown: false },
+          history: { inDropdown: true },
         }} 
         placeholder="내용을 작성해주세요."
         // 한국어 설정
@@ -84,9 +91,11 @@ const getContent = (e) => {
         }}
         editorState={editorState}
         onEditorStateChange={onEditorStateChange}
+        
       />
-    
     </MyBlock>
+    <SpaceBlock/>
+
     <IntroduceContent dangerouslySetInnerHTML={{__html: editorToHtml}}/>
     
     <button className="btn btn-post"

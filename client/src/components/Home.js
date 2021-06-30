@@ -1,10 +1,27 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import styled, { keyframes } from 'styled-components'
+
+const rotate = keyframes`
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+`
+const Rotate = styled.div`
+    display: inline-block;
+    animation: ${rotate} 2s linear infinite;
+    padding: 1rem 1rem;
+    font-size: 1.5rem;
+`
 function Home() {
 
     return (
         <div className="container">
             <h1>장준민의 개발 일지</h1>
+            <Rotate>&lt;⚛️&gt;</Rotate>
             <h2>&lt;/Tech Stack&gt;</h2>
             <img alt="NodeJS" src="https://img.shields.io/badge/node.js-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
             <img alt="Express.js" src="https://img.shields.io/badge/express.js-%23404d59.svg?&style=for-the-badge"/>

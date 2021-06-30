@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { loginUser } from '../actions/authActions'
 import { withRouter } from 'react-router-dom'
-import './style/Login.css'
+import StyledLogin from './style/StyledLogin';
 function Login({ history }) {
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
@@ -37,19 +37,11 @@ function Login({ history }) {
         }
     })
     return (
-        <div className="container container-login">
-        <h1 className="login title-login">Zoomni.Dev</h1>
-        <h3 className="login">로그인 하기</h3>
-        <div className="container-form">
-            <form noValidate onSubmit={onSubmit}>
-                <input placeholder="이메일" className="input-login" type="email" value={email} name="email" onChange={onChange}/>
-                <input placeholder="비밀번호" className="input-login" type="password" value={password} name="password" onChange={onChange}/>
-                <button className="button-login" type="submit">로그인</button>
-            </form>
-        </div>
-       
-    </div>
-
+        <StyledLogin
+        email={email}
+        password={password}
+        onChange={onChange}
+        onSubmit={onSubmit}/>
     )
     
 }
