@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { writePost } from '../../actions/postActions'
 
-export const IntroduceContent = styled.div`
+export const PostContent = styled.div`
     position: relative;
     overflow: hidden;
     padding: 1rem;
@@ -96,7 +96,7 @@ const getContent = (e) => {
     </MyBlock>
     <SpaceBlock/>
 
-    <IntroduceContent dangerouslySetInnerHTML={{__html: editorToHtml}}/>
+    <PostContent dangerouslySetInnerHTML={{__html: editorToHtml}}/>
     
     <button className="btn btn-post"
             onClick={() => {

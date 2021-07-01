@@ -1,22 +1,20 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import Modal from './Modal/Modal';
-import './Modal/Modal.css'
-import { IntroduceContent } from './Write/TextEditorForm';
+import { PostContent } from './Write/TextEditorForm';
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { compose } from 'redux'
-import { deletePost, getPost, editPost } from '../actions/postActions'
+import { getPost } from '../actions/postActions'
 import ReactLoading from 'react-loading'
 import { withRouter } from 'react-router-dom'
-
+import renderDate from '../utils/renderDate'
+import { Wrapper } from './style/Wrapper'
+import ModalContent from './style/StyledModal';
 function Post({ match, history, auth, theme }) {
     const dispatch = useDispatch();
     const post = useSelector(state => state.posts)
-    const [postData, setPostData] = useState({
-        title: post.title,
-        tags: post.tags,
-        html: post.html
-    })
+    
     const [modalOpen, setModalOpen] = useState(false);
+   
 
     const openModal = () => {
         setModalOpen(true);
@@ -24,75 +22,36 @@ function Post({ match, history, auth, theme }) {
     const closeModal = () => {
         setModalOpen(false);
     }
-    const renderDate =  (dateString) => {
-        const date = new Date(dateString);
-        const monthName = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
-        return `${date.getFullYear()}년 ${monthName[date.getMonth()]} ${date.getDate()}일`;
-        
-    }
-
     const renderPost = () => {
         return (
         <>
             <div>
-                    <h1>{post.title}</h1>
-                    <h3>{renderDate(post.createdAt)}</h3>
-                </div>
-            <IntroduceContent style={{
+                <h1>{post.title}</h1>
+                <h3>{renderDate(post.createdAt)}</h3>
+            </div>
+            <PostContent style={{
                 marginTop:'2rem'
             }} dangerouslySetInnerHTML={{__html: post.html}}/>
         </>
         )
     }
-
     useEffect(() => {
         dispatch(getPost(match.params.id))
-    },[])
+    },[dispatch, match.params.id])
 
 
     return (
     <Fragment>
         <div>
              <Modal open={modalOpen} close={closeModal} header="관리자 모드">
-                <div>
-                    <input 
-                    className="edit-title" 
-                    name="title" 
-                    type="text" 
-                    value={postData.title} 
-                    onChange={(e) => setPostData({...postData, title: e.target.value})} 
-                    defaultValue={post.title}
-                    />
-
-                    <input 
-                    className="edit-tags" 
-                    name="tags" 
-                    type="text" 
-                    value={postData.tags} 
-                    onChange={(e) => setPostData({...postData, tags: e.target.value})}
-                     defaultValue={post.tags}
-                     />
-
-                    <textarea className="edit-html" name="html" type="text" value={postData.html} onChange={(e) => setPostData({...postData, html: e.target.value})} defaultValue={post.html}
-                    />
-                    <button 
-                    className="btn btn-admin-delete" 
-                    onClick={() => {
-                         dispatch(deletePost(match.params.id))
-                         history.push('/posts')
-                    }}>삭제</button>
-                    <button 
-                    className="btn btn-admin-delete" 
-                    onClick={() => {
-                        dispatch(editPost(match.params.id, postData))
-                        history.push('/posts')
-                    }}>수정</button>
-                </div>
+                <ModalContent history={history} match={match}
+                    postState={post}
+                /> 
             </Modal>   
         </div>
 
 
-        <div className="container">
+        <Wrapper>
             {auth.isAuthenticated ? (
                 <button className="btn btn-delete" onClick={openModal}>관리자 메뉴</button>
             ) : (
@@ -105,7 +64,7 @@ function Post({ match, history, auth, theme }) {
                 ) : renderPost()}
             </div>
             
-        </div>
+        </Wrapper>
     </Fragment>
     )
     

@@ -11,6 +11,7 @@ export const Tag = styled.span`
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
+    margin-bottom: 0.5rem;
 `
 const TagAll = styled(Tag)`
     background-color: royalblue;
