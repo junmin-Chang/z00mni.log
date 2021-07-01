@@ -7,6 +7,7 @@ import Categories from './Categories';
 import { useSelector ,  useDispatch } from 'react-redux'
 import { getPosts } from '../actions/postActions'
 import { Wrapper } from './style/Wrapper';
+import Skeleton , { SkeletonTheme }from 'react-loading-skeleton'
 function PostList({ theme }) {
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -29,8 +30,14 @@ function PostList({ theme }) {
     
     return (
         <Wrapper>
-            {!posts.length ? <ReactLoading className="loading" type="cubes" color={theme ? 'white': 'black'}/> : 
-            (  
+            {!posts.length ? 
+            <SkeletonTheme color={theme ? '#202020' : '#fff'}
+                highlightColor={theme ? '#444' : '#ddd'}
+            >
+                <Skeleton count={10} style={{lineHeight: '4rem', marginTop: '2rem'}}/> 
+            </SkeletonTheme>
+
+            : (  
             <div className="post-list">   
                 <Categories/>
                 <PostListItem posts={currentPosts(posts)}/>
