@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom'
 import renderDate from '../utils/renderDate'
 import { Wrapper } from './style/Wrapper'
 import ModalContent from './style/StyledModal';
-import {ContentSkeleton} from './style/Skeleton';
+import { ContentSkeleton } from './style/Skeleton';
 function Post({ match, history, auth, theme }) {
     const dispatch = useDispatch();
     const post = useSelector(state => state.posts)
@@ -61,7 +61,7 @@ function Post({ match, history, auth, theme }) {
 
                 {!post.title ? (
                     // <ReactLoading className="loading" type="cubes" color={theme ? 'white': 'black'}/>
-                        <ContentSkeleton/>
+                    <ContentSkeleton theme={theme}/>
                 ) : renderPost()}
             </div>
             

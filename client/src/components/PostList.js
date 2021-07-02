@@ -30,7 +30,7 @@ function PostList({ theme }) {
     return (
         <Wrapper>
             {!posts.length ? 
-                <ListSkeleton/>
+                <ListSkeleton theme={theme}/>
             : (  
             <div className="post-list">   
                 <Categories/>
