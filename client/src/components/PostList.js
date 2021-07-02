@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import PostListItem from './PostListItem';
 import Pagination from './Pagination/Pagination'
-import ReactLoading from 'react-loading';
 import { withRouter } from 'react-router-dom';
 import Categories from './Categories';
 import { useSelector ,  useDispatch } from 'react-redux'
 import { getPosts } from '../actions/postActions'
 import { Wrapper } from './style/Wrapper';
-import Skeleton , { SkeletonTheme }from 'react-loading-skeleton'
+import { ListSkeleton } from './style/Skeleton';
 function PostList({ theme }) {
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -31,12 +30,7 @@ function PostList({ theme }) {
     return (
         <Wrapper>
             {!posts.length ? 
-            <SkeletonTheme color={theme ? '#656871' : '#eee'}
-                highlightColor={theme ? '#888b94' : '#f5f5f5'}
-            >
-                <Skeleton count={10} style={{lineHeight: '4rem', marginTop: '2rem'}}/> 
-            </SkeletonTheme>
-
+                <ListSkeleton/>
             : (  
             <div className="post-list">   
                 <Categories/>
