@@ -31,8 +31,8 @@ function PostList({ theme }) {
     return (
         <Wrapper>
             {!posts.length ? 
-            <SkeletonTheme color={theme ? '#202020' : '#fff'}
-                highlightColor={theme ? '#444' : '#ddd'}
+            <SkeletonTheme color={theme ? '#656871' : '#eee'}
+                highlightColor={theme ? '#888b94' : '#f5f5f5'}
             >
                 <Skeleton count={10} style={{lineHeight: '4rem', marginTop: '2rem'}}/> 
             </SkeletonTheme>

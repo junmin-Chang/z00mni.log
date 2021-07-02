@@ -4,11 +4,11 @@ import { PostContent } from './Write/TextEditorForm';
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { compose } from 'redux'
 import { getPost } from '../actions/postActions'
-import ReactLoading from 'react-loading'
 import { withRouter } from 'react-router-dom'
 import renderDate from '../utils/renderDate'
 import { Wrapper } from './style/Wrapper'
 import ModalContent from './style/StyledModal';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 function Post({ match, history, auth, theme }) {
     const dispatch = useDispatch();
     const post = useSelector(state => state.posts)
@@ -60,7 +60,14 @@ function Post({ match, history, auth, theme }) {
             <div>
 
                 {!post.title ? (
-                    <ReactLoading className="loading" type="cubes" color={theme ? 'white': 'black'}/>
+                    // <ReactLoading className="loading" type="cubes" color={theme ? 'white': 'black'}/>
+                    <SkeletonTheme color={theme ? '#656871' : '#eee'} highlightColor={theme ? '#888b94' : 'f5f5f5'}>
+                        <Skeleton style={{lineHeight: '3rem' , marginTop: '2rem'}}/>
+                        <Skeleton style={{marginTop: '1rem'}}/>
+                        <div style={{marginTop: '4rem'}}>
+                            <Skeleton height={'30rem'}/>                   
+                        </div>
+                    </SkeletonTheme>
                 ) : renderPost()}
             </div>
             
