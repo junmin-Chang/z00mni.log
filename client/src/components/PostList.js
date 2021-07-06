@@ -7,6 +7,7 @@ import { useSelector ,  useDispatch } from 'react-redux'
 import { getPosts } from '../actions/postActions'
 import { Wrapper } from './style/Wrapper';
 import { ListSkeleton } from './style/Skeleton';
+import Search from './Search'
 function PostList({ theme }) {
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -24,7 +25,7 @@ function PostList({ theme }) {
 
     useEffect(() => {
         dispatch(getPosts());
-    }, [dispatch])
+    }, [])
 
     
     return (
@@ -33,6 +34,7 @@ function PostList({ theme }) {
                 <ListSkeleton theme={theme}/>
             : (  
             <div className="post-list">   
+                <Search/>
                 <Categories/>
                 <PostListItem posts={currentPosts(posts)}/>
                 <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={setCurrentPage}/>

@@ -21,6 +21,23 @@ export const getPosts = () => async (dispatch) => {
         console.log(err);
     }
 }
+export const getPostsByTitle = (title) => async (dispatch) => {
+    try {
+        const res = await axios.get(`${process.env.REACT_APP_API}/posts`);
+        const sortedByTitle = res.data.filter((post) => {
+            return post.title.toLowerCase().includes(title)
+        })
+       
+        dispatch({
+            type: GET_POSTS,
+            payload: sortedByTitle
+        })
+
+        
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 export const getPostsByTag = (tag) => async (dispatch) => {
     try {
