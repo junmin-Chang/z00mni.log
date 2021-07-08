@@ -27,13 +27,10 @@ export const getPostsByTitle = (title) => async (dispatch) => {
         const sortedByTitle = res.data.filter((post) => {
             return post.title.toLowerCase().includes(title)
         })
-       
         dispatch({
             type: GET_POSTS,
             payload: sortedByTitle
         })
-
-        
     } catch (err) {
         console.log(err)
     }
@@ -42,7 +39,7 @@ export const getPostsByTitle = (title) => async (dispatch) => {
 export const getPostsByTag = (tag) => async (dispatch) => {
     try {
         const res = await axios.get(`${process.env.REACT_APP_API}/posts`);
-        const sortedByTag = res.data.filter((post) => post.tags[0] === tag);
+        const sortedByTag = res.data.filter((post) => post.tags.includes(tag));
         const sorted = sortedByTag.sort(function(a,b) {
             return new Date(b.createdAt) - new Date(a.createdAt)
         })

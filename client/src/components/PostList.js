@@ -30,11 +30,12 @@ function PostList({ theme }) {
     
     return (
         <Wrapper>
+            <Search/>
+
             {!posts.length ? 
                 <ListSkeleton theme={theme}/>
             : (  
             <div className="post-list">   
-                <Search/>
                 <Categories/>
                 <PostListItem posts={currentPosts(posts)}/>
                 <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={setCurrentPage}/>

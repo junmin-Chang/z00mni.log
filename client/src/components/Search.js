@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { getPostsByTitle } from '../actions/postActions';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
 const Positioner = styled.div`
     max-width: 800px;
     margin: 20px auto 0 auto;
@@ -21,6 +22,7 @@ const Input = styled.input`
 
 function Search() {
     const dispatch = useDispatch()
+    const posts = useSelector(state => state.posts)
     const [keyword, setKeyword] = useState("")
     const onChange = (e) => {
         setKeyword(e.target.value)
@@ -28,11 +30,10 @@ function Search() {
     }
     return (
         <Positioner>
-          <Input type="text" value={keyword} onChange={onChange} name="keyword" placeholder="검색"
+          <Input type="text" value={keyword} onChange={onChange} name="keyword" placeholder="입력 후 ENTER"
                   onKeyPress={() => {
                       dispatch(getPostsByTitle(keyword))
-                  }}
-                />
+                  }}/>
             
                 
         </Positioner>
