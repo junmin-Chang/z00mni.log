@@ -25,6 +25,7 @@ function Categories() {
         <Tag onClick={() => dispatch(getPostsByTag("React"))}>#React</Tag>
         <Tag onClick={() => dispatch(getPostsByTag("Redux"))}>#Redux</Tag>
         <Tag onClick={() => dispatch(getPostsByTag("GraphQL"))}>#GraphQL</Tag>
+        <Tag onClick={() => dispatch(getPostsByTag("Apollo"))}>#Apollo</Tag>
         <Tag onClick={() => dispatch(getPostsByTag("NodeJS"))}>#NodeJS</Tag>
         <Tag onClick={() => dispatch(getPostsByTag("삽질"))}>#삽질</Tag>
     </div>
