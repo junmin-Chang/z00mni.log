@@ -34,9 +34,6 @@ function Navbar({ onThemeToggled, theme }) {
                     )}   
             </nav>
         )
-    
-   
-    
 }
 
 export default withRouter(Navbar)

@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Switch , Route } from 'react-router-dom';
+import { Switch , Route } from 'react-router-dom';
 // pages
 import Home from './components/Home';
 import Post from './components/Post';
 import PostList from './components/PostList';
 import RegisterPage from './components/RegisterPage'
 import Login from './components/Login';
-
 // styles
 import './style.css'
-
 // components
 import Navbar from './components/Navbar';
 import Write from './components/Write/Write';
@@ -21,6 +19,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet'
 
 
 const App = () => {
@@ -62,10 +61,12 @@ const App = () => {
  
     
     return (
-
+        <>
+        <Helmet>
+            <title>Zoomni.Dev</title>
+        </Helmet>
         <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
             <GlobalStyles/>
-            <BrowserRouter>
                 <Navbar onThemeToggled={toggleTheme} theme={theme}/>
                 <ToastContainer/>
                 <Switch>
@@ -76,9 +77,8 @@ const App = () => {
                     <Route path="/login" component={Login}/>
                     <Route path="/register" component={RegisterPage}/>
                 </Switch>
-            </BrowserRouter>
             </ThemeProvider>
-       
+       </>
 
     )
 }

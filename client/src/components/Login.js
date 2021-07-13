@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { loginUser } from '../actions/authActions'
 import { withRouter } from 'react-router-dom'
 import StyledLogin from './style/StyledLogin';
+import { Helmet } from 'react-helmet'
 function Login({ history }) {
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
@@ -37,11 +38,16 @@ function Login({ history }) {
         }
     })
     return (
-        <StyledLogin
-        email={email}
-        password={password}
-        onChange={onChange}
-        onSubmit={onSubmit}/>
+        <>
+            <Helmet>
+                <title>로그인</title>
+            </Helmet>
+            <StyledLogin
+            email={email}
+            password={password}
+            onChange={onChange}
+            onSubmit={onSubmit}/>
+        </>
     )
     
 }

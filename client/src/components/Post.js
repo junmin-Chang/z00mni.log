@@ -9,6 +9,7 @@ import renderDate from '../utils/renderDate'
 import { Wrapper } from './style/Wrapper'
 import ModalContent from './style/StyledModal';
 import { ContentSkeleton } from './style/Skeleton';
+import { Helmet } from 'react-helmet'
 function Post({ match, history, auth, theme }) {
     const dispatch = useDispatch();
     const post = useSelector(state => state.posts)
@@ -25,6 +26,9 @@ function Post({ match, history, auth, theme }) {
     const renderPost = () => {
         return (
         <>
+            <Helmet>
+                <title>{post.title}</title>
+            </Helmet>
             <div>
                 <h1>{post.title}</h1>
                 <h3>{renderDate(post.createdAt)}</h3>
