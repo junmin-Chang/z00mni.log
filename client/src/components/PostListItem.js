@@ -8,8 +8,10 @@ const StyledLink = styled(Link)`
     display: block;
     padding-top: 1rem;
     text-align: left;
-    border-bottom:  1px solid;
-    border-color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.postItem};
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 1rem;
     &:hover {
         color: #2ec4ff;
     }
