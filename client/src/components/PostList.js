@@ -15,9 +15,8 @@ function PostList({ theme }) {
     const [postsPerPage, setPostsPerPage] = useState(10);
     const lastIndex = currentPage * postsPerPage;
     const firstIndex = lastIndex - postsPerPage;
-    const posts = useSelector(state => state.posts);
+    let posts = useSelector(state => state.posts);
     const dispatch = useDispatch();   
-
     const currentPosts = (tmp) => {
         let currentPosts = 0;
         currentPosts = tmp.slice(firstIndex, lastIndex);
@@ -28,7 +27,6 @@ function PostList({ theme }) {
         dispatch(getPosts());
     }, [])
 
-    
     return (
         <>
             <Helmet>

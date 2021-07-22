@@ -28,6 +28,8 @@ function Categories() {
         <Tag onClick={() => dispatch(getPostsByTag("Apollo"))}>#Apollo</Tag>
         <Tag onClick={() => dispatch(getPostsByTag("NodeJS"))}>#NodeJS</Tag>
         <Tag onClick={() => dispatch(getPostsByTag("삽질"))}>#삽질</Tag>
+        <Tag onClick={() => dispatch(getPostsByTag("생각"))}>#생각</Tag>
+
     </div>
 
     )

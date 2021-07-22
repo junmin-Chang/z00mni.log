@@ -5,6 +5,7 @@ export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
 // post
 export const GET_POSTS = "GET_POSTS"
+export const GET_POSTS_TAG = "GET_POSTS_TAG"
 export const GET_POST = "GET_POST"
 export const WRITE_POST = "WRITE_POST"
 export const DELETE_POST = "DELETE_POST"

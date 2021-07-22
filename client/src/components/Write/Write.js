@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TextEditorForm from './TextEditorForm'
 import { Helmet } from 'react-helmet'
-function Write() {
-   
+import { useSelector } from 'react-redux'
+function Write({ history }) {
+    let { isAuthenticated } = useSelector(state => state.auth)
+   useEffect(() => {
+       if (!isAuthenticated) {
+            history.push('/login')
+       }
+   },[isAuthenticated])
+
     return (
         <>
             <Helmet>

@@ -4,7 +4,6 @@ import { Switch , Route } from 'react-router-dom';
 import Home from './components/Home';
 import Post from './components/Post';
 import PostList from './components/PostList';
-import RegisterPage from './components/RegisterPage'
 import Login from './components/Login';
 // styles
 import './style.css'
@@ -75,7 +74,6 @@ const App = () => {
                     <Route path='/posts' render={() => <PostList theme={theme}/>}/>
                     <Route path='/write' component={Write}/>
                     <Route path="/login" component={Login}/>
-                    <Route path="/register" component={RegisterPage}/>
                 </Switch>
             </ThemeProvider>
        </>

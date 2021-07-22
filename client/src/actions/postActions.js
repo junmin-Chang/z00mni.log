@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_POSTS, GET_POST, WRITE_POST, EDIT_POST, DELETE_POST }
+import { GET_POSTS, GET_POST, WRITE_POST, EDIT_POST, DELETE_POST,GET_POSTS_TAG }
 from './types'
 require('dotenv').config()
 
@@ -50,6 +50,8 @@ export const getPostsByTag = (tag) => async (dispatch) => {
     } catch (err) {
         console.log(err)
     }
+ 
+    
 }
 
 export const getPost = (id) => async (dispatch) => {
