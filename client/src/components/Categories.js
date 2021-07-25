@@ -23,6 +23,7 @@ function Categories() {
         <h3>#카테고리</h3>
         <TagAll onClick={() => dispatch(getPosts())}>전체</TagAll>
         <Tag onClick={() => dispatch(getPostsByTag("React"))}>#React</Tag>
+        <Tag onClick={() => dispatch(getPostsByTag("NextJS"))}>#NextJS</Tag>
         <Tag onClick={() => dispatch(getPostsByTag("Redux"))}>#Redux</Tag>
         <Tag onClick={() => dispatch(getPostsByTag("GraphQL"))}>#GraphQL</Tag>
         <Tag onClick={() => dispatch(getPostsByTag("Apollo"))}>#Apollo</Tag>
