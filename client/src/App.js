@@ -63,8 +63,10 @@ const App = () => {
         <>
         <Helmet>
             <title>Zoomni.Dev</title>
+            <meta name="description" content="풀스택을 향하여"/>
             <meta property="og:title" content="장준민의 개발 블로그"/>
             <meta property="og:description" content="풀스택을 향하여"/>
+
         </Helmet>
         <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
             <GlobalStyles/>
