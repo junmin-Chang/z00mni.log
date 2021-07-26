@@ -1,1 +1,3 @@
+User-agent: *
+Allow: /
 Sitemap: https://z00mni.com/sitemap.xml
