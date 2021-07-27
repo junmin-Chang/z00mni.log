@@ -21,7 +21,9 @@ function Home() {
     return (
         <div className="container">
             <h1>장준민의 개발 일지</h1>
-            <Rotate>&lt;⚛️&gt;</Rotate>
+            <Rotate style={{
+                fontSize: '3rem'
+            }}>⚛️</Rotate>
             <h2>&lt;/Tech Stack&gt;</h2>
             
             <img alt="NodeJS" src="https://img.shields.io/badge/node.js-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
@@ -45,7 +47,9 @@ function Home() {
             <hr/>
             <h3>Full stack을 향하여</h3>
             <ul style={{
-                marginTop: '2rem'
+                marginTop: '2rem',
+                fontWeight: 100
+                
             }}>
                 <li>2001/02/19</li>
                 <li>이름: 장준민</li>

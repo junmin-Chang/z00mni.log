@@ -30,7 +30,9 @@ function Post({ match, history, auth, theme }) {
                 <title>{post.title}</title>
             </Helmet>
             <div>
-                <h1>{post.title}</h1>
+                <h1 style={{
+                    fontStyle: 'bold'
+                }}>{post.title}</h1>
                 <h3>{renderDate(post.createdAt)}</h3>
             </div>
             <PostContent style={{

@@ -15,7 +15,8 @@ export const PostContent = styled.div`
     width: 100%;
     margin: 0 auto;
     margin-bottom: 4rem;
-    border-top: 2px solid #777272
+    border-top: 2px solid #777272;
+    font-weight: 300
 `
 const MyBlock = styled.div`
     .wrapper-class{
