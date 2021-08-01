@@ -33,7 +33,6 @@ function PostList({ theme }) {
                 <title>포스트 목록</title>
             </Helmet>
             <Wrapper>
-                <Search/>
 
                 {!posts.length ? 
                     <ListSkeleton theme={theme}/>
