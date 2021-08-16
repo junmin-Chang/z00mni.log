@@ -1,8 +1,6 @@
-import { borderRadius } from '@material-ui/system';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components'
-import Me from '../image/me.jpg'
 const rotate = keyframes`
     from {
         transform: rotate(0deg)
