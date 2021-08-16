@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import Modal from './Modal/Modal';
-import { PostContent } from './Write/TextEditorForm';
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { compose } from 'redux'
 import { getPost } from '../actions/postActions'
@@ -10,7 +9,6 @@ import { Wrapper } from './style/Wrapper'
 import ModalContent from './style/StyledModal';
 import { ContentSkeleton } from './style/Skeleton';
 import { Helmet } from 'react-helmet'
-import ReactMarkdown from "react-markdown";
 import MDEditor from "@uiw/react-md-editor";
 function Post({ match, history, auth, theme }) {
     const dispatch = useDispatch();
