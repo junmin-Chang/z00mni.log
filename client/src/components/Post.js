@@ -10,6 +10,8 @@ import { Wrapper } from './style/Wrapper'
 import ModalContent from './style/StyledModal';
 import { ContentSkeleton } from './style/Skeleton';
 import { Helmet } from 'react-helmet'
+import ReactMarkdown from "react-markdown";
+import MDEditor from "@uiw/react-md-editor";
 function Post({ match, history, auth, theme }) {
     const dispatch = useDispatch();
     const post = useSelector(state => state.posts)
@@ -35,9 +37,7 @@ function Post({ match, history, auth, theme }) {
                 }}>{post.title}</h1>
                 <h3>{renderDate(post.createdAt)}</h3>
             </div>
-            <PostContent style={{
-                marginTop:'2rem'
-            }} dangerouslySetInnerHTML={{__html: post.html}}/>
+            <MDEditor.Markdown source={post.html}/>
         </>
         )
     }

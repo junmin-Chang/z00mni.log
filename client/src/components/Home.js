@@ -25,19 +25,7 @@ function Home() {
             <Rotate style={{
                 fontSize: '3rem'
             }}>⚛️</Rotate>
-            <div>    
-                        <h4>
-                             알고리즘 & 자료구조 블로그(below)
-                        </h4>
-                        <a href="https://lecture-note.vercel.app/" target="blank">
-                    <img src={Me} alt="img" style={{
-                        width: '50px',
-                        height: '50px',
-                        borderRadius: '100%',
-                    }}/>
-                    
-                </a>   
-            </div>
+
             <h2>&lt;/Tech Stack&gt;</h2>
             
             <img alt="NodeJS" src="https://img.shields.io/badge/node.js-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>

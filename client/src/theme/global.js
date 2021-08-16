@@ -48,6 +48,7 @@ export const GlobalStyles = createGlobalStyle`
         background-color: ${({ theme }) => theme.codeBlock};
         padding-left: 0.5rem;
         padding-right: 0.5rem;
+        color: #264368;
       }
 
   .tag-wrapper {

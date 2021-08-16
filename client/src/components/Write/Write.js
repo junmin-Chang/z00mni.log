@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import TextEditorForm from './TextEditorForm'
 import { Helmet } from 'react-helmet'
 import { useSelector } from 'react-redux'
+import {MarkdownEditor} from "./MarkdownEditor";
 function Write({ history }) {
     let { isAuthenticated } = useSelector(state => state.auth)
    useEffect(() => {
@@ -17,7 +18,8 @@ function Write({ history }) {
             </Helmet>
             <div className="container">
                 <h1>글 작성</h1>
-                <TextEditorForm/>
+                {/*<TextEditorForm/>*/}
+                <MarkdownEditor/>
             
             </div>
         </>
