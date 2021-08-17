@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, useRef } from 'react';
 import Modal from './Modal/Modal';
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { compose } from 'redux'
@@ -13,8 +13,28 @@ import MDEditor from "@uiw/react-md-editor";
 function Post({ match, history, auth, theme }) {
     const dispatch = useDispatch();
     const post = useSelector(state => state.posts)
+    const commentRef = useRef()
     
     const [modalOpen, setModalOpen] = useState(false);
+
+    useEffect(() => {
+        dispatch(getPost(match.params.id))
+        const scriptEl =  document.createElement("script")
+        const utteranceConfig = {
+            src: "https://utteranc.es/client.js",
+            repo: "junmin-Chang/z00mni.log",
+            theme: theme ? "photon-dark" : "github-light",
+            async: 'true',
+            crossorigin: "anonymous",
+            label: "✨💬 comments ✨",
+            "issue-term": "pathname"
+        }
+
+        Object.entries(utteranceConfig).forEach(([key, value]) =>  {
+            scriptEl.setAttribute(key, value)
+        })
+        commentRef.current.appendChild(scriptEl)
+    },[])
    
 
     const openModal = () => {
@@ -26,9 +46,6 @@ function Post({ match, history, auth, theme }) {
     const renderPost = () => {
         return (
         <>
-            <Helmet>
-                <title>{post.title}</title>
-            </Helmet>
             <div>
                 <h1 style={{
                     fontStyle: 'bold'
@@ -36,16 +53,16 @@ function Post({ match, history, auth, theme }) {
                 <h3>{renderDate(post.createdAt)}</h3>
             </div>
             <MDEditor.Markdown source={post.html}/>
+
         </>
         )
     }
-    useEffect(() => {
-        dispatch(getPost(match.params.id))
-    },[dispatch, match.params.id])
-
 
     return (
     <Fragment>
+        <Helmet>
+            <title>{post.title}</title>
+        </Helmet>
         <div>
              <Modal open={modalOpen} close={closeModal} header="관리자 모드">
                 <ModalContent history={history} match={match}
@@ -53,7 +70,6 @@ function Post({ match, history, auth, theme }) {
                 /> 
             </Modal>   
         </div>
-
 
         <Wrapper>
             {auth.isAuthenticated ? (
@@ -67,6 +83,9 @@ function Post({ match, history, auth, theme }) {
                     // <ReactLoading className="loading" type="cubes" color={theme ? 'white': 'black'}/>
                     <ContentSkeleton theme={theme}/>
                 ) : renderPost()}
+            </div>
+            <div ref={commentRef}>
+
             </div>
             
         </Wrapper>

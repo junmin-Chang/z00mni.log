@@ -7,7 +7,6 @@ import { useSelector ,  useDispatch } from 'react-redux'
 import { getPosts } from '../actions/postActions'
 import { Wrapper } from './style/Wrapper';
 import { ListSkeleton } from './style/Skeleton';
-import Search from './Search'
 import { Helmet } from 'react-helmet'
 function PostList({ theme }) {
 
