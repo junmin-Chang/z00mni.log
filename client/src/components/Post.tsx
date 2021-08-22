@@ -96,8 +96,6 @@ const Post : React.FC<any> = ({match, history, theme }) => {
     
 }
 
-// const mapStateToProps = (state: { auth: any; }) => ({
-//     auth: state.auth,
-// });
+
 
 export default withRouter(Post)

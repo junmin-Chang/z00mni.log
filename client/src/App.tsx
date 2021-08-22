@@ -29,7 +29,7 @@ interface AppProps {
 }
 
 const App: React.FC<AppProps> = () => {
-    const auth = useSelector(state => state.auth)
+    const auth : any = useSelector(state => state.auth)
     // false? light : dark
     const [theme, setTheme] = useState<boolean>(false);
     const toggleTheme = () => {
