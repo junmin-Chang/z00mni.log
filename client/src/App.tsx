@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Switch, Route, RouteComponentProps} from 'react-router-dom';
+import {Switch, Route } from 'react-router-dom';
 // pages
 import Home from './components/Home';
 import Post from './components/Post';
@@ -17,20 +17,14 @@ import { GlobalStyles } from './theme/global'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet'
+import {useSelector} from "react-redux";
 
-interface AppProps {
-    match: RouteComponentProps
-    location: RouteComponentProps
-    history: RouteComponentProps
-    theme: any
-    auth: any
-}
+
 
 const App: React.FC<any> = () => {
-    const auth : any = useSelector(state => state.auth)
     // false? light : dark
+    const { isAuthenticated } : any = useSelector(state => state.auth)
     const [theme, setTheme] = useState<boolean>(false);
     const toggleTheme = () => {
         if (!theme) {
@@ -41,7 +35,7 @@ const App: React.FC<any> = () => {
     }
     useEffect(() => {
     
-        if (auth.isAuthenticated) {
+        if (isAuthenticated) {
             toast.success('로그인 성공! 🥰', {
                 position: "top-center",
                 autoClose: 2000,
@@ -63,7 +57,7 @@ const App: React.FC<any> = () => {
       
                 })
         }
-    }, [auth.isAuthenticated])
+    }, [isAuthenticated])
  
     
     return (
@@ -91,7 +85,5 @@ const App: React.FC<any> = () => {
 
     )
 }
-
-
 
 export default App;
