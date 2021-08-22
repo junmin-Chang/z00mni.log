@@ -8,16 +8,18 @@ import { getPosts } from '../actions/postActions'
 import { Wrapper } from './style/Wrapper';
 import { ListSkeleton } from './style/Skeleton';
 import { Helmet } from 'react-helmet'
-function PostList({ theme }) {
+
+
+const PostList: React.FC<any> = ({ theme }) => {
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(10);
+    const [postsPerPage] = useState(10);
     const lastIndex = currentPage * postsPerPage;
     const firstIndex = lastIndex - postsPerPage;
     let posts = useSelector(state => state.posts);
     const dispatch = useDispatch();   
-    const currentPosts = (tmp) => {
-        let currentPosts = 0;
+    const currentPosts = (tmp : object[]) => {
+        let currentPosts = [];
         currentPosts = tmp.slice(firstIndex, lastIndex);
         return currentPosts;
     }

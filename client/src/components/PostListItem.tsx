@@ -17,9 +17,10 @@ const StyledLink = styled(Link)`
     }
 `
 
-function PostListItem({ posts }) {
+
+function PostListItem({ posts } : any) {
     return (  
-        posts.map((post) => (
+        posts.map((post : any) => (
             <StyledLink to={`/posts/${post._id}`} key={post._id}>
                 <Content post={post}/>
             </StyledLink> 

@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet'
 import { useSelector } from 'react-redux'
 import {MarkdownEditor} from "./MarkdownEditor";
-function Write({ history }) {
+import {RouteComponentProps} from "react-router-dom";
+function Write({ history, location, match } : RouteComponentProps) {
     let { isAuthenticated } = useSelector(state => state.auth)
    useEffect(() => {
        if (!isAuthenticated) {
@@ -17,8 +18,7 @@ function Write({ history }) {
             </Helmet>
             <div className="container">
                 <h1>글 작성</h1>
-                {/*<TextEditorForm/>*/}
-                <MarkdownEditor/>
+                <MarkdownEditor history={history} location={location} match={match}/>
             
             </div>
         </>

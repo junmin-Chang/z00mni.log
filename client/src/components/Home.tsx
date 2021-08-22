@@ -45,7 +45,7 @@ function Home() {
             </div>
             
             <hr/>
-            <h3>Full stack을 향하여</h3>
+            <h3>Full stack 을 향하여</h3>
             <ul style={{
                 marginTop: '2rem',
                 fontWeight: 100

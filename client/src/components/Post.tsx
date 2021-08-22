@@ -1,19 +1,21 @@
-import React, { Fragment, useEffect, useState, useRef } from 'react';
+import React, {Fragment, useEffect, useState, useRef,  MutableRefObject} from 'react';
 import Modal from './Modal/Modal';
-import { connect, useDispatch, useSelector } from 'react-redux'
-import { compose } from 'redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getPost } from '../actions/postActions'
-import { withRouter } from 'react-router-dom'
+import { withRouter} from 'react-router-dom'
 import renderDate from '../utils/renderDate'
 import { Wrapper } from './style/Wrapper'
 import ModalContent from './style/StyledModal';
 import { ContentSkeleton } from './style/Skeleton';
 import { Helmet } from 'react-helmet'
 import MDEditor from "@uiw/react-md-editor";
-function Post({ match, history, auth, theme }) {
+
+
+const Post : React.FC<any> = ({match, history, theme }) => {
     const dispatch = useDispatch();
     const post = useSelector(state => state.posts)
-    const commentRef = useRef()
+    const auth = useSelector(state => state.auth)
+    const commentRef = useRef() as MutableRefObject<HTMLDivElement>
     
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -72,15 +74,15 @@ function Post({ match, history, auth, theme }) {
         </div>
 
         <Wrapper>
-            {auth.isAuthenticated ? (
+            {auth.isAuthenticated ?
+                (
                 <button className="btn btn-delete" onClick={openModal}>관리자 메뉴</button>
-            ) : (
-                null
-            )}
+            )
+                : null
+            }
             <div>
 
                 {!post.title ? (
-                    // <ReactLoading className="loading" type="cubes" color={theme ? 'white': 'black'}/>
                     <ContentSkeleton theme={theme}/>
                 ) : renderPost()}
             </div>
@@ -94,11 +96,8 @@ function Post({ match, history, auth, theme }) {
     
 }
 
-const mapStateToProps = state => ({
-    auth: state.auth,
-});
+// const mapStateToProps = (state: { auth: any; }) => ({
+//     auth: state.auth,
+// });
 
-export default compose(
-    withRouter,
-    connect(mapStateToProps)
-  )(Post);
+export default withRouter(Post)

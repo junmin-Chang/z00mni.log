@@ -2,14 +2,15 @@ import React, { useState } from 'react'
 import MDEditor from '@uiw/react-md-editor'
 import {useDispatch} from "react-redux";
 import {writePost} from "../../actions/postActions";
-export const MarkdownEditor = ({ history }) => {
+import {RouteComponentProps} from "react-router-dom";
+export const MarkdownEditor = ({ history } : RouteComponentProps) => {
     const dispatch = useDispatch()
     const [content, setContent] = useState({
         title: "",
         tags: "",
     });
-    const [markdown, setMarkdown] = useState("")
-    const getContent = (e) => {
+    const [markdown, setMarkdown] = useState<string | undefined>("")
+    const getContent = (e : any) => {
         const { name, value } = e.target
 
         setContent({

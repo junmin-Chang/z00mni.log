@@ -22,9 +22,8 @@ const Input = styled.input`
 
 function Search() {
     const dispatch = useDispatch()
-    const posts = useSelector(state => state.posts)
     const [keyword, setKeyword] = useState("")
-    const onChange = (e) => {
+    const onChange = (e : any) => {
         setKeyword(e.target.value)
         console.log(keyword)
     }

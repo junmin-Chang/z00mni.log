@@ -1,5 +1,5 @@
 import React from 'react';
-function PostMenu({ onClick }) {
+function PostMenu({ onClick } : any) {
 
     return (
             <div className="post-menu">

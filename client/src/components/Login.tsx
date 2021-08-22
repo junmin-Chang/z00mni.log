@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { loginUser } from '../actions/authActions'
-import { withRouter } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import {Wrapper} from "./style/Wrapper";
@@ -41,13 +41,18 @@ const Button = styled(Wrapper)`
     margin-top: 0.5em;
 `
 
-const Text = styled.h1`
+const Text = styled.h1<{size?: string}>`
     text-align: center;
-    font-size : ${props => props.size} ;
+    font-size : ${props => props.size };
     font-style: bold;
 `
-
-function StyledLogin({ email, password, onChange, onSubmit })  {
+interface Props {
+    email: string
+    password: string
+    onChange : any
+    onSubmit : any
+}
+function StyledLogin({ email, password, onChange, onSubmit }: Props)  {
     return (
         <>
             <Wrapper>
@@ -64,7 +69,7 @@ function StyledLogin({ email, password, onChange, onSubmit })  {
 }
 
 
-function Login({ history }) {
+const Login : React.FC<RouteComponentProps> = ({history}) => {
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const [loginInfo, setLoginInfo] = useState({
@@ -73,7 +78,7 @@ function Login({ history }) {
     })
     const { email, password } = loginInfo;
 
-    const onChange = (e) => {
+    const onChange = (e : any) => {
         const { name, value } = e.target;
         setLoginInfo({
             ...loginInfo,
@@ -82,7 +87,7 @@ function Login({ history }) {
         console.log(email);
         console.log(password)
     }
-    const onSubmit = (e) => {
+    const onSubmit = (e : any) => {
         e.preventDefault();
         const userData = {
             email: email,
@@ -94,7 +99,7 @@ function Login({ history }) {
     }
     useEffect(() => {
         if (auth.isAuthenticated) {
-            history.push('/');
+            history?.push('/');
         }
     })
     return (

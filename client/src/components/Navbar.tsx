@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../actions/authActions' 
 import { LoggedInStyledNav, LoggedOutStyledNav } from './style/StyledNav';
 
-function Navbar({ onThemeToggled, theme }) {
+
+const Navbar : React.FC<any> = ({ onThemeToggled, theme }) => {
         const dispatch = useDispatch();
         let { isAuthenticated } = useSelector(state => state.auth);
         const [isAuth, setIsAuth] = useState(isAuthenticated)
