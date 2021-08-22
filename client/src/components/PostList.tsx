@@ -16,7 +16,7 @@ const PostList: React.FC<any> = ({ theme }) => {
     const [postsPerPage] = useState(10);
     const lastIndex = currentPage * postsPerPage;
     const firstIndex = lastIndex - postsPerPage;
-    let posts = useSelector(state => state.posts);
+    let posts : any = useSelector<any>(state => state.posts);
     const dispatch = useDispatch();   
     const currentPosts = (tmp : object[]) => {
         let currentPosts = [];

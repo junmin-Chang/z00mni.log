@@ -7,7 +7,7 @@ import { LoggedInStyledNav, LoggedOutStyledNav } from './style/StyledNav';
 
 const Navbar : React.FC<any> = ({ onThemeToggled, theme }) => {
         const dispatch = useDispatch();
-        let { isAuthenticated } = useSelector(state => state.auth);
+        let { isAuthenticated } : any = useSelector<any>(state => state.auth);
         const [isAuth, setIsAuth] = useState(isAuthenticated)
         useEffect(() => {
             if (localStorage.getItem("jwtToken")) {

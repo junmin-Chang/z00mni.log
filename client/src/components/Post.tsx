@@ -13,8 +13,8 @@ import MDEditor from "@uiw/react-md-editor";
 
 const Post : React.FC<any> = ({match, history, theme }) => {
     const dispatch = useDispatch();
-    const post = useSelector(state => state.posts)
-    const auth = useSelector(state => state.auth)
+    const post : any = useSelector<any>(state => state.posts)
+    const {isAuthenticated} : any = useSelector<any>(state => state.auth)
     const commentRef = useRef() as MutableRefObject<HTMLDivElement>
     
     const [modalOpen, setModalOpen] = useState(false);
@@ -74,7 +74,7 @@ const Post : React.FC<any> = ({match, history, theme }) => {
         </div>
 
         <Wrapper>
-            {auth.isAuthenticated ?
+            {isAuthenticated ?
                 (
                 <button className="btn btn-delete" onClick={openModal}>관리자 메뉴</button>
             )

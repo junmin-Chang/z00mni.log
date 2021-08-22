@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import {MarkdownEditor} from "./MarkdownEditor";
 import {RouteComponentProps} from "react-router-dom";
 function Write({ history, location, match } : RouteComponentProps) {
-    let { isAuthenticated } = useSelector(state => state.auth)
+    let { isAuthenticated } : any = useSelector<any>(state => state.auth)
    useEffect(() => {
        if (!isAuthenticated) {
             history.push('/login')
