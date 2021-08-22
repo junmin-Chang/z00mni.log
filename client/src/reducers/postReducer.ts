@@ -3,18 +3,17 @@ from '../actions/types'
 
 const initialState = {
     data: [
-{       
-    _id: "",
-    title: "",
-    tags: [],
-    html: "",
-    createdAt: new Date()
-}
-],
-    filteredData: []
+        {
+            _id: "",
+            title: "",
+            tags: [],
+            html: "",
+            createdAt: new Date()
+        }
+        ]
 }
 
-const posts = (posts=initialState, action) => {
+const posts = (posts=initialState, action : any) => {
     const { type, payload } = action
     switch(type) {       
         case GET_POSTS:
@@ -25,10 +24,9 @@ const posts = (posts=initialState, action) => {
         case WRITE_POST:
             return { ...posts, payload}
         case DELETE_POST:
-            return posts.filter(posts._id !== payload._id)
+            return posts.data.filter(post => post._id !== payload._id)
         case EDIT_POST:
             return payload;
-        
         default:
             return posts
     }

@@ -3,12 +3,12 @@ import { GET_POSTS, GET_POST, WRITE_POST, EDIT_POST, DELETE_POST,GET_POSTS_TAG }
 from './types'
 require('dotenv').config()
 
-export const getPosts = () => async (dispatch) => {
-   
+
+export const getPosts = () => async (dispatch : any) => {
     try {
         const res = await axios.get(`${process.env.REACT_APP_API}/posts`);
-        const sorted = res.data.sort(function(a,b) {
-            return new Date(b.createdAt) - new Date(a.createdAt)
+        const sorted = res.data.sort(function(a : any  ,b : any) {
+            return (+new Date(b.createdAt)) - (+new Date(a.createdAt))
         })
         if (sorted) {
             dispatch({
@@ -21,10 +21,10 @@ export const getPosts = () => async (dispatch) => {
         console.log(err);
     }
 }
-export const getPostsByTitle = (title) => async (dispatch) => {
+export const getPostsByTitle = (title : string) => async (dispatch : any) => {
     try {
         const res = await axios.get(`${process.env.REACT_APP_API}/posts`);
-        const sortedByTitle = res.data.filter((post) => {
+        const sortedByTitle = res.data.filter((post : any) => {
             return post.title.toLowerCase().includes(title)
         })
         dispatch({
@@ -36,12 +36,12 @@ export const getPostsByTitle = (title) => async (dispatch) => {
     }
 }
 
-export const getPostsByTag = (tag) => async (dispatch) => {
+export const getPostsByTag = (tag : string) => async (dispatch : any) => {
     try {
         const res = await axios.get(`${process.env.REACT_APP_API}/posts`);
-        const sortedByTag = res.data.filter((post) => post.tags.includes(tag));
-        const sorted = sortedByTag.sort(function(a,b) {
-            return new Date(b.createdAt) - new Date(a.createdAt)
+        const sortedByTag = res.data.filter((post : any) => post.tags.includes(tag));
+        const sorted = sortedByTag.sort(function(a : any,b : any) {
+            return (+new Date(b.createdAt)) - (+new Date(a.createdAt))
         })
         dispatch({
             type: GET_POSTS,
@@ -54,7 +54,7 @@ export const getPostsByTag = (tag) => async (dispatch) => {
     
 }
 
-export const getPost = (id) => async (dispatch) => {
+export const getPost = (id : string) => async (dispatch : any) => {
     try {
         const res = await axios.get(`${process.env.REACT_APP_API}/posts/${id}`)
         dispatch({
@@ -65,10 +65,10 @@ export const getPost = (id) => async (dispatch) => {
         console.log(err)
     }
 }
-export const writePost = (data) => (dispatch) => {
+export const writePost = (data : any) => async (dispatch : any) => {
     try {
         const { title, tags, html, createdAt } = data
-        const res = axios.post(`${process.env.REACT_APP_API}/write`, { title, tags, html, createdAt})
+        const res = await axios.post(`${process.env.REACT_APP_API}/write`, {title, tags, html, createdAt})
         dispatch({
             type: WRITE_POST,
             payload: res.data
@@ -77,7 +77,7 @@ export const writePost = (data) => (dispatch) => {
         console.log(err);
     }
 }
-export const deletePost = (id) => async (dispatch) => {
+export const deletePost = (id : string) => async (dispatch : any) => {
     try {
         await axios.delete(`${process.env.REACT_APP_API}/posts/${id}`)
         dispatch({
@@ -89,7 +89,7 @@ export const deletePost = (id) => async (dispatch) => {
     }
 }
 
-export const editPost = (id, data) => async (dispatch) => {
+export const editPost = (id : string, data : any) => async (dispatch : any) => {
     try {
         const { title, tags, html } = data
         await axios.patch(`${process.env.REACT_APP_API}/posts/${id}`, { title, tags, html });
