@@ -70,7 +70,7 @@ function StyledLogin({ email, password, onChange, onSubmit }: Props)  {
 
 
 const Login : React.FC<RouteComponentProps> = ({history}) => {
-    const auth = useSelector(state => state.auth);
+    const auth : any = useSelector<any>(state => state.auth);
     const dispatch = useDispatch();
     const [loginInfo, setLoginInfo] = useState({
         email: "",
