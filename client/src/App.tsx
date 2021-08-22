@@ -29,7 +29,7 @@ interface AppProps {
 }
 
 const App: React.FC<AppProps> = () => {
-    const { isAuthenticated } = useSelector(state => state.auth)
+    const auth = useSelector(state => state.auth)
     // false? light : dark
     const [theme, setTheme] = useState<boolean>(false);
     const toggleTheme = () => {
@@ -41,7 +41,7 @@ const App: React.FC<AppProps> = () => {
     }
     useEffect(() => {
     
-        if (isAuthenticated) {
+        if (auth.isAuthenticated) {
             toast.success('로그인 성공! 🥰', {
                 position: "top-center",
                 autoClose: 2000,
@@ -63,7 +63,7 @@ const App: React.FC<AppProps> = () => {
       
                 })
         }
-    }, [isAuthenticated])
+    }, [auth.isAuthenticated])
  
     
     return (
