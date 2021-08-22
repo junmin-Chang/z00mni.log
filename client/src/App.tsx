@@ -18,13 +18,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet'
-import {useSelector} from "react-redux";
+import {DefaultRootState, useSelector} from "react-redux";
 
 
 
 const App: React.FC<any> = () => {
     // false? light : dark
-    const { isAuthenticated } : any = useSelector(state => state.auth)
+    const { isAuthenticated } : any = useSelector<any>(state => state.auth)
     const [theme, setTheme] = useState<boolean>(false);
     const toggleTheme = () => {
         if (!theme) {
