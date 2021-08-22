@@ -28,7 +28,7 @@ interface AppProps {
     auth: any
 }
 
-const App: React.FC<AppProps> = () => {
+const App: React.FC<any> = () => {
     const auth : any = useSelector(state => state.auth)
     // false? light : dark
     const [theme, setTheme] = useState<boolean>(false);
