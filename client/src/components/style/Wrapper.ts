@@ -1,5 +1,9 @@
 import styled, { css, keyframes } from 'styled-components'
 
+interface ModalProps {
+    open: boolean
+}
+
 export const Wrapper = styled.div`
     max-width: 800px;
     margin: 50px auto 0 auto;
@@ -22,7 +26,7 @@ const bgShow = keyframes`
     opacity: 1;
     }
 `
-export const ModalWrapper= styled.div`
+export const ModalWrapper= styled.div<ModalProps>`
     display: ${props => props.open ? "flex" : "none"};
     align-items: ${props => props.open ? "center" : "none"};
     animation: ${props => props.open ? css`${bgShow} 0.3s` : "none"};

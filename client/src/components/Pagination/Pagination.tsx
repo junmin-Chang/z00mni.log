@@ -43,7 +43,7 @@ const PageSpan = styled.span`
     }
 `;
 
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
+const Pagination : React.FC<any> = ({ postsPerPage, totalPosts, paginate }) => {
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(totalPosts/postsPerPage); i++) {
         pageNumbers.push(i);

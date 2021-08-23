@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import {createGlobalStyle} from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle<any>`
 :root {
   --nav-background: #ffffff;
   --nav-link-color: #949494;

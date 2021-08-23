@@ -1,26 +1,15 @@
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { editPost, deletePost } from '../../actions/postActions'
 
-
-const ModalInputTags = styled.input.attrs(props => ({
-    type: "text",
-    name: "tags",
-}))`
+const ModalInput = styled.input`
+    width: 100%;
     position: relative;
     z-index: 999;
 `
-const ModalInputTitle = styled(ModalInputTags).attrs(props => ({
-    type: "text",
-    name: "title",
-}))`
-    width: 100%;
-`
-const ModalInputHTML = styled(ModalInputTitle).attrs(props => ({
-    type: "text",
-    name: "html",
-}))`
+
+const ModalTextArea = styled.textarea`
     height: 10rem;
 `
 
@@ -32,7 +21,7 @@ const ModalButton = styled.button`
     margin-left: 1rem;
 `
 
-const ModalContent = ({ history, match, postState }) => {
+const ModalContent : React.FC<any> = ({ history, match, postState }) => {
     const dispatch = useDispatch();
 
     const editFn = () => {
@@ -50,23 +39,27 @@ const ModalContent = ({ history, match, postState }) => {
     })
     return (
         <div>
-            <ModalInputTitle 
-            value={postData.title} 
-            defaultValue={postState.title}
-            onChange={(e) => setPostData({ ...postData, title: e.target.value})}/>
+            <ModalInput
+                type="text"
+                name="title"
+                value={postData.title}
+                defaultValue={postState.title}
+                onChange={(e) => setPostData({ ...postData, title: e.target.value})}/>
 
-            <ModalInputTags 
-            value={postData.tags} 
-            defaultValue={postState.tags}
-            onChange={(e) => setPostData({ ...postData, tags: e.target.value})}
+            <ModalInput
+                type="text"
+                name="tags"
+                value={postData.tags}
+                defaultValue={postState.tags}
+                onChange={(e) => setPostData({ ...postData, tags: e.target.value})}
             />
 
-            <ModalInputHTML as="textarea" 
-            value={postData.html} 
-            defaultValue={postState.html}
-            onChange={(e) => setPostData({ ...postData, html: e.target.value})}
+            <ModalTextArea
+                name="html"
+                value={postData.html}
+                defaultValue={postState.html}
+                onChange={(e) => setPostData({ ...postData, html: e.target.value})}
             />
-            
             <ModalButton 
             onClick={deleteFn}>삭제</ModalButton>
 

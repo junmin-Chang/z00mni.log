@@ -1,7 +1,10 @@
 import Skeleton , { SkeletonTheme } from 'react-loading-skeleton'
 
 
-export const ContentSkeleton = ({ theme }) => {
+interface SkeletonProps {
+    theme : boolean
+}
+export const ContentSkeleton = ({ theme } : SkeletonProps) => {
     return (
         <SkeletonTheme color={theme ? '#151519' : '#fff'} highlightColor={theme ? '#25262A' : '#F4F5F7'}>
         <Skeleton style={{lineHeight: '3rem' , marginTop: '2rem'}}/>
@@ -14,7 +17,7 @@ export const ContentSkeleton = ({ theme }) => {
     
 }
 
-export const ListSkeleton = ({ theme }) => {
+export const ListSkeleton = ({ theme } : SkeletonProps) => {
 
     return (
         <SkeletonTheme color={theme ? '#151519' : '#fff'} highlightColor={theme ? '#25262A' : '#F4F5F7'}>

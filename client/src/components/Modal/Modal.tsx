@@ -1,6 +1,7 @@
 import React from 'react';
 import { ModalWrapper } from '../style/Wrapper';
 import styled, { keyframes } from 'styled-components'
+import {RouteComponentProps} from "react-router-dom";
 
 const show = keyframes`
     from {
@@ -57,11 +58,16 @@ const FooterButton = styled.button`
     border-radius: 5px;
     font-size: 13px;
 `
-function Modal(props) {
+interface ModalProps {
+    open : boolean
+    close : () => void
+    header: string
+}
+const Modal : React.FC<ModalProps> = (props) => {
 
     return (
        <ModalWrapper open={props.open}>
-        { props.open ? (  
+        { props.open ? (
             <ModalSection>
                 <ModalHeader>
                     {props.header}

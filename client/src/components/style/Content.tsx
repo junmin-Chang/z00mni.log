@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import renderDate from '../../utils/renderDate'
 
-const renderTags = (tags) => {
+const renderTags = (tags : string[]) => {
     return tags.map((tag,idx) => {
         return  <ListTags key={idx}><span>{tag}</span></ListTags>
     })
@@ -30,8 +30,8 @@ const ListTags = styled.div`
 
 `
 
-
-export const Content = ({ post }) => {
+// TODO: any 멈춰
+export const Content = ({ post } : any)  => {
     return (
     <>
         <ListTitle>{post.title}</ListTitle>

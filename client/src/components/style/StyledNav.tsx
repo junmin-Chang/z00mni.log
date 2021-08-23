@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { NavWrapper } from './Wrapper'
 import DarkModeToggle from 'react-dark-mode-toggle'
+import React from "react";
 const StyledNavLink = styled(NavLink)`
     font-size: 1rem;
     font-weight: 600;
@@ -25,7 +26,7 @@ const DarkMode = styled(DarkModeToggle)`
     vertical-align: middle;
 `
 
-export const LoggedInStyledNav = ({ onLogout, onToggle, theme }) => {
+export const LoggedInStyledNav : React.FC<any> = ({ onLogout, onToggle, theme }) => {
     return (
         <NavWrapper>
                 <StyledNavLink to="/" activeClassName="active">
@@ -55,7 +56,7 @@ export const LoggedInStyledNav = ({ onLogout, onToggle, theme }) => {
     )
 }
 
-export const LoggedOutStyledNav = ({ onToggle, theme }) => {
+export const LoggedOutStyledNav : React.FC<any> = ({ onToggle, theme }) => {
     return (
         <NavWrapper>
             <StyledNavLink to="/" activeClassName="active">
