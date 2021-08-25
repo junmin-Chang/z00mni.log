@@ -10,16 +10,8 @@ type Post = {
 }
 
 type PostState = Post[]
-const initialState : PostState =
-     [
-        {
-            _id: "",
-            title: "",
-            tags: [],
-            html: "",
-            createdAt: new Date()
-        }
-        ]
+
+const initialState : PostState = []
 
 
 const posts = (posts: PostState = initialState, action : any) => {

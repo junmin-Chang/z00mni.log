@@ -62,22 +62,23 @@ interface ModalProps {
     open : boolean
     close : () => void
     header: string
+    children : React.ReactNode
 }
-const Modal : React.FC<ModalProps> = (props) => {
+const Modal : React.FC<ModalProps> = ({children, header, close, open }: ModalProps) => {
 
     return (
-       <ModalWrapper open={props.open}>
-        { props.open ? (
+       <ModalWrapper open={open}>
+        {open ? (
             <ModalSection>
                 <ModalHeader>
-                    {props.header}
-                    <HeaderButton onClick={props.close}> &times; </HeaderButton>
+                    {header}
+                    <HeaderButton onClick={close}> &times; </HeaderButton>
                 </ModalHeader>
                 <ModalMain>
-                    {props.children}
+                    {children}
                 </ModalMain>
                 <ModalFooter>
-                    <FooterButton onClick={props.close}> 닫기 </FooterButton>
+                    <FooterButton onClick={close}> 닫기 </FooterButton>
                 </ModalFooter>
             </ModalSection>
         ) : null }
