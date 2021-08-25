@@ -4,8 +4,10 @@ import errorReducer from './errorReducers'
 import posts from './postReducer'
 
 
-export default combineReducers({
+const rootReducer =  combineReducers({
     auth: authReducer,
     errors: errorReducer,
     posts
 });
+export default rootReducer
+export type RootState = ReturnType<typeof rootReducer>

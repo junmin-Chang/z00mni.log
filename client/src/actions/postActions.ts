@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_POSTS, GET_POST, WRITE_POST, EDIT_POST, DELETE_POST,GET_POSTS_TAG }
+import { GET_POSTS, GET_POST, WRITE_POST, EDIT_POST, DELETE_POST }
 from './types'
 require('dotenv').config()
 

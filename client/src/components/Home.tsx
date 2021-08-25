@@ -15,8 +15,7 @@ const Rotate = styled.div`
     padding: 1rem 1rem;
     font-size: 1.5rem;
 `
-function Home() {
-
+const Home : React.FC = () => {
     return (
         <div className="container">
             <h1>장준민의 개발 일지</h1>

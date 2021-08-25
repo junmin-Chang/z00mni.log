@@ -16,7 +16,7 @@ export const Tag = styled.span`
 const TagAll = styled(Tag)`
     background-color: royalblue;
 `
-function Categories() {
+const Categories : React.FC = () => {
     const dispatch = useDispatch()
     return (
         <div className="tag-wrapper">

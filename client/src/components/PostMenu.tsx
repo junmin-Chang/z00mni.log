@@ -1,5 +1,9 @@
 import React from 'react';
-function PostMenu({ onClick } : any) {
+
+interface MenuProps {
+    onClick: () => void
+}
+function PostMenu({ onClick } : MenuProps) {
 
     return (
             <div className="post-menu">

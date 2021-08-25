@@ -23,7 +23,6 @@ export const ListSkeleton = ({ theme } : SkeletonProps) => {
         <SkeletonTheme color={theme ? '#151519' : '#fff'} highlightColor={theme ? '#25262A' : '#F4F5F7'}>
         <Skeleton count={10} style={{lineHeight: '4rem', marginTop: '2rem'}}/>
         </SkeletonTheme>
-    
     )
 }
 

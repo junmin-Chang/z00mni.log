@@ -2,19 +2,26 @@ import React, {Fragment, useEffect, useState, useRef,  MutableRefObject} from 'r
 import Modal from './Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux'
 import { getPost } from '../actions/postActions'
-import { withRouter} from 'react-router-dom'
+import {RouteComponentProps, withRouter} from 'react-router-dom'
 import renderDate from '../utils/renderDate'
 import { Wrapper } from './style/Wrapper'
 import ModalContent from './style/StyledModal';
 import { ContentSkeleton } from './style/Skeleton';
 import { Helmet } from 'react-helmet'
 import MDEditor from "@uiw/react-md-editor";
+import {RootState} from "../reducers";
 
-
-const Post : React.FC<any> = ({match, history, theme }) => {
+interface RouterProps {
+    params: any
+    id: string
+}
+interface PostProps extends RouteComponentProps<RouterProps>{
+    theme: boolean
+}
+const Post : React.FC<any> = ({match, history, theme } : PostProps) => {
     const dispatch = useDispatch();
-    const post : any = useSelector<any>(state => state.posts)
-    const {isAuthenticated} : any = useSelector<any>(state => state.auth)
+    const post = useSelector((state : RootState) => state.posts)
+    const {isAuthenticated}  = useSelector((state : RootState) => state.auth)
     const commentRef = useRef() as MutableRefObject<HTMLDivElement>
     
     const [modalOpen, setModalOpen] = useState(false);
@@ -55,7 +62,6 @@ const Post : React.FC<any> = ({match, history, theme }) => {
                 <h3>{renderDate(post.createdAt)}</h3>
             </div>
             <MDEditor.Markdown source={post.html}/>
-
         </>
         )
     }
@@ -81,7 +87,6 @@ const Post : React.FC<any> = ({match, history, theme }) => {
                 : null
             }
             <div>
-
                 {!post.title ? (
                     <ContentSkeleton theme={theme}/>
                 ) : renderPost()}
@@ -95,7 +100,4 @@ const Post : React.FC<any> = ({match, history, theme }) => {
     )
     
 }
-
-
-
 export default withRouter(Post)

@@ -5,6 +5,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import {Wrapper} from "./style/Wrapper";
+import {RootState} from "../reducers";
 const Input = styled.input`
     width: 100%;
     padding: 12px;
@@ -70,7 +71,7 @@ function StyledLogin({ email, password, onChange, onSubmit }: Props)  {
 
 
 const Login : React.FC<RouteComponentProps> = ({history}) => {
-    const auth : any = useSelector<any>(state => state.auth);
+    const auth = useSelector((state : RootState) => state.auth);
     const dispatch = useDispatch();
     const [loginInfo, setLoginInfo] = useState({
         email: "",

@@ -18,7 +18,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet'
-import {DefaultRootState, useSelector} from "react-redux";
+import { useSelector} from "react-redux";
 
 
 
@@ -44,17 +44,6 @@ const App: React.FC<any> = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                })
-        } else {
-            toast.warn('로그인 안됨(게스트 모드 👻)', {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-      
                 })
         }
     }, [isAuthenticated])

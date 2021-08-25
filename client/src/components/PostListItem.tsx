@@ -16,15 +16,20 @@ const StyledLink = styled(Link)`
         color: #2ec4ff;
     }
 `
+interface ItemProps {
+    posts: object[]
+}
 
+function PostListItem({ posts } : ItemProps) {
+    return (
+        <div>
+            {posts.map((post : any) => (
+                <StyledLink to={`/posts/${post._id}`} key={post._id}>
+                    <Content post={post}/>
+                </StyledLink>
+            ))}
+        </div>
 
-function PostListItem({ posts } : any) {
-    return (  
-        posts.map((post : any) => (
-            <StyledLink to={`/posts/${post._id}`} key={post._id}>
-                <Content post={post}/>
-            </StyledLink> 
-        ))
     )
 }
 export default PostListItem;

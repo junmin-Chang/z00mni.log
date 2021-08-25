@@ -8,15 +8,18 @@ import { getPosts } from '../actions/postActions'
 import { Wrapper } from './style/Wrapper';
 import { ListSkeleton } from './style/Skeleton';
 import { Helmet } from 'react-helmet'
+import {RootState} from "../reducers";
 
-
-const PostList: React.FC<any> = ({ theme }) => {
+interface PostListProps {
+    theme : boolean
+}
+const PostList: React.FC<any> = ({ theme }: PostListProps) => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(10);
     const lastIndex = currentPage * postsPerPage;
     const firstIndex = lastIndex - postsPerPage;
-    let posts : any = useSelector<any>(state => state.posts);
+    let posts = useSelector((state : RootState) => state.posts);
     const dispatch = useDispatch();   
     const currentPosts = (tmp : object[]) => {
         let currentPosts = [];
@@ -35,7 +38,7 @@ const PostList: React.FC<any> = ({ theme }) => {
             </Helmet>
             <Wrapper>
 
-                {!posts.length ? 
+                {!posts.length ?
                     <ListSkeleton theme={theme}/>
                 : (  
                 <div className="post-list">   
@@ -47,6 +50,5 @@ const PostList: React.FC<any> = ({ theme }) => {
                 </Wrapper>
         </>
     )
-    
 }
 export default withRouter(PostList);

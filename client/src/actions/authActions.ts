@@ -8,13 +8,15 @@ import {
 } from './types';
 require('dotenv').config()
 
+
+export type AuthActions = ReturnType<typeof setCurrentUser>
 //register action
 export const registerUser = (userData : any, history : any) => {
     axios
         .post(`${process.env.REACT_APP_API}/api/users/register`, userData)
         .then(res => history.push("/login"))
         .catch(err => {
-            return;
+            console.log(err)
         })
 
 }

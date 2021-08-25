@@ -3,11 +3,15 @@ import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../actions/authActions' 
 import { LoggedInStyledNav, LoggedOutStyledNav } from './style/StyledNav';
+import {RootState} from "../reducers";
 
-
-const Navbar : React.FC<any> = ({ onThemeToggled, theme }) => {
+interface NavbarProps {
+    onThemeToggled: () => void
+    theme: boolean
+}
+const Navbar : React.FC<any> = ({ onThemeToggled, theme } : NavbarProps) => {
         const dispatch = useDispatch();
-        let { isAuthenticated } : any = useSelector<any>(state => state.auth);
+        let { isAuthenticated } = useSelector((state : RootState) => state.auth);
         const [isAuth, setIsAuth] = useState(isAuthenticated)
         useEffect(() => {
             if (localStorage.getItem("jwtToken")) {
