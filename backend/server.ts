@@ -3,7 +3,6 @@ import cors from 'cors'
 import bodyParser from "body-parser";
 import passport from "passport";
 const mongoose = require('mongoose');
-const users = require("./routes/api/users");
 require('dotenv').config();
 
 
@@ -39,7 +38,7 @@ require("./config/passport")(passport);
 
 
 // authentication routes
-app.use("/api/users", users);
+app.use("/api/users", require('./routes/api/users'));
 // post routes
 app.use('/posts', require('./routes/postRoutes'));
 // write routes
