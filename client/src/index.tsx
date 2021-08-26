@@ -6,6 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import configureStore from './store'
 import { BrowserRouter } from 'react-router-dom'
 require('dotenv').config();
+
 const rootElement : any = document.getElementById('root')
 const {store, persistor } = configureStore();
 

@@ -22,7 +22,7 @@ const PostList: React.FC<any> = ({ theme }: PostListProps) => {
     let posts = useSelector((state : RootState) => state.posts);
     const dispatch = useDispatch();   
     const currentPosts = (tmp : object[]) => {
-        let currentPosts = [];
+        let currentPosts : object[] = [];
         currentPosts = tmp.slice(firstIndex, lastIndex);
         return currentPosts;
     }

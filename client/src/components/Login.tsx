@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, FormEvent, FormEventHandler, ChangeEvent, ChangeEventHandler} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { loginUser } from '../actions/authActions'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
@@ -50,8 +50,8 @@ const Text = styled.h1<{size?: string}>`
 interface Props {
     email: string
     password: string
-    onChange : any
-    onSubmit : any
+    onChange : ChangeEventHandler
+    onSubmit : FormEventHandler
 }
 function StyledLogin({ email, password, onChange, onSubmit }: Props)  {
     return (
@@ -79,23 +79,19 @@ const Login : React.FC<RouteComponentProps> = ({history}) => {
     })
     const { email, password } = loginInfo;
 
-    const onChange = (e : any) => {
+    const onChange = (e : ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setLoginInfo({
             ...loginInfo,
             [name] : value
         })
-        console.log(email);
-        console.log(password)
     }
-    const onSubmit = (e : any) => {
+    const onSubmit = (e : FormEvent) => {
         e.preventDefault();
         const userData = {
             email: email,
             password: password
         }
-        console.log(email)
-        console.log(password)
         dispatch(loginUser(userData));
     }
     useEffect(() => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { ModalWrapper } from '../style/Wrapper';
 import styled, { keyframes } from 'styled-components'
-import {RouteComponentProps} from "react-router-dom";
 
 const show = keyframes`
     from {

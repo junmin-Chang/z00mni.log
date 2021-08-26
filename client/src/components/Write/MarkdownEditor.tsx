@@ -3,6 +3,8 @@ import MDEditor from '@uiw/react-md-editor'
 import {useDispatch} from "react-redux";
 import {writePost} from "../../actions/postActions";
 import {RouteComponentProps} from "react-router-dom";
+
+
 export const MarkdownEditor = ({ history } : RouteComponentProps) => {
     const dispatch = useDispatch()
     const [content, setContent] = useState({
