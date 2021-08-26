@@ -1,13 +1,15 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
-var cors = require('cors');
+var express_1 = __importDefault(require("express"));
+var cors_1 = __importDefault(require("cors"));
+var body_parser_1 = __importDefault(require("body-parser"));
+var passport_1 = __importDefault(require("passport"));
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var passport = require("passport");
-var users = require("./routes/api/users");
 require('dotenv').config();
-var app = express();
+var app = express_1.default();
 app.set('trust proxy', 1);
 var PORT = process.env.PORT || 80;
 console.log('Server is Starting...');
@@ -25,13 +27,13 @@ mongoose.connect(process.env.MONGODB_URI, {
         return console.log(err.message);
     console.log('MongoDB connection established');
 });
-app.use(cors({ credentials: true, origin: true }));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(passport.initialize());
-require("./config/passport")(passport);
+app.use(cors_1.default({ credentials: true, origin: true }));
+app.use(body_parser_1.default.urlencoded({ extended: false }));
+app.use(body_parser_1.default.json());
+app.use(passport_1.default.initialize());
+require("./config/passport")(passport_1.default);
 // authentication routes
-app.use("/api/users", users);
+app.use("/api/users", require('./routes/api/users'));
 // post routes
 app.use('/posts', require('./routes/postRoutes'));
 // write routes

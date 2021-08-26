@@ -1,24 +1,27 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isEmpty = exports.Validator = void 0;
-exports.Validator = require('validator');
-exports.isEmpty = require('is-empty');
-module.exports = function validateLoginInput(data) {
+var validator_1 = __importDefault(require("validator"));
+var isEmpty = require("is-empty");
+function validateLoginInput(data) {
     var errors = {};
-    data.email = !exports.isEmpty(data.email) ? data.email : "";
-    data.password = !exports.isEmpty(data.password) ? data.password : "";
-    if (exports.Validator.isEmpty(data.email)) {
+    data.email = !isEmpty(data.email) ? data.email : "";
+    data.password = !isEmpty(data.password) ? data.password : "";
+    if (validator_1.default.isEmpty(data.email)) {
         errors.email = "Email field is required";
     }
-    else if (!exports.Validator.isEmail(data.email)) {
+    else if (!validator_1.default.isEmail(data.email)) {
         errors.email = "Email is invalid";
     }
-    if (exports.Validator.isEmpty(data.password)) {
+    if (validator_1.default.isEmpty(data.password)) {
         errors.password = "Password field is required";
     }
     return {
         errors: errors,
-        isValid: exports.isEmpty(errors)
+        isValid: isEmpty(errors)
     };
-};
+}
+exports.default = validateLoginInput;
 //# sourceMappingURL=login.js.map

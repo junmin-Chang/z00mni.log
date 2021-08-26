@@ -35,17 +35,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
-var Post = require('../model/postModel');
-var router = express.Router();
+var express_1 = __importDefault(require("express"));
+var postModel_1 = require("../model/postModel");
+var router = express_1.default.Router();
 router.post('/write', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, title, createdAt, tags, html, newPost, savedPost, err_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _a = req.body, title = _a.title, createdAt = _a.createdAt, tags = _a.tags, html = _a.html;
-                newPost = new Post({
+                newPost = new postModel_1.Post({
                     title: title,
                     createdAt: createdAt,
                     tags: tags,

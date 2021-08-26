@@ -1,30 +1,33 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
-var router = express.Router();
-var bcrypt = require("bcrypt");
-var jwt = require('jsonwebtoken');
-var keys = require('../../config/keys');
-var validateRegisterInput = require('../../validation/register');
-var validateLoginInput = require('../../validation/login');
-var User = require("../../model/User");
+var express_1 = __importDefault(require("express"));
+var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+var keys_1 = require("../../config/keys");
+var bcrypt_1 = __importDefault(require("bcrypt"));
+var register_1 = __importDefault(require("../../validation/register"));
+var login_1 = __importDefault(require("../../validation/login"));
+var User_1 = require("../../model/User");
+var router = express_1.default.Router();
 router.post('/register', function (req, res) {
-    var _a = validateRegisterInput(req.body), errors = _a.errors, isValid = _a.isValid;
+    var _a = register_1.default(req.body), errors = _a.errors, isValid = _a.isValid;
     if (!isValid) {
         return res.status(400).json(errors);
     }
-    User.findOne({ email: req.body.email }).then(function (user) {
+    User_1.User.findOne({ email: req.body.email }).then(function (user) {
         if (user) {
             return res.status(400).json({ email: "Email already exists" });
         }
         else {
-            var newUser_1 = new User({
+            var newUser_1 = new User_1.User({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password
             });
-            bcrypt.genSalt(10, function (err, salt) {
-                bcrypt.hash(newUser_1.password, salt, function (err, hash) {
+            bcrypt_1.default.genSalt(10, function (err, salt) {
+                bcrypt_1.default.hash(newUser_1.password, salt, function (err, hash) {
                     if (err)
                         throw err;
                     newUser_1.password = hash;
@@ -38,23 +41,23 @@ router.post('/register', function (req, res) {
     });
 });
 router.post('/login', function (req, res) {
-    var _a = validateLoginInput(req.body), errors = _a.errors, isValid = _a.isValid;
+    var _a = login_1.default(req.body), errors = _a.errors, isValid = _a.isValid;
     if (!isValid) {
         return res.status(400).json(errors);
     }
     var email = req.body.email;
     var password = req.body.password;
-    User.findOne({ email: email }).then(function (user) {
+    User_1.User.findOne({ email: email }).then(function (user) {
         if (!user) {
             return res.status(404).json({ emailnotfound: "Email not found" });
         }
-        bcrypt.compare(password, user.password).then(function (isMatch) {
+        bcrypt_1.default.compare(password, user.password).then(function (isMatch) {
             if (isMatch) {
                 var payload = {
                     id: user.id,
                     name: user.name
                 };
-                jwt.sign(payload, keys.secretOrKey, {
+                jsonwebtoken_1.default.sign(payload, keys_1.keys.secretOrKey, {
                     expiresIn: 31556926
                 }, function (err, token) {
                     res.json({

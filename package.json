@@ -24,7 +24,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "cd backend && npm install && node server.js"
+    "start": "cd backend && npm install && ts-node server.ts"
   },
   "eslintConfig": {
     "extends": [

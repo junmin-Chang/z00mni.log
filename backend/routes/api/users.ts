@@ -5,6 +5,8 @@ import bcrypt from 'bcrypt'
 import validateRegisterInput from "../../validation/register";
 import validateLoginInput from "../../validation/login";
 import {User} from '../../model/User'
+
+
 const router = express.Router();
 
 
