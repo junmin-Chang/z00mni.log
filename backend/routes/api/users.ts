@@ -1,22 +1,20 @@
-const express = require("express");
+import express from 'express'
+import jwt from 'jsonwebtoken'
+import {keys} from '../../config/keys'
+import bcrypt from 'bcrypt'
+import validateRegisterInput from "../../validation/register";
+import validateLoginInput from "../../validation/login";
+import {User} from '../../model/User'
 const router = express.Router();
-const bcrypt = require("bcrypt");
-const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys');
-
-const validateRegisterInput = require('../../validation/register');
-const validateLoginInput = require('../../validation/login');
-
-const User = require("../../model/User");
 
 
-router.post('/register', (req,res) => {
+router.post('/register', (req: express.Request,res: express.Response) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
     if (!isValid) {
         return res.status(400).json(errors);
     }
-    User.findOne({ email: req.body.email }).then(user => {
+    User.findOne({ email: req.body.email }).then((user : any) => {
         if (user) {
             return res.status(400).json({ email: "Email already exists" });
         } else {
@@ -26,21 +24,21 @@ router.post('/register', (req,res) => {
                 password: req.body.password
             });
 
-            bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(newUser.password, salt, (err,hash) => {
+            bcrypt.genSalt(10, (err : any, salt: any) => {
+                bcrypt.hash(newUser.password, salt, (err : any, hash : any) => {
                     if (err) throw err;
                     newUser.password = hash;
                     newUser
                         .save()
-                        .then(user => res.json(user))
-                        .catch(err => console.log(err))
+                        .then((user : any) => res.json(user))
+                        .catch((err : any) => console.log(err))
                 })
             })
         }
     })
 })
 
-router.post('/login', (req,res) => {
+router.post('/login', (req : express.Request,res : express.Response) => {
     const { errors, isValid } = validateLoginInput(req.body);
 
     if (!isValid) {
@@ -49,11 +47,11 @@ router.post('/login', (req,res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    User.findOne({ email }).then(user => {
+    User.findOne({ email }).then((user : any) => {
         if (!user) {
             return res.status(404).json({ emailnotfound: "Email not found" });
         }
-        bcrypt.compare(password, user.password).then(isMatch => {
+        bcrypt.compare(password, user.password).then((isMatch : boolean) => {
             if (isMatch) {
                 const payload = {
                     id: user.id,
@@ -66,7 +64,7 @@ router.post('/login', (req,res) => {
                     {
                         expiresIn: 31556926
                     },
-                    (err, token) => {
+                    (err : any, token : any) => {
                         res.json({
                             success: true,
                             token: "Bearer " + token

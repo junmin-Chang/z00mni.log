@@ -1,9 +1,8 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
+"use strict";
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 // schema
-
-const UserSchema = new Schema({
+var UserSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -20,7 +19,7 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     }
-})
-const User = mongoose.model("users", UserSchema);
-
+});
+var User = mongoose.model("users", UserSchema);
 module.exports = User;
+//# sourceMappingURL=User.js.map

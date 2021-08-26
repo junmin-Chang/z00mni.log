@@ -1,17 +1,18 @@
 "use strict";
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const passport = require("passport");
-const users = require("./routes/api/users");
+Object.defineProperty(exports, "__esModule", { value: true });
+var express = require("express");
+var cors = require('cors');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var passport = require("passport");
+var users = require("./routes/api/users");
 require('dotenv').config();
-const app = express();
+var app = express();
 app.set('trust proxy', 1);
-const PORT = process.env.PORT || 80;
+var PORT = process.env.PORT || 80;
 console.log('Server is Starting...');
-app.listen(PORT, () => {
-    console.log(`Server is running on PORT ${PORT}`);
+app.listen(PORT, function () {
+    console.log("Server is running on PORT " + PORT);
 });
 console.log('Connecting to Mongo db');
 mongoose.connect(process.env.MONGODB_URI, {
@@ -19,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI, {
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
-}, (err) => {
+}, function (err) {
     if (err)
         return console.log(err.message);
     console.log('MongoDB connection established');
@@ -35,3 +36,4 @@ app.use("/api/users", users);
 app.use('/posts', require('./routes/postRoutes'));
 // write routes
 app.use('/', require('./routes/writeRoutes'));
+//# sourceMappingURL=server.js.map
