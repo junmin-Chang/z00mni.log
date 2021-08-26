@@ -1,10 +1,7 @@
-import * as mongoose from 'mongoose'
 import {ExtractJwt, StrategyOptions} from "passport-jwt";
 import {Strategy as JwtStrategy} from "passport-jwt";
 import {keys} from "./keys";
-
-const User = mongoose.model("users");
-
+import {User} from '../model/User'
 
 
 const opts: StrategyOptions = {};
@@ -15,13 +12,13 @@ module.exports = (passport : any) => {
     passport.use(
         new JwtStrategy(opts, (jwt_payload : any, done : any) => {
             User.findById(jwt_payload.id)
-                .then(user => {
+                .then((user : any) => {
                     if (user) {
                         return done(null, user);
                     }
                     return done(null, false);
                 })
-                .catch(err => console.log(err));
+                .catch((err : any) => console.log(err));
         })
     )
 }
