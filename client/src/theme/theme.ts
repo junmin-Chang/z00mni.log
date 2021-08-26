@@ -3,7 +3,7 @@ export const lightTheme = {
     text: '#264368',
     toggleBorder: '#FFF',
     navBody: '#F3F5F7',
-    navText: '#49607D',
+    navText: '#fff',
     gradient: 'linear-gradient(#39598A, #79D7ED)',
     codeBlock: '#F9F9F9',
     postItem: '#FFFFFF'
@@ -14,7 +14,7 @@ export const lightTheme = {
     text: '#ffffff',
     toggleBorder: '#6B8096',
     navBody: '#25262A',
-    navText: '#7E7F81',
+    navText: '#fff',
     gradient: 'linear-gradient(#091236, #1E215D)',
     codeBlock: '#1D1F21',
     postItem: '#151519'

@@ -25,7 +25,17 @@ export const GlobalStyles = createGlobalStyle<any>`
     
   }
   .navbar {
-    background: ${({ theme }) => theme.navBody};
+    background: linear-gradient(72deg,#291e95,#cc007a);
+    background-image: linear-gradient(72deg,rgb(41, 30, 149), rgb(204, 0, 122));
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
     color: ${({ theme }) => theme.navText};
     transition: all 0.25s linear;
     position: fixed;
