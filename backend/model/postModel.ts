@@ -1,4 +1,4 @@
-import * as mongoose from "mongoose";
+import mongoose from "mongoose";
 const postSchema = new mongoose.Schema({
     title: {type: String, required: true},
     createdAt: {type: Date, required: true},

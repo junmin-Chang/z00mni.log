@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import bodyParser from "body-parser";
 import passport from "passport";
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 require('dotenv').config();
 
 
@@ -18,7 +18,7 @@ app.listen(PORT, () => {
     console.log(`Server is running on PORT ${PORT}`);
 })
 console.log('Connecting to Mongo db');
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env["MONGODB_URI "], {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
