@@ -1,10 +1,10 @@
-import {ExtractJwt, StrategyOptions} from "passport-jwt";
+import {ExtractJwt} from "passport-jwt";
 import {Strategy as JwtStrategy} from "passport-jwt";
 import {keys} from "./keys";
 import {User} from '../model/User'
 
 
-const opts: StrategyOptions = {};
+const opts: any = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = keys.secretOrKey;
 
