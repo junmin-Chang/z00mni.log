@@ -24,6 +24,7 @@ export const GlobalStyles = createGlobalStyle<any>`
     transition: all 0.25s linear;
     
   }
+
   .navbar {
     background: linear-gradient(72deg,#291e95,#cc007a);
     background-image: linear-gradient(72deg,rgb(41, 30, 149), rgb(204, 0, 122));
@@ -45,8 +46,6 @@ export const GlobalStyles = createGlobalStyle<any>`
     overflow: hidden;
     z-index: 1;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    
- 
   }
 
   hr {
@@ -54,12 +53,6 @@ export const GlobalStyles = createGlobalStyle<any>`
     border-color: ${({ theme }) => theme.text};
   }
 
-  pre {
-        background-color: ${({ theme }) => theme.codeBlock};
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-        color: #264368;
-      }
 
   .tag-wrapper {
     margin-bottom: 1.5rem;

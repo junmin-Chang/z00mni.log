@@ -8,8 +8,9 @@ import { Wrapper } from './style/Wrapper'
 import ModalContent from './style/StyledModal';
 import { ContentSkeleton } from './style/Skeleton';
 import { Helmet } from 'react-helmet'
-import MDEditor from "@uiw/react-md-editor";
 import {RootState} from "../reducers";
+import ReactMarkdown from "react-markdown";
+import CodeBlock from "./codeblock";
 
 interface RouterProps {
     params: any
@@ -61,7 +62,7 @@ const Post : React.FC<any> = ({match, history, theme } : PostProps) => {
                 }}>{post.title}</h1>
                 <h3>{renderDate(post.createdAt)}</h3>
             </div>
-            <MDEditor.Markdown source={post.html}/>
+            <ReactMarkdown components={CodeBlock}>{post.html}</ReactMarkdown>
         </>
         )
     }

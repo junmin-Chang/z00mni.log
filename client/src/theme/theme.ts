@@ -1,3 +1,5 @@
+import {vscDarkPlus,vs} from "react-syntax-highlighter/dist/cjs/styles/prism";
+
 export const lightTheme = {
     body: '#F3F5F7',
     text: '#264368',
@@ -5,8 +7,8 @@ export const lightTheme = {
     navBody: '#F3F5F7',
     navText: '#fff',
     gradient: 'linear-gradient(#39598A, #79D7ED)',
-    codeBlock: '#F9F9F9',
-    postItem: '#FFFFFF'
+    postItem: '#FFFFFF',
+    codeBlock: vs
   }
   
   export const darkTheme = {
@@ -16,7 +18,7 @@ export const lightTheme = {
     navBody: '#25262A',
     navText: '#fff',
     gradient: 'linear-gradient(#091236, #1E215D)',
-    codeBlock: '#1D1F21',
-    postItem: '#151519'
+    postItem: '#151519',
+      codeBlock: vscDarkPlus
   }
 

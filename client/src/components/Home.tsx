@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components'
+import ReactMarkdown from "react-markdown";
+import CodeBlock from "./codeblock";
 const rotate = keyframes`
     from {
         transform: rotate(0deg)
@@ -15,7 +17,21 @@ const Rotate = styled.div`
     padding: 1rem 1rem;
     font-size: 1.5rem;
 `
-const Home : React.FC = () => {
+interface HomeProps {
+    theme : boolean
+}
+const Home : React.FC<any> = (props : HomeProps) => {
+    const fileName = 'introduce.md'
+    const [intro, setIntro] = useState('')
+    useEffect(() => {
+        import(`../markdown/${fileName}`)
+            .then(res => {
+                fetch(res.default)
+                    .then(res => res.text())
+                    .then(res => setIntro(res))
+                    .catch(err => console.log(err))
+            }).catch(err => console.log(err))
+    })
     return (
         <div className="container">
             <h1>장준민의 개발 일지</h1>
@@ -23,24 +39,11 @@ const Home : React.FC = () => {
                 fontSize: '3rem'
             }}>⚛️</Rotate>
 
-            <h2>&lt;/Tech Stack&gt;</h2>
-            
-            <img alt="NodeJS" src="https://img.shields.io/badge/node.js-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
-            <img alt="Express.js" src="https://img.shields.io/badge/express.js-%23404d59.svg?&style=for-the-badge"/>
-            <img alt="JavaScript" src="https://img.shields.io/badge/javascript-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
-            <img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
-            <img alt="Kotlin" src="https://img.shields.io/badge/kotlin-%230095D5.svg?&style=for-the-badge&logo=kotlin&logoColor=white"/>
-            <img alt="TailwindCSS" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?&style=for-the-badge&logo=tailwind-css&logoColor=white"/>
-            <img alt="Redux" src="https://img.shields.io/badge/redux-%23593d88.svg?&style=for-the-badge&logo=redux&logoColor=white"/>
-            <img alt="MongoDB" src ="https://img.shields.io/badge/MongoDB-%234ea94b.svg?&style=for-the-badge&logo=mongodb&logoColor=white"/>
 
             <div style={{
-                marginTop: '1rem'
+                marginTop: '1rem',
             }}>
-                <p>Github</p>
-                <a href="https://github.com/junmin-Chang" target="blank">
-                    <img alt="GitHub" src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
-                </a>
+                <ReactMarkdown components={CodeBlock}>{intro}</ReactMarkdown>
             </div>
             
             <hr/>

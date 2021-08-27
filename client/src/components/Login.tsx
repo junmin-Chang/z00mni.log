@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import {Wrapper} from "./style/Wrapper";
 import {RootState} from "../reducers";
+
 const Input = styled.input`
     width: 100%;
     padding: 12px;
