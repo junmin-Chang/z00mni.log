@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import MDEditor from '@uiw/react-md-editor'
 import {useDispatch} from "react-redux";
-import {writePost} from "../../actions/postActions";
+import {writePostAsync} from "../../actions/postActions";
 import {RouteComponentProps} from "react-router-dom";
 
 
@@ -29,7 +29,7 @@ export const MarkdownEditor = ({ history } : RouteComponentProps) => {
             <MDEditor.Markdown source={markdown}/>
             <button className="btn btn-post"
                     onClick={() => {
-                        dispatch(writePost({
+                        dispatch(writePostAsync({
                             title: content.title,
                             tags: content.tags.split(','),
                             html: markdown,

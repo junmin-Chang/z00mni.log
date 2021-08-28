@@ -1,5 +1,5 @@
-import { GET_POSTS, GET_POST, WRITE_POST, EDIT_POST, DELETE_POST}
-from '../actions/types'
+import { GET_POSTS, GET_POST, WRITE_POST, EDIT_POST, DELETE_POST} from '../actions/types'
+import {PostAction} from "../actions/actions";
 
 type Post = {
     _id: string
@@ -14,9 +14,9 @@ type PostState = Post[]
 const initialState : PostState = []
 
 
-const posts = (posts: PostState = initialState, action : any) => {
+const postsReducer = (posts: PostState = initialState, action : PostAction) => {
     const { type, payload } = action
-    switch(type) {       
+    switch(type) {
         case GET_POSTS:
             return payload
         case GET_POST:
@@ -32,4 +32,4 @@ const posts = (posts: PostState = initialState, action : any) => {
     }
 }
 
-export default posts
+export default postsReducer

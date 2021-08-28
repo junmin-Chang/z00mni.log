@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect, useState, useRef,  MutableRefObject} from 'react';
 import Modal from './Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux'
-import { getPost } from '../actions/postActions'
+import {getPostAsync} from "../actions/postActions";
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import renderDate from '../utils/renderDate'
 import { Wrapper } from './style/Wrapper'
@@ -19,7 +19,7 @@ interface PostProps extends RouteComponentProps<RouterProps>{
     theme: boolean
 }
 const Post : React.FC<any> = ({match, history, theme } : PostProps) => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
     const post = useSelector((state : RootState) => state.posts)
     const {isAuthenticated}  = useSelector((state : RootState) => state.auth)
     const commentRef = useRef() as MutableRefObject<HTMLDivElement>
@@ -27,7 +27,7 @@ const Post : React.FC<any> = ({match, history, theme } : PostProps) => {
     const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
-        dispatch(getPost(match.params.id))
+        dispatch(getPostAsync(match.params.id))
         const scriptEl =  document.createElement("script")
         const utteranceConfig = {
             src: "https://utteranc.es/client.js",

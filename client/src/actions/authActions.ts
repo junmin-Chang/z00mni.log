@@ -4,7 +4,6 @@ import jwt_decode from 'jwt-decode';
 
 import {
     SET_CURRENT_USER,
-    USER_LOADING
 } from './types';
 require('dotenv').config()
 
@@ -14,7 +13,7 @@ export type AuthActions = ReturnType<typeof setCurrentUser>
 export const registerUser = (userData : any, history : any) => {
     axios
         .post(`${process.env.REACT_APP_API}/api/users/register`, userData)
-        .then(res => history.push("/login"))
+        .then(() => history.push("/login"))
         .catch(err => {
             console.log(err)
         })
@@ -40,15 +39,10 @@ export const setCurrentUser = (decoded : object) => {
     return {
         type: SET_CURRENT_USER,
         payload: decoded,
-        
     }
 }
 
-export const setUserLoading = () => {
-    return {
-        type: USER_LOADING
-    }
-}
+
 
 export const logoutUser = () => (dispatch : any) => {
     localStorage.removeItem("jwtToken");

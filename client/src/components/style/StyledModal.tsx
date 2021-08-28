@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import React, { useState } from 'react'
-import { editPost, deletePost } from '../../actions/postActions'
+import { editPostAsync, deletePostAsync } from '../../actions/postActions'
 
 const ModalInput = styled.input`
     width: 100%;
@@ -25,11 +25,11 @@ const ModalContent : React.FC<any> = ({ history, match, postState }) => {
     const dispatch = useDispatch();
 
     const editFn = () => {
-        dispatch(editPost(match.params.id, postData))
+        dispatch(editPostAsync(match.params.id, postData))
         history.push('/posts')
     }
     const deleteFn = () => {
-        dispatch(deletePost(match.params.id))
+        dispatch(deletePostAsync(match.params.id))
         history.push('/posts')
     }
     const [postData, setPostData] = useState({

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-import { getPostsByTag, getPosts } from '../actions/postActions'
+import { getPostsByTagAsync, getPostsAsync } from '../actions/postActions'
 export const Tag = styled.span`
     display: inline-block;
     margin-right: 0.5rem;
@@ -21,15 +21,15 @@ const Categories : React.FC = () => {
     return (
         <div className="tag-wrapper">
         <h3>#카테고리</h3>
-        <TagAll onClick={() => dispatch(getPosts())}>전체</TagAll>
-        <Tag onClick={() => dispatch(getPostsByTag("React"))}>#React</Tag>
-        <Tag onClick={() => dispatch(getPostsByTag("NextJS"))}>#NextJS</Tag>
-        <Tag onClick={() => dispatch(getPostsByTag("Redux"))}>#Redux</Tag>
-        <Tag onClick={() => dispatch(getPostsByTag("GraphQL"))}>#GraphQL</Tag>
-        <Tag onClick={() => dispatch(getPostsByTag("Apollo"))}>#Apollo</Tag>
-        <Tag onClick={() => dispatch(getPostsByTag("NodeJS"))}>#NodeJS</Tag>
-        <Tag onClick={() => dispatch(getPostsByTag("삽질"))}>#삽질</Tag>
-        <Tag onClick={() => dispatch(getPostsByTag("생각"))}>#생각</Tag>
+        <TagAll onClick={() => dispatch(getPostsAsync())}>전체</TagAll>
+        <Tag onClick={() => dispatch(getPostsByTagAsync("React"))}>#React</Tag>
+        <Tag onClick={() => dispatch(getPostsByTagAsync("NextJS"))}>#NextJS</Tag>
+        <Tag onClick={() => dispatch(getPostsByTagAsync("Redux"))}>#Redux</Tag>
+        <Tag onClick={() => dispatch(getPostsByTagAsync("GraphQL"))}>#GraphQL</Tag>
+        <Tag onClick={() => dispatch(getPostsByTagAsync("Apollo"))}>#Apollo</Tag>
+        <Tag onClick={() => dispatch(getPostsByTagAsync("NodeJS"))}>#NodeJS</Tag>
+        <Tag onClick={() => dispatch(getPostsByTagAsync("삽질"))}>#삽질</Tag>
+        <Tag onClick={() => dispatch(getPostsByTagAsync("생각"))}>#생각</Tag>
 
     </div>
 

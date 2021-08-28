@@ -4,11 +4,11 @@ import Pagination from './Pagination/Pagination'
 import { withRouter } from 'react-router-dom';
 import Categories from './Categories';
 import { useSelector ,  useDispatch } from 'react-redux'
-import { getPosts } from '../actions/postActions'
 import { Wrapper } from './style/Wrapper';
 import { ListSkeleton } from './style/Skeleton';
 import { Helmet } from 'react-helmet'
 import {RootState} from "../reducers";
+import {getPostsAsync} from "../actions/postActions";
 
 interface PostListProps {
     theme : boolean
@@ -28,7 +28,7 @@ const PostList: React.FC<any> = ({ theme }: PostListProps) => {
     }
 
     useEffect(() => {
-        dispatch(getPosts());
+        dispatch(getPostsAsync())
     }, [])
 
     return (
