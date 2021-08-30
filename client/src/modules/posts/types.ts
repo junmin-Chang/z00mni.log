@@ -7,6 +7,7 @@ export const GET_POSTS_ERROR = "GET_POSTS_ERROR" as const
 export const GET_POST = "GET_POST" as const
 export const GET_POST_SUCCESS = "GET_POST_SUCCESS" as const
 export const GET_POST_ERROR = "GET_POST_ERROR" as const
+export const CLEAR_POST = "CLEAR_POST" as const
 
 export const WRITE_POST = "WRITE_POST" as const
 export const DELETE_POST = "DELETE_POST" as const

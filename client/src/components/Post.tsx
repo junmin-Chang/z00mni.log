@@ -10,6 +10,7 @@ import { ContentSkeleton } from './style/Skeleton';
 import { Helmet } from 'react-helmet'
 import {RootState} from "../modules";
 import MDEditor from "@uiw/react-md-editor";
+import {clearPost} from "../modules/posts/actions";
 interface RouterProps {
     params: any
     id: string
@@ -43,6 +44,10 @@ const Post : React.FC<any> = ({match, history, theme } : PostProps) => {
             scriptEl.setAttribute(key, value)
         })
         commentRef.current.appendChild(scriptEl)
+
+        return () => {
+            dispatch(clearPost())
+        }
     },[])
    
 

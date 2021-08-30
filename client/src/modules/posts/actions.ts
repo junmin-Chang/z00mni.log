@@ -1,4 +1,5 @@
 import {
+    CLEAR_POST,
     DELETE_POST,
     EDIT_POST,
     GET_POST, GET_POST_ERROR,
@@ -64,6 +65,12 @@ export const editPostAction = (id: string, {title, tags, html, createdAt} : any)
     }
 }
 
+export const clearPost = () => {
+    return {
+        type: CLEAR_POST
+    }
+}
+
 export type PostAction =
     ReturnType<typeof getPostsSuccessAction> |
     ReturnType<typeof getPostsErrorAction> |
@@ -73,4 +80,5 @@ export type PostAction =
     ReturnType<typeof getPostAction> |
     ReturnType<typeof deletePostAction> |
     ReturnType<typeof editPostAction> |
-    ReturnType<typeof writePostAction>
+    ReturnType<typeof writePostAction> |
+    ReturnType<typeof clearPost>

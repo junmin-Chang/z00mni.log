@@ -5,7 +5,8 @@ import {
     EDIT_POST,
     DELETE_POST,
     GET_POSTS_SUCCESS,
-    GET_POST_SUCCESS
+    GET_POST_SUCCESS, CLEAR_POST,
+
 } from './types'
 
 import {PostAction} from "./actions";
@@ -98,6 +99,14 @@ const postsReducer = (state: Post = initialState, action : PostAction) => {
                 posts: {
                     loading: false,
                     data: action.payload
+                }
+            }
+        case CLEAR_POST:
+            return {
+                ...state,
+                post : {
+                    loading: false,
+                    data: null
                 }
             }
         default:
