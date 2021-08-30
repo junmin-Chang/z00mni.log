@@ -1,12 +1,11 @@
 import React, {useState, useEffect, FormEvent, FormEventHandler, ChangeEvent, ChangeEventHandler} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { loginUser } from '../actions/authActions'
+import {loginUserAsync} from "../modules/auth/thunks";
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import {Wrapper} from "./style/Wrapper";
-import {RootState} from "../reducers";
-
+import {RootState} from "../modules";
 const Input = styled.input`
     width: 100%;
     padding: 12px;
@@ -93,7 +92,7 @@ const Login : React.FC<RouteComponentProps> = ({history}) => {
             email: email,
             password: password
         }
-        dispatch(loginUser(userData));
+        dispatch(loginUserAsync(userData));
     }
     useEffect(() => {
         if (auth.isAuthenticated) {

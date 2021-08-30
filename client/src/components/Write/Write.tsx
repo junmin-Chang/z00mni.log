@@ -3,11 +3,12 @@ import { Helmet } from 'react-helmet'
 import { useSelector } from 'react-redux'
 import {MarkdownEditor} from "./MarkdownEditor";
 import {RouteComponentProps} from "react-router-dom";
+import {RootState} from "../../modules";
 
 
 
 function Write({ history, match, location } : RouteComponentProps) {
-    let { isAuthenticated } : any = useSelector<any>(state => state.auth)
+    let { isAuthenticated }  = useSelector((state : RootState) => state.auth)
    useEffect(() => {
        if (!isAuthenticated) {
             history.push('/login')

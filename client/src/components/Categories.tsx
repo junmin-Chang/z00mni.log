@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-import { getPostsByTagAsync, getPostsAsync } from '../actions/postActions'
+import {getPostsAsync, getPostsByTagAsync} from "../modules/posts/thunks";
 export const Tag = styled.span`
     display: inline-block;
     margin-right: 0.5rem;

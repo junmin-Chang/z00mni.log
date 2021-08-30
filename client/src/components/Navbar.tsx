@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
-import { logoutUser } from '../actions/authActions' 
+import {logoutUserAsync} from "../modules/auth/thunks";
 import { LoggedInStyledNav, LoggedOutStyledNav } from './style/StyledNav';
-import {RootState} from "../reducers";
-
+import {RootState} from "../modules";
 interface NavbarProps {
     onThemeToggled: () => void
     theme: boolean
@@ -26,7 +25,7 @@ const Navbar : React.FC<any> = ({ onThemeToggled, theme } : NavbarProps) => {
 
                     <LoggedInStyledNav
                         onLogout={() => {
-                            dispatch(logoutUser())
+                            dispatch(logoutUserAsync())
                         }}
                         onToggle={onThemeToggled}
                         theme={theme}

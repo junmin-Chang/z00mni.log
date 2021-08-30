@@ -23,7 +23,7 @@ interface ItemProps {
 function PostListItem({ posts } : ItemProps) {
     return (
         <div>
-            {posts.map((post : any) => (
+            {posts?.map((post : any) => (
                 <StyledLink to={`/posts/${post._id}`} key={post._id}>
                     <Content post={post}/>
                 </StyledLink>

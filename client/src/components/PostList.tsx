@@ -7,20 +7,19 @@ import { useSelector ,  useDispatch } from 'react-redux'
 import { Wrapper } from './style/Wrapper';
 import { ListSkeleton } from './style/Skeleton';
 import { Helmet } from 'react-helmet'
-import {RootState} from "../reducers";
-import {getPostsAsync} from "../actions/postActions";
-
+import {getPostsAsync} from "../modules/posts/thunks";
+import {RootState} from "../modules";
 interface PostListProps {
     theme : boolean
 }
 const PostList: React.FC<any> = ({ theme }: PostListProps) => {
 
+    let {loading, data} = useSelector((state : RootState) => state.posts.posts);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(10);
     const lastIndex = currentPage * postsPerPage;
     const firstIndex = lastIndex - postsPerPage;
-    let posts = useSelector((state : RootState) => state.posts);
-    const dispatch = useDispatch();   
+    const dispatch = useDispatch();
     const currentPosts = (tmp : object[]) => {
         let currentPosts : object[] = [];
         currentPosts = tmp.slice(firstIndex, lastIndex);
@@ -31,6 +30,7 @@ const PostList: React.FC<any> = ({ theme }: PostListProps) => {
         dispatch(getPostsAsync())
     }, [])
 
+
     return (
         <>
             <Helmet>
@@ -38,15 +38,17 @@ const PostList: React.FC<any> = ({ theme }: PostListProps) => {
             </Helmet>
             <Wrapper>
 
-                {!posts.length ?
-                    <ListSkeleton theme={theme}/>
-                : (  
+                {loading &&
+                    <ListSkeleton theme={theme}/>}
+
+                {data &&
                 <div className="post-list">   
                     <Categories/>
-                    <PostListItem posts={currentPosts(posts)}/>
-                    <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={setCurrentPage}/>
+                    <PostListItem posts={currentPosts(data)}/>
+                    <Pagination postsPerPage={postsPerPage} totalPosts={data.length} paginate={setCurrentPage}/>
                 </div>
-                )}
+                }
+
                 </Wrapper>
         </>
     )

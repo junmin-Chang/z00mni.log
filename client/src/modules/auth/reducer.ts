@@ -1,7 +1,6 @@
 import {
     SET_CURRENT_USER,
-} from "../actions/types"
-import {AuthActions} from "../actions/authActions";
+} from "./types"
 
 const isEmpty = require("is-empty");
 type Auth = {

@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import React, { useState } from 'react'
-import { editPostAsync, deletePostAsync } from '../../actions/postActions'
-
+import {editPostAsync, deletePostAsync } from "../../modules/posts/thunks";
 const ModalInput = styled.input`
     width: 100%;
     position: relative;

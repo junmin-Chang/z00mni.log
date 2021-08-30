@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import MDEditor from '@uiw/react-md-editor'
 import {useDispatch} from "react-redux";
-import {writePostAsync} from "../../actions/postActions";
 import {RouteComponentProps} from "react-router-dom";
+import {writePostAsync} from "../../modules/posts/thunks";
 
 
 export const MarkdownEditor = ({ history } : RouteComponentProps) => {
