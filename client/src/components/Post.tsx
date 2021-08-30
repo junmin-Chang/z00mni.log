@@ -26,6 +26,7 @@ const Post : React.FC<any> = ({match, history, theme } : PostProps) => {
     const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
+
         dispatch(getPostAsync(match.params.id))
         const scriptEl =  document.createElement("script")
         const utteranceConfig = {

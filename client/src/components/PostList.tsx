@@ -27,6 +27,7 @@ const PostList: React.FC<any> = ({ theme }: PostListProps) => {
     }
 
     useEffect(() => {
+        if (data) return;
         dispatch(getPostsAsync())
     }, [])
 
