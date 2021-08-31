@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy} from 'react';
 import {Switch, Route } from 'react-router-dom';
-// pages
-import Home from './components/Home';
-import Post from './components/Post';
-import PostList from './components/PostList';
-import Login from './components/Login';
 // styles
 import './style.css'
 // components
 import Navbar from './components/Navbar';
-import Write from './components/Write/Write';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme,darkTheme } from './theme/theme';
 import { GlobalStyles } from './theme/global'
@@ -19,8 +13,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet'
 import { useSelector} from "react-redux";
-
-
+// pages
+const Home = lazy(() => import('./components/Home'))
+const PostList = lazy(() => import('./components/PostList'))
+const Post = lazy(() => import('./components/Post'))
+const Login = lazy(() => import('./components/Login'))
+const Write = lazy(() => import('./components/Write/Write'))
 
 const App: React.FC<any> = () => {
     // false? light : dark
@@ -62,6 +60,7 @@ const App: React.FC<any> = () => {
             <GlobalStyles/>
                 <Navbar onThemeToggled={toggleTheme} theme={theme}/>
                 <ToastContainer/>
+            <Suspense fallback={null}>
                 <Switch>
                     <Route exact path='/' component={Home}/>
                     <Route path='/posts/:id' render={() => <Post theme={theme}/>}/>
@@ -69,6 +68,8 @@ const App: React.FC<any> = () => {
                     <Route path='/write' component={Write}/>
                     <Route path="/login" component={Login}/>
                 </Switch>
+            </Suspense>
+
             </ThemeProvider>
        </>
 

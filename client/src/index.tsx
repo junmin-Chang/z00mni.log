@@ -26,7 +26,6 @@ if (rootElement.hasChildNodes()) {
     )
 } else {
     render(
-    
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <BrowserRouter>

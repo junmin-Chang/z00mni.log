@@ -1,5 +1,4 @@
-import React, {Fragment, useEffect, useState, useRef,  MutableRefObject} from 'react';
-import Modal from './Modal/Modal';
+import React, {Fragment, useEffect, useState, useRef, MutableRefObject, lazy} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import {getPostAsync} from "../modules/posts/thunks";
 import {RouteComponentProps, withRouter} from 'react-router-dom'
@@ -11,6 +10,9 @@ import { Helmet } from 'react-helmet'
 import {RootState} from "../modules";
 import MDEditor from "@uiw/react-md-editor";
 import {clearPost} from "../modules/posts/actions";
+
+const Modal = lazy(() => import('./Modal/Modal'))
+
 interface RouterProps {
     params: any
     id: string
@@ -73,11 +75,8 @@ const Post : React.FC<any> = ({match, history, theme } : PostProps) => {
         </div>
 
         <Wrapper>
-            {isAuthenticated ?
-                (
+            {isAuthenticated &&
                 <button className="btn btn-delete" onClick={openModal}>관리자 메뉴</button>
-            )
-                : null
             }
             <div>
                 {loading &&
