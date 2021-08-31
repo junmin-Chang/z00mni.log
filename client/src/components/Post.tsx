@@ -69,8 +69,10 @@ const Post : React.FC<any> = ({match, history, theme } : PostProps) => {
         <div>
             <Suspense fallback={null}>
                 <Modal open={modalOpen} close={closeModal} header="관리자 모드">
-                    <ModalContent history={history} match={match}
-                                  postState={data}
+                    <ModalContent
+                        history={history}
+                        match={match}
+                        postState={data}
                     />
                 </Modal>
             </Suspense>
