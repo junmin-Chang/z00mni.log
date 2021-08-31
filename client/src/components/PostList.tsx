@@ -1,4 +1,4 @@
-import React, {useEffect, useState, lazy, Suspense} from 'react';
+import React, {useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { useSelector ,  useDispatch } from 'react-redux'
 import { Wrapper } from './style/Wrapper';
@@ -6,9 +6,9 @@ import { ListSkeleton } from './style/Skeleton';
 import { Helmet } from 'react-helmet'
 import {getPostsAsync} from "../modules/posts/thunks";
 import {RootState} from "../modules";
-const Pagination = lazy(() => import('./Pagination/Pagination'))
-const Categories = lazy(() => import('./Categories'))
-const PostListItem = lazy(() => import('./PostListItem'))
+import Pagination from './Pagination/Pagination'
+import Categories from "./Categories";
+import PostListItem from "./PostListItem";
 interface PostListProps {
     theme : boolean
 }
@@ -45,11 +45,9 @@ const PostList: React.FC<any> = ({ theme }: PostListProps) => {
 
                     {data &&
                     <div className="post-list">
-                        <Suspense fallback={null}>
                             <Categories/>
                             <PostListItem posts={currentPosts(data)}/>
                             <Pagination postsPerPage={postsPerPage} totalPosts={data.length} paginate={setCurrentPage}/>
-                        </Suspense>
                         </div>
                     }
 

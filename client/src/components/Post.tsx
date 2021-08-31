@@ -1,10 +1,9 @@
-import React, {Fragment, useEffect, useState, useRef, MutableRefObject, lazy} from 'react';
+import React, {Fragment, useEffect, useState, useRef, MutableRefObject, lazy, Suspense} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import {getPostAsync} from "../modules/posts/thunks";
 import {RouteComponentProps, withRouter} from 'react-router-dom'
 import renderDate from '../utils/renderDate'
 import { Wrapper } from './style/Wrapper'
-import ModalContent from './style/StyledModal';
 import { ContentSkeleton } from './style/Skeleton';
 import { Helmet } from 'react-helmet'
 import {RootState} from "../modules";
@@ -12,6 +11,7 @@ import MDEditor from "@uiw/react-md-editor";
 import {clearPost} from "../modules/posts/actions";
 
 const Modal = lazy(() => import('./Modal/Modal'))
+const ModalContent = lazy(() => import('./style/StyledModal'))
 
 interface RouterProps {
     params: any
@@ -67,11 +67,14 @@ const Post : React.FC<any> = ({match, history, theme } : PostProps) => {
             <title>{data?.title}</title>
         </Helmet>
         <div>
-             <Modal open={modalOpen} close={closeModal} header="관리자 모드">
-                <ModalContent history={history} match={match}
-                    postState={data}
-                /> 
-            </Modal>   
+            <Suspense fallback={null}>
+                <Modal open={modalOpen} close={closeModal} header="관리자 모드">
+                    <ModalContent history={history} match={match}
+                                  postState={data}
+                    />
+                </Modal>
+            </Suspense>
+
         </div>
 
         <Wrapper>
